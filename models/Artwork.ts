@@ -38,11 +38,17 @@ const artworkSchema = new Schema({
         type: String,
         required: true,
         enum: {
-            values: ['medium', 'small', 'big'],
+            values: ['portrait', 'landscape', 'square'],
             message: '{VALUE} is not a valid orientation',
         },
     },
-    size: {type: String},
+    size: {
+        type: String,
+        enum: {
+            values: ['medium', 'small', 'big'],
+            message: '{VALUE} is not a valid size',
+        }
+    },
     url: {
         type: String,
         required: true

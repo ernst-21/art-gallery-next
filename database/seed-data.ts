@@ -469,5 +469,6 @@ export const initialData: SeedData = {
             purchased: [],
             voters: [],
         },
+        /////////////////////////////// NEW ARTWORKS ///////////////////////////
     ],
 };
