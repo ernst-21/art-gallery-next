@@ -1,6 +1,6 @@
 import mongoose, { Schema, model, Model } from 'mongoose';
 const {ObjectId} = mongoose.Schema.Types;
-import { IArtist } from '../interfaces/artist';
+import { IArtist } from '../interfaces';
 
 const artistSchema = new Schema({
     name: {
