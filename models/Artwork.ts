@@ -57,6 +57,6 @@ const artworkSchema = new Schema({
     purchased: [{type: ObjectId, ref: 'User'}]
 }, { timestamps: true });
 
-const Artwork: Model<IArtwork> = mongoose.models.User || model('Artwork', artworkSchema);
+const Artwork: Model<IArtwork> = mongoose.models.Artwork || model('Artwork', artworkSchema);
 
 export default Artwork;

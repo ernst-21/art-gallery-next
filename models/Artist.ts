@@ -25,6 +25,6 @@ const artistSchema = new Schema({
     likes : [{type: ObjectId, ref: 'User'}]
 }, { timestamps: true });
 
-const Artist: Model<IArtist> = mongoose.models.User || model('Artist', artistSchema);
+const Artist: Model<IArtist> = mongoose.models.Artist || model('Artist', artistSchema);
 
 export default Artist;
