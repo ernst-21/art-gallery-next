@@ -1,5 +1,5 @@
 import React,{createContext, useContext} from 'react';
-import {ChildrenProps} from "../../types";
+import { ChildrenProps } from '../../types/common.types';
 
 // Data value of the provider context
 type FormContextValue = {
@@ -35,7 +35,7 @@ const Form = ({isLoading,size, disabled,readOnly,control,...props}: FormContextP
 
 
 // Default hook to retrieve context data
-const useDFLForm = () => {
+const useEForm = () => {
     const context = useContext(FormContext);
     if (context === undefined) {
         return defaultValue;
@@ -43,4 +43,4 @@ const useDFLForm = () => {
     return context;
 }
 
-export {Form, useDFLForm};
+export {Form, useEForm};

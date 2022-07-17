@@ -1,32 +1,40 @@
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { loginSchema } from '../schemas/login.schema';
-import { FormHookType } from '@dfl/mui-react-common';
+import { signInSchema } from '../schemas/signInSchema';
+import { FormHookType } from '../../../types/form.types';
+import { signIn } from 'next-auth/react';
+import { useMutation } from 'react-query';
 
-import useLoginState from '@/modules/authentication/hooks/useLoginState';
+type FormData = {
+  email: string;
+  password: string;
+};
 
-
-
-const useLoginForm = (): FormHookType => {
+const useSignInForm = (cb: (arg0: boolean) => void): FormHookType => {
   const { control, handleSubmit } = useForm({
-    resolver: yupResolver(loginSchema),
+    resolver: yupResolver(signInSchema),
     defaultValues: {
       email: '',
-      identifier: '',
-      password: '',
-      remember: false
+      password: ''
     }
   });
 
-  // const { mutateAsync, error, isLoading } = useSignIn();
-  const { login, isLoading, error } = useLoginState();
+  const onLoginUser = async (data: FormData) => {
+    cb(false);
+
+    await signIn('credentials', data);
+  };
+
+  const {mutateAsync, error, isLoading, isSuccess, data} = useMutation((data: FormData) => onLoginUser(data));
 
   return {
     control,
     error,
     isLoading,
-    onSubmit: handleSubmit((data) => login(data))
+    isSuccess,
+    data,
+    onSubmit: handleSubmit((values) => mutateAsync(values))
   };
 };
 
-export default useLoginForm;
+export default  useSignInForm;

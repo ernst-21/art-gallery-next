@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const appApi = axios.create({
+const ApiClient = axios.create({
     baseURL: '/api',
 });
 
-export default appApi;
+export default ApiClient;

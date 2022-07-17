@@ -1,7 +1,7 @@
 import React, {FC, memo} from 'react';
 import {Control, Controller} from 'react-hook-form';
 import {useTranslation} from 'react-i18next';
-import {useDFLForm} from "./Form";
+import {useEForm} from './Form'
 import {InputBaseComponentProps} from "@mui/material";
 
 export type FormFieldControlProps = {
@@ -16,7 +16,7 @@ export type FormFieldControlProps = {
 
 const FormFieldControl: FC<FormFieldControlProps> = ({control, name,Component, inputProps, ...props}) => {
     const {t} = useTranslation('errors');
-    const {isLoading, readOnly, disabled, control: superControl, size} = useDFLForm();
+    const {isLoading, readOnly, disabled, control: superControl, size} = useEForm();
 
     return (
         <Controller

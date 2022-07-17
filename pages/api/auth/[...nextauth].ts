@@ -1,14 +1,15 @@
 import NextAuth from 'next-auth';
 import GithubProvider from 'next-auth/providers/github';
 import Credentials from 'next-auth/providers/credentials';
-import { db, dbUsers } from '../../../database';
+import { dbUsers } from '../../../database';
+import GoogleProvider from "next-auth/providers/google";
 
 export default NextAuth({
   providers: [
     // OAuth authentication providers...
 
     Credentials({
-      name: 'Custom Login',
+      name: 'Custom Authentication',
       credentials: {
         email: {
           label: 'Email:',
@@ -36,6 +37,10 @@ export default NextAuth({
       clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET,
     }),
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET
+    })
   ],
 
   pages: {

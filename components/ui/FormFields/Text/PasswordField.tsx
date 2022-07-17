@@ -1,12 +1,12 @@
 import React, {memo} from "react";
 import {Box, InputAdornment, useTheme} from "@mui/material";
-import TextField from "./TextField";
+import { TextField } from '@mui/material';
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined";
-import {useToggle} from "@dfl/hook-utils";
+import useToggle from '../../../../hooks/utils/useToggle';
 import {PasswordFieldProps} from "./text.types";
 
-const PasswordField = ({ hideIcon,...props }:PasswordFieldProps) => {
+const PasswordField = ({ hideIcon, ...props }:PasswordFieldProps) => {
   const {isOpen, onToggle} = useToggle();
   const theme = useTheme();
 

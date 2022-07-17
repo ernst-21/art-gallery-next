@@ -1,7 +1,7 @@
 import React, { useReducer, ReactNode, useEffect } from 'react';
 import { AuthContext, authReducer } from './';
 import { IUser } from '../../interfaces';
-import { appApi } from '../../api';
+import { ApiClient } from '../../api';
 import Cookies from 'js-cookie';
 import axios from 'axios';
 import { useSession, signOut } from 'next-auth/react';
@@ -35,7 +35,7 @@ export const AuthProvider = ({ children }: ProviderProps) => {
     password: string
   ): Promise<boolean> => {
     try {
-      const { data } = await appApi.post('/user/login', { email, password });
+      const { data } = await ApiClient.post('/user/login', { email, password });
       const { token, user } = data;
       Cookies.set('token', token);
       dispatch({ type: '[Auth] - Login', payload: user });
@@ -51,7 +51,7 @@ export const AuthProvider = ({ children }: ProviderProps) => {
     password: string
   ): Promise<{ hasError: boolean; message?: string }> => {
     try {
-      const { data } = await appApi.post('/user/register', {
+      const { data } = await ApiClient.post('/user/register', {
         name,
         email,
         password,

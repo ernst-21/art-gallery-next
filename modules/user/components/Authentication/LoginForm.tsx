@@ -4,21 +4,16 @@ import { ErrorOutlined } from '@mui/icons-material';
 import NextLink from 'next/link';
 import { getProviders, signIn } from 'next-auth/react';
 import { useRouter } from 'next/router';
-import FormPasswordField from '../FormFields/Text/FormPasswordField';
-import useSignInForm from '../../../modules/user/hooks/useLoginForm';
-import FormTextField from '../FormFields/Text/FormTextField';
-import { LoadingButton } from '../Buttons';
+import FormPasswordField from '../../../../components/ui/FormFields/Text/FormPasswordField';
+import useSignInForm from '../../hooks/useLoginForm';
+import FormTextField from '../../../../components/ui/FormFields/Text/FormTextField';
+import { GoogleButton, LoadingButton } from '../../../../components/ui/Buttons';
 
 
 const LoginForm = () => {
     const router = useRouter();
     const [showError, setShowError] = useState(false);
-    const [providers, setProviders] = useState<any>({});
     const {onSubmit, control, isLoading, error, isSuccess, data} = useSignInForm(setShowError);
-
-    useEffect(() => {
-        getProviders().then((prov) => setProviders(prov));
-    }, []);
 
     const destination = useMemo(() => {
         return router.query.p?.toString() || '/';
@@ -40,7 +35,7 @@ const LoginForm = () => {
         <Box display={'flex'}
              justifyContent={'center'}
              alignItems='center'
-             sx={{ border: '1px solid blue', width: { xs: '100%', sm: '60%' }, height: '100vh' }}
+             sx={{ width: { xs: '100%', sm: '60%' }, height: '100vh' }}
         >
             <Box sx={{ width: {xs: '80%', sm: 500}, padding: '20px' }}>
                 <form onSubmit={onSubmit} noValidate>
@@ -109,22 +104,14 @@ const LoginForm = () => {
                             justifyContent={'end'}
                         >
                             <Divider sx={{ mb: 3, width: '100%' }} />
-                            {Object.values(providers).map((prov: any) => {
-                                if (prov.id === 'credentials') return <div key={prov.id}></div>;
-
-                                return (
-                                    <Button
-                                        key={prov.id}
-                                        fullWidth
-                                        variant='outlined'
-                                        color='primary'
-                                        sx={{ mb: 1, height: '48px' }}
-                                        onClick={() => signIn(prov.id)}
-                                    >
-                                        {prov.name}
-                                    </Button>
-                                );
-                            })}
+                            <GoogleButton key={'google'}
+                                          fullWidth
+                                          variant='outlined'
+                                          color='primary'
+                                          sx={{ mb: 1, height: '48px' }}
+                                          onClick={() => signIn('google')}>
+                                Google
+                            </GoogleButton>
                         </Grid>
                     </Grid>
                 </form>
