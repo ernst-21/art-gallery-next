@@ -1,0 +1,104 @@
+{
+  "requestStore": "SOLICITAR TIENDA AHORA",
+  "section1": {
+    "forStores": "PARA DUEÑOS DE TIENDAS",
+    "header": "Todo lo que necesitas es un",
+    "headerBlue": "clic",
+    "description": "Ejakí es la solución profesional más completa del mercado para quienes buscan ser líderes en comercio electrónico en Cuba. Simplemente, haz clic y empieza a vender ahora. Del resto nos encargamos nosotros."
+  },
+  "section2": {
+    "header1": "¿Quieres incursionar en el",
+    "headerBlue": "comercio electrónico",
+    "header2": ", pero no sabes cómo?",
+    "description": "Conoce mejor nuestra plataforma. Dale play y despeja tus inquietudes. Aprovecha al máximo tu experiencia y convierte tu plan de ventas en ingresos."
+  },
+  "section3": {
+    "header": "Las mejores",
+    "headerBlue": "garantías de éxito",
+    "description": "El espacio que es suficiente y confiable hoy, podría no serlo mañana. ¡Recuerda que estás en el mercado para crecer! DFL ecommerce es respaldo y garantía en tu expansión.",
+    "panel1": {
+      "header": "Asegura una gestión rápida y estable",
+      "description": "Recibe el mejor tiempo de actividad y de respuesta del servidor. Disfruta de un servicio de soporte muy ágil y efectivo, disponible siempre que lo necesites."
+    },
+    "panel2": {
+      "header": "Gana sin riesgo",
+      "description": "Crea tu tienda en una plataforma 100% cubana, construida con las mejores y más seguras tecnologías. Cuida tus datos, protege a tus clientes."
+    },
+    "panel3": {
+      "header": "Escala tu negocio a un menor costo",
+      "description": "Multiplica las ventas y alcanza nuevos mercados sin incrementar los costos. Paga solo por lo que usas. Ofrece a tus clientes el servicio con la misma rapidez si el tráfico se multiplica por dos o por diez."
+    }
+  },
+  "section4": {
+    "header": "Tu comercio con Ejakí",
+    "headerBlue": "no tendrá límites",
+    "description": "Potencia la innovación para el crecimiento de tu marca. Todo a un costo total de administración más bajo que el de otras plataformas de comercio electrónico líderes.",
+    "api": {
+      "header": "Basado en API",
+      "description": "API flexibles y más de 400 llamadas por segundo, por cliente."
+    },
+    "architecture": {
+      "header": "Arquitectura headless",
+      "description": "Utiliza cualquier front-end para una experiencia de compra más personalizada, con un sistema más adaptable y una carga más rápida de contenidos."
+    },
+    "security": {
+      "header": "Sólida seguridad",
+      "description": "ISO/IEC 27001:2013 & PCI DSS 3.2, certificación Nivel 1."
+    },
+    "performance": {
+      "header": "Rendimiento",
+      "description": "Despliegues en nubes de forma distribuida."
+    },
+    "totalCost": {
+      "header": "Costo total de administración",
+      "description": "Reduce el tiempo de replatforming y minimiza costos operativos."
+    },
+    "support": {
+      "header": "Soporte experto",
+      "description": "Soporte técnico especializado, para solucionar problemas o buscar asesoría empresarial."
+    }
+  },
+  "section5": {
+    "header": "Vende mejor,",
+    "headerBlue": "vende más",
+    "description": "Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetu.",
+    "panel1": {
+      "header": "Despierta la creatividad",
+      "description": "Diseña sin límites las herramientas que requiere tu tienda, completamente personalizables desde la interfaz administrativa hasta los temas más atractivos."
+    },
+    "panel2": {
+      "header": "Evoluciona con las tendencias",
+      "description": "Exhibe tus productos con catálogos avanzados, carrito y pagos personalizados"
+    },
+    "panel3": {
+      "header": "Vende sin demoras",
+      "description": "Ofrece experiencias comerciales ultrarrápidas, para que tus clientes siempre regresen por más."
+    }
+  },
+  "section6": {
+    "line1": "El mejor precio, sin costos ocultos, sin tarifas de transacción, sin sorpresas",
+    "line2": "¿Qué plan es el ideal para ti? El que te impulsa a crecer.",
+    "line3": "Un % de tus ventas mensuales",
+    "line4": "Flexible y negociable",
+    "check1": " Soporte dedicado especializado",
+    "check2": "Pagos recurrentes con Transfermóvil y muy pronto con EnZona también",
+    "check3": "Cancela la suscripción en cualquier momento"
+  },
+  "section7": {
+    "headerBlue": "Pagos confiables",
+    "header": "y seguridad de clase mundial",
+    "description": "Acepta pagos desde cualquier parte del país y al mismo tiempo mantén tu tienda y tus clientes a salvo.",
+    "panel1": {
+      "header": "Integración con Transfermóvil",
+      "description": "Transfermóvil es la pasarela preferida por los cubanos. Ofrece comodidad y seguridad a tus clientes."
+    },
+    "panel2": {
+      "header": "Pago contra entrega",
+      "description": "No es necesario tener cuentas online. Puedes realizar el pago en nuestros almacenes, o al servicio de entrega."
+    },
+    "panel3": {
+      "header": "Seguridad en los pagos",
+      "description": "DFL ecommerce está preparado para PCI-DSS. La información de pago de los clientes solo es manejada por procesadores de pago confiables."
+    }
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "fullName": "Nombre Completo",
+  "password": "Contraseña Actual",
+  "confirmPassword": "Confirmar Contraseña",
+  "emailAddress": "Dirección de Correo Electrónico",
+  "phoneNumber": "Número de Teléfono",
+  "country": "País",
+  "state": "Estado/Región",
+  "city": "Ciudad",
+  "address": "Dirección",
+  "zipCode": "Código Postal",
+  "label": "Etiqueta",
+  "saveChanges": "Guardar Cambios",
+  "profile": {
+    "phone": "Teléfono",
+    "creation": "Fecha de Creación",
+    "changeRole": "CAMBIAR ROL"
+  },
+  "tabs": {
+    "general": "GENERAL",
+    "billing": "FACTURACIÓN",
+    "notifications": "NOTIFICACIONES",
+    "security": "SEGURIDAD",
+    "activity": "ACTIVIDAD"
+  },
+  "activityTab": {
+    "recentActivity": "Su actividad reciente:"
+  },
+  "securityTab": {
+    "passwordMakeChange": "Hacer que este usuario cambie su contraseña la primera vez que se registre",
+    "passwordAutoGenerate": "Generar automáticamente la contraseña",
+    "passwordCreate": "Déjame crear la contraseña",
+    "changePassword": "Cambiar la contraseña (para usuarios)",
+    "resetPassword": "Restablecer la contraseña (para los administradores)",
+    "loginHistory": "Historial de inicio de sesión",
+    "recentLoginHistory": "Su actividad de inicio de sesión reciente:",
+    "loginType": "Tipo de Conexión",
+    "ipAddress": "Dirección IP",
+    "client": "Cliente"
+  },
+  "notificationsTab": {
+    "notifications": "Notificaciones",
+    "requestPermission": "Necesitamos el permiso de su navegador para mostrar las notificaciones. Solicitar permiso",
+    "email": {
+      "header": "CORREO ELECTRÓNICO",
+      "productUpdates": {
+        "primary": "Actualizaciones de productos",
+        "secondary": "Noticias, anuncios y actualizaciones de productos."
+      },
+      "securityUpdates": {
+        "primary": "Actualizaciones de seguridad",
+        "secondary": "Notificaciones importantes sobre la seguridad de su cuenta."
+      }
+    },
+    "phoneNotifications": {
+      "header": "NOTIFICACIONES TELEFÓNICAS",
+      "securityUpdates": {
+        "primary": "Actualizaciones de seguridad",
+        "secondary": "Notificaciones importantes sobre la seguridad de su cuenta."
+      }
+    }
+  }
+}

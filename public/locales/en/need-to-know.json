@@ -1,0 +1,101 @@
+{
+  "requestStore": "REQUEST STORE NOW",
+  "section1": {
+    "forStores": "FOR STORE OWNERS",
+    "header": "All you need is a",
+    "headerBlue": "clic",
+    "description": "Ejaki is the most complete professional solution in the market for those who are looking to be leaders in e-commerce in Cuba. Just click and start selling now. We'll take care of the rest."
+  },
+  "section2": {
+    "header1": "Do you want to venture into the",
+    "headerBlue": "e-commerce",
+    "header2": ", but you don't know how?",
+    "description": "Learn more about our platform. Press play and clear your doubts. Make the most of your experience and turn your sales plan into income."
+  },
+  "section3": {
+    "header": "The best",
+      "headerBlue": "guarantees of success",
+    "description": "The space that is sufficient and reliable today, may not be so tomorrow, remember that you are in the market to grow! DFL ecommerce is support and guarantee in your expansion.",
+    "panel1": {
+      "header": "Ensures fast and stable management",
+      "description": "Receive the best server uptime and response time. Enjoy a very agile and effective support service, available whenever you need it."
+    },
+    "panel2": {
+      "header": "Earn without risk",
+      "description": "Create your store on a 100% Cuban platform, built with the best and most secure technologies. Take care of your data, protect your customers."
+    },
+    "panel3": {
+      "header": "Scale your business at a lower cost",
+      "description": "Multiply sales and reach new markets without increasing costs. Pay only for what you use. Offer your customers the service just as fast if your traffic increases twofold or tenfold."
+    }
+  },
+  "section4": {
+    "header": "Your trade with Ejaki",
+    "headerBlue": "there will be no limits",
+    "description": "Power innovation for your brand's growth. All at a lower total cost of administration than other leading e-commerce platforms.",
+    "api": {
+      "header": "Based on API",
+      "description": "Flexible APIs and more than 400 calls per second, per customer."
+    },
+    "architecture": {
+      "header": "Headless architecture",
+      "description": "Use any front-end for a more personalized shopping experience, with a more adaptive system and faster loading content."
+    },
+    "security": {
+      "header": "Strong safety",
+      "description": "ISO/IEC 27001:2013 & PCI DSS 3.2, Level 1 certification."
+    },
+    "performance": {
+      "header": "Performance",
+      "description": "Distributed cloud deployments."
+    },
+    "totalCost": {
+      "header": "Total cost of administration",
+      "description": "Reduces replatforming time and minimizes operating costs."
+    },
+    "support": {
+      "header": "Soporte experto",
+      "description": "Specialized technical support, to solve problems or seek business advice."
+    }
+  },
+  "section5": {
+    "header": "Sells better,",
+    "headerBlue": "sell more",
+    "description": "Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetu.",
+    "panel1": {
+      "header": "Awaken creativity",
+      "description": "Design without limits the tools that your store requires, fully customizable from the administrative interface to the most attractive themes."
+    },
+    "panel2": {
+      "header": "Evolves with trends",
+      "description": "Showcase your products with advanced catalogs, customized shopping cart and payments"
+    },
+    "panel3": {
+      "header": "Sells without delay",
+      "description": "Deliver ultra-fast business experiences, so your customers will always come back for more."
+    }
+  },
+  "section6": {
+    "line1": "Best price, no hidden costs, no transaction fees, no surprises.",
+    "line2": "Which plan is right for you? The one that drives you to grow?",
+    "line3": "A % of your monthly sales",
+    "line4": "Flexible and negotiable"
+  },
+  "section7": {
+    "headerBlue": "Reliable payments",
+    "header": "and world-class security",
+    "description": "Accept payments from anywhere in the country while keeping your store and your customers safe.",
+    "panel1": {
+      "header": "Integration with Transfermovil",
+      "description": "Transfermóvil is the preferred gateway for Cubans. It offers comfort and security to your clients."
+    },
+    "panel2": {
+      "header": "Cash on delivery",
+      "description": "It is not necessary to have an online account. You can make the payment in our warehouses, or to the delivery service."
+    },
+    "panel3": {
+      "header": "Payment security",
+      "description": "DFL ecommerce is PCI-DSS compliant. Customer payment information is only handled by trusted payment processors."
+    }
+  }
+}

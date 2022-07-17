@@ -1,0 +1,14 @@
+{
+  "validEmail": "Debe ser un correo electrónico válido",
+  "required": "Requerido",
+  "max-255": "Debe tener como máximo 255 caracteres",
+  "min-2": "Debe tener como mínimo 2 caracteres",
+  "invalidValue": "Por favor, introduzca un valor válido",
+  "passwordStrength": "La contraseña debe tener una longitud mínima de 6 caracteres",
+  "passwordsMatch": "Las dos contraseñas que ingresó no coinciden",
+  "notConnection": "Sin conexión",
+  "notConnectionMessage": "Por favor, compruebe la conexión y vuelva a intentarlo",
+  "generalError": "Error",
+  "generalErrorMessage": "No hemos podido realizar esta acción",
+  "invalidPhone": "El número de teléfono no es válido"
+}

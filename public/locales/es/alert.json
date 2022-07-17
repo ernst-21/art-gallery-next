@@ -1,0 +1,36 @@
+{
+  "error": {
+    "INTERNALERROR": {
+      "0": "Ha ocurrido un error con la persistencia de los datos, revise la integridad de los mismos o consulte a un administrador."
+    },
+    "BADREQUESTERROR": {
+      "0": "Ha ocurrido un error con la persistencia de los datos, revise la integridad de los mismos o consulte a un administrador.",
+      "422": "Se han encontrado datos semejantes en la base de datos.",
+      "420": "Los datos que ha insertado ya se encuentran en la base de datos.",
+      "410": "Los identificadores de la entidad son requeridos.",
+      "412": "Formato inválido de los identificadores",
+      "451": "Acción ilegal fuera del espacio.",
+      "452": "No tienes suficientes permisos para ejecutar esta acción.",
+      "453": "No puede realizar acciones sobre la provincia seleccionada.",
+      "456": "No puede realizar acciones sobre el municipio seleccionada.",
+      "458": "Error detectado durante la comprobación de sus permisos.",
+      "BS000": "Ha excedido el número máximo de servicios a administrar por negocio"
+    },
+    "NOTFOUND": {
+      "0": "Ha ocurrido un error con la persistencia de los datos, revise la integridad de los mismos o consulte a un administrador.",
+      "415": "Entidad no encontrada."
+    },
+    "UNAUTHORIZEDERROR": {
+      "410": "No tiene permisos para asignar roles"
+    },
+    "BADCREDENTIALSERROR": {
+      "490": "Credenciales inválidas"
+    },
+    "USERNOTVERIFIEDERROR": {
+      "491": "Su cuenta no ha sido verificada"
+    },
+    "USERNOTLOCKERROR": {
+      "492": "Su cuenta ha sido bloqueada"
+    }
+  }
+}

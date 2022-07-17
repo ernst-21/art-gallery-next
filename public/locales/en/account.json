@@ -1,0 +1,62 @@
+{
+  "fullName": "Full Name",
+  "password": "Current Password",
+  "confirmPassword": "Confirm Password",
+  "emailAddress": "Email Address",
+  "phoneNumber": "Phone Number",
+  "country": "Country",
+  "state": "State/Region",
+  "city": "City",
+  "address": "Address",
+  "zipCode": "Zip/Code",
+  "label": "Label",
+  "saveChanges": "Save Changes",
+  "profile": {
+    "phone": "Phone",
+    "country": "Country",
+    "creation": "Creation Date",
+    "changeRole": "CHANGE ROLE"
+  },
+  "tabs": {
+    "general": "GENERAL",
+    "billing": "BILLING",
+    "notifications": "NOTIFICATIONS",
+    "security": "SECURITY",
+    "activity": "ACTIVITY"
+  },
+  "activityTab": {
+    "activity": "Activity",
+    "recentActivity": "Your recent activity:"
+  },
+  "securityTab": {
+    "passwordMakeChange": "Make this user change their password when they first sign in",
+    "passwordAutoGenerate": "Auto-generate password",
+    "passwordCreate": "Let me create the password",
+    "changePassword": "Change your password (for users)",
+    "resetPassword": "Reset password (for admins)",
+    "loginHistory": "Login history",
+    "recentLoginHistory": "Your recent login activity:"
+  },
+  "notificationsTab": {
+    "notifications": "Notifications",
+    "requestPermission": "We need permission from your browser to show notifications. Request permission",
+    "email": {
+      "header": "EMAIL",
+      "productUpdates": {
+        "primary": "Product updates",
+        "secondary": "News, announcements, and product updates."
+      },
+      "securityUpdates": {
+        "primary": "Security updates",
+        "secondary": "Important notifications about your account security."
+      }
+    },
+    "phoneNotifications": {
+      "header": "PHONE NOTIFICATIONS",
+      "securityUpdates": {
+        "primary": "Security updates",
+        "secondary": "Important notifications about your account security."
+      }
+    }
+  }
+}

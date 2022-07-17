@@ -1,0 +1,27 @@
+{
+  "filter": "Filter",
+  "name": "Name",
+  "username": "User",
+  "password": "Password",
+  "email": "Email",
+  "phone": "Phone",
+  "status": "Status",
+  "continue": "Next",
+  "finishing": "Finishing",
+  "finish": "Finish",
+  "finished": "Finished",
+  "steps": "Step {{step}} of {{count}}",
+  "back": "Back",
+  "save": "Save",
+  "cancel": "Cancel",
+  "or": "Or",
+  "terms": "Terms & conditions",
+  "firstName": "First Name",
+  "lastName": "Last Name",
+  "view": "Vista:",
+  "result": {
+    "single": "Se encontró 1 resultado",
+    "multi": "Se encontraron {{result}} resultados",
+    "none": "No se encontraron resultados"
+  }
+}
