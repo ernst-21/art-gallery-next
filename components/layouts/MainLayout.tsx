@@ -4,18 +4,18 @@ import { Box } from '@mui/material';
 import Navbar from './Navbar/Navbar';
 import useToggle from '../../hooks/utils/useToggle';
 import { Footer } from './Footer';
-import {SideBar} from './Sidebar';
+import { SideBar } from './Sidebar';
 
 const LayoutRoot = styled('main')(() => ({
   display: 'flex',
   flex: '1 1 auto',
   maxWidth: '100%',
-  paddingTop: 65
+  paddingTop: 65,
 }));
 
 export type MainLayoutRootProps = {
   children?: ReactNode;
-}
+};
 
 export const MainLayoutRoot = (props: MainLayoutRootProps) => {
   const { children } = props;
@@ -29,7 +29,7 @@ export const MainLayoutRoot = (props: MainLayoutRootProps) => {
             display: 'flex',
             flex: '1 1 auto',
             flexDirection: 'column',
-            width: '100%'
+            width: '100%',
           }}
         >
           {children}
@@ -37,15 +37,17 @@ export const MainLayoutRoot = (props: MainLayoutRootProps) => {
         </Box>
       </LayoutRoot>
       <Navbar onOpenSidebar={onOpen} />
-      <SideBar open={isOpen} onClose={onClose} />
+      <SideBar
+        activeSx={{ fontWeight: 'bold' }}
+        open={isOpen}
+        onClose={onClose}
+      />
     </>
   );
 };
 
 export const MainLayout = ({ children, ...props }: MainLayoutRootProps) => (
-  <MainLayoutRoot {...props}>
-    {children}
-  </MainLayoutRoot>
+  <MainLayoutRoot {...props}>{children}</MainLayoutRoot>
 );
 
 export default MainLayout;
