@@ -43,7 +43,7 @@ const SideBar = ({
       sx={{ zIndex: (theme) => theme.zIndex.appBar + 100 }}
       variant="temporary"
     >
-      <Box p={2} pb={1}>
+      <Box onClick={onClose} p={2} pb={1}>
         <ELink href={'/'}>
           <Image
             src={'/images/logo.svg'}
