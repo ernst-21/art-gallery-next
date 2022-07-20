@@ -1,18 +1,31 @@
-import { Box, Typography } from '@mui/material';
+import { Stack } from '@mui/material';
 import type { NextPage } from 'next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import MainLayout from '../components/layouts/MainLayout';
+import HomeHeaderContainer from '../modules/home/containers/HomeHeaderContainer';
+import FeaturedContainer from '../modules/home/containers/FeaturedContainer';
+import RecommendedArtistContainer from '../modules/home/containers/RecommendedArtistsContainer';
+import TestimonialCarouselContainer from '../modules/home/containers/TestimonialCarouselContainer';
+import { GetServerSidePropsContext } from 'next';
 
 const HomePage: NextPage = () => {
-
   return (
     <MainLayout>
-        <Box sx={{height: '846px'}}>
-            <Typography variant="h1" component={'h1'}>
-                Home
-            </Typography>
-        </Box>
+      <Stack>
+        <HomeHeaderContainer />
+        <FeaturedContainer />
+        <RecommendedArtistContainer />
+        <TestimonialCarouselContainer />
+      </Stack>
     </MainLayout>
   );
 };
 
 export default HomePage;
+
+export const getStaticProps = async ({ locale }: GetServerSidePropsContext) => ({
+    props: {
+        //@ts-ignore
+        ...(await serverSideTranslations(locale, ['home', 'common'])),
+    },
+})
