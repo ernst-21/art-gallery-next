@@ -1,11 +1,13 @@
 import React, { memo, useEffect } from 'react';
-import { Box, Drawer, List, ListItem } from '@mui/material';
+import { Box, Divider, Drawer, List, ListItem } from '@mui/material';
 import { mainMenu } from '../../../settings/navigation';
 import Image from 'next/image';
 import ELink from '../../ui/Link/ELink';
 import { useRouter } from 'next/router';
 import SidebarMenuItem from '../../ui/SidebarMenu/SidebarMenuItem';
 import { NextMuiLink } from '../../ui/Link/NextMuiLink';
+import Logo from '../Navbar/Logo';
+import SidebarUserMenu from '../../ui/SidebarMenu/SidebarUserMenu';
 
 type SideBarProps = {
   open: boolean;
@@ -44,15 +46,7 @@ const SideBar = ({
       variant="temporary"
     >
       <Box onClick={onClose} p={2} pb={1}>
-        <ELink href={'/'}>
-          <Image
-            src={'/images/logo.svg'}
-            width={92.5}
-            height={40}
-            layout={'intrinsic'}
-            alt={'Next-base'}
-          />
-        </ELink>
+        <Logo />
       </Box>
       <List component="nav" aria-labelledby="nested-list-subheader">
         {mainMenu.map((item) => {
@@ -83,6 +77,8 @@ const SideBar = ({
             </NextMuiLink>
           );
         })}
+        <Divider />
+        <SidebarUserMenu onClose={onClose} />
       </List>
     </Drawer>
   );

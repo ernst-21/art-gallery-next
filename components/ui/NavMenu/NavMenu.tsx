@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { NextMuiLink } from '../Link/NextMuiLink';
 import DropdownMenu from '../DropdownMenu/DropdownMenu';
 import { ParentMenu } from '../DropdownMenu/DropdownMenu';
+import { Box } from '@mui/material';
 
 export type MenuProps = {
   _id: string;
@@ -26,7 +27,7 @@ const NavMenu = ({
   const { asPath } = useRouter();
 
   return (
-    <>
+    <Box display={'flex'} sx={{ alignItems: 'center' }}>
       {menu.map((item) => {
         const partialMatch = item.link ? asPath.includes(item.link) : false;
         const sx = partialMatch
@@ -56,7 +57,7 @@ const NavMenu = ({
           </NextMuiLink>
         );
       })}
-    </>
+    </Box>
   );
 };
 

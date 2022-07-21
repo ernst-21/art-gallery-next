@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { Grid, GridProps } from '@mui/material';
+import { Box, Grid, GridProps } from '@mui/material';
 import { IArtwork } from '../../../../interfaces';
 import ArtworkCard from '../ArtworkCard';
 
@@ -13,7 +13,13 @@ const ArtworksGrid = ({
   ...props
 }: ArtworksGridProps & GridProps) => {
   return (
-    <Grid spacing={spacing} container display={'flex'}>
+    <Grid
+      sx={{ width: '100%', flexGrow: 1 }}
+      spacing={spacing}
+      container
+      display={'flex'}
+      justifyContent="center"
+    >
       {data?.map((item: IArtwork) => (
         <Grid key={item.name} {...props} item>
           <ArtworkCard {...item} />

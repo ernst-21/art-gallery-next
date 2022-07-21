@@ -18,6 +18,7 @@ const GridContainer = ({
       <PageWidthContainer>
         <Box
           display="flex"
+          justifyContent={'center'}
           flexDirection="column"
           alignItems={'center'}
           sx={{ paddingY: 6 }}

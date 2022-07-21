@@ -3,9 +3,10 @@ import { useRouter } from 'next/router';
 import { Box, Button } from '@mui/material';
 import { NextMuiLink } from '../../ui/Link/NextMuiLink';
 import { useUser } from '../../../hooks/security/useUser';
+import NavAvatar from '../../ui/Avatar/NavAvatar';
 
 const AccountButton = () => {
-  const { isAuthenticated, logout, isLoading } = useUser();
+  const { isAuthenticated, isLoading } = useUser();
   const router = useRouter();
 
   if (isLoading) {
@@ -15,7 +16,7 @@ const AccountButton = () => {
   return (
     <Box>
       {!isAuthenticated ? (
-        <Box display={'flex'}>
+        <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
           <NextMuiLink href={`/auth/login?p=${router.asPath}`}>
             <Button sx={{ mr: 1 }} color={'primary'} variant={'contained'}>
               Login
@@ -28,9 +29,7 @@ const AccountButton = () => {
           </NextMuiLink>
         </Box>
       ) : (
-        <Button color={'primary'} variant={'outlined'} onClick={logout}>
-          Logout
-        </Button>
+        <NavAvatar />
       )}
     </Box>
   );

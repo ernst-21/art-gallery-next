@@ -42,7 +42,7 @@ const DropdownMenu = ({
 
   return (
     <div>
-      <Box display={'flex'} justifyContent={'flex-end'}>
+      <Box display={'flex'} justifyContent={'flex-end'} alignItems={'center'}>
         <NavMenu
           menu={[{ _id, title, link }]}
           activeSx={{
@@ -50,7 +50,14 @@ const DropdownMenu = ({
           }}
           activeColor={'primary'}
         />
-        <div style={{ marginLeft: -8 }} onClick={handleClick}>
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            marginLeft: -8,
+          }}
+          onClick={handleClick}
+        >
           <ArrowDropDownIcon color="primary" />
         </div>
       </Box>

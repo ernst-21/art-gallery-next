@@ -1,3 +1,5 @@
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
+import MonetizationOnOutlinedIcon from '@mui/icons-material/MonetizationOnOutlined';
 export interface IMenuItem {
   title: string;
   link: string;
@@ -75,6 +77,21 @@ export const navigation: IMenu[] = [
       //   link:'/about-us'
       // }
     ],
+  },
+];
+
+export const sideBarUserMenu = [
+  {
+    _id: 1,
+    title: 'Profile',
+    link: '/auth/profile',
+    icon: AccountCircleOutlinedIcon,
+  },
+  {
+    _id: 2,
+    title: 'My Purchased Artworks',
+    link: '/auth/my-purchases',
+    icon: MonetizationOnOutlinedIcon,
   },
 ];
 

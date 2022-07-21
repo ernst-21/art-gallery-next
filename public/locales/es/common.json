@@ -20,7 +20,6 @@
   "lastName": "Apellidos",
   "view": "Vista:",
   "search": "Buscar",
-  "biddings": "Licitaciones Públicas",
   "searchCap": "BUSCAR",
   "searchBusiness": "Buscar empresas...",
   "advancedSearch": "Búsqueda avanzada",
@@ -37,8 +36,6 @@
     "show": "Mostrar filtros"
   },
   "home": "Inicio",
-  "shops": "Tiendas",
-  "jobs": "Ofertas de trabajo",
   "products": "Productos",
   "whoWeAre": "¿Quienes somos?",
   "sellInEjaki": "Vende en Ejaki",

@@ -11,7 +11,7 @@ const ItemCard = ({ children, condition }: ItemCardProps) => {
     <Card
       elevation={0}
       variant="outlined"
-      sx={{ maxWidth: 345, padding: condition ? 0 : 1 }}
+      sx={{ height: '100%', padding: condition ? 0 : 1 }}
     >
       {children}
     </Card>
