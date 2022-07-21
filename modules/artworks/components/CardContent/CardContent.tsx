@@ -24,7 +24,7 @@ const ArtworkCardContent = ({
   voters,
 }: ArtworkContentProps) => {
   const likes = useMemo(() => {
-    return voters.length;
+    return voters?.length;
   }, [voters]);
 
   return (

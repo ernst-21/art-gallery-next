@@ -1,13 +1,19 @@
 import React from 'react';
 import GridContainer from '../../../components/ui/GridContainer/GridContainer';
-import { initialData } from '../../../database/seed-data';
 import ArtworksGrid from '../../artworks/components/ArtworksGrid';
 import { useTranslation } from 'react-i18next';
+import { IArtwork } from '../../../interfaces';
+import isEmpty from 'lodash/isEmpty';
 
-const featured = initialData.artworks.filter((item) => item.featured);
+type FeatureProps = {
+  featured: IArtwork[] | [];
+};
 
-const FeaturedContainer = () => {
+const FeaturedContainer = ({ featured }: FeatureProps) => {
   const { t } = useTranslation('home');
+
+  if (isEmpty(featured)) return null;
+
   return (
     <GridContainer backgroundColor={'white'} title={t('featured')}>
       <ArtworksGrid spacing={4} xs={12} sm={6} lg={3} data={featured} />
