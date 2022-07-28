@@ -15,10 +15,11 @@ const LayoutRoot = styled('main')(() => ({
 
 export type MainLayoutRootProps = {
   children?: ReactNode;
+  extraStyle?: {};
 };
 
 export const MainLayoutRoot = (props: MainLayoutRootProps) => {
-  const { children } = props;
+  const { children, extraStyle } = props;
   const { isOpen, onOpen, onClose } = useToggle(false);
 
   return (
@@ -36,7 +37,7 @@ export const MainLayoutRoot = (props: MainLayoutRootProps) => {
           <Footer />
         </Box>
       </LayoutRoot>
-      <Navbar onOpenSidebar={onOpen} />
+      <Navbar extraStyle={{ ...extraStyle }} onOpenSidebar={onOpen} />
       <SideBar
         activeSx={{ fontWeight: 'bold' }}
         open={isOpen}

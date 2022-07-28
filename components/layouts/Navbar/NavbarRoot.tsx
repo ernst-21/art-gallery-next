@@ -12,21 +12,22 @@ interface HideOnScrollProps {
 
 interface NavbarProps {
   children?: ReactNode | any;
+  extraStyle?: {};
 }
 
 const NavbarStyle = styled(AppBar)(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
   ...(theme.palette.mode === 'light'
     ? {
-      boxShadow: theme.shadows[3]
-    }
+        boxShadow: theme.shadows[3],
+      }
     : {
-      backgroundColor: theme.palette.background.paper,
-      borderBottomColor: theme.palette.divider,
-      borderBottomStyle: 'solid',
-      borderBottomWidth: 1,
-      boxShadow: 'none'
-    })
+        backgroundColor: theme.palette.background.paper,
+        borderBottomColor: theme.palette.divider,
+        borderBottomStyle: 'solid',
+        borderBottomWidth: 1,
+        boxShadow: 'none',
+      }),
 }));
 
 const HideOnScroll: FunctionComponent<HideOnScrollProps> = (props) => {
@@ -34,23 +35,28 @@ const HideOnScroll: FunctionComponent<HideOnScrollProps> = (props) => {
   const trigger = useScrollTrigger();
 
   return (
-    <Slide appear={false} direction='down' in={!trigger}>
+    <Slide appear={false} direction="down" in={!trigger}>
       {children}
     </Slide>
   );
 };
 
-const NavbarRoot: FunctionComponent<NavbarProps> = ({ children, ...props }) => {
-
+const NavbarRoot: FunctionComponent<NavbarProps> = ({
+  children,
+  extraStyle,
+  ...props
+}) => {
   return (
     <HideOnScroll {...props}>
-      <NavbarStyle>
+      <NavbarStyle sx={{ ...extraStyle }}>
         <PageWidthContainer>
-          <Toolbar disableGutters
-                   sx={{
-                     minHeight: 64,
-                     left: 0
-                   }}>
+          <Toolbar
+            disableGutters
+            sx={{
+              minHeight: 64,
+              left: 0,
+            }}
+          >
             {children}
           </Toolbar>
         </PageWidthContainer>

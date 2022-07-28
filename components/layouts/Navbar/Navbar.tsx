@@ -3,24 +3,21 @@ import React, { Fragment, FunctionComponent, useRef, useState } from 'react';
 import { Box, IconButton } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import NavbarRoot from './NavbarRoot';
-import Image from 'next/image';
-import ELink from '../../ui/Link/ELink';
 import NavbarMenu from './NavbarMenu';
 import AccountButton from './AccountButton';
-import { NextMuiLink } from '../../ui/Link/NextMuiLink';
-import Typography from '@mui/material/Typography';
 import Logo from './Logo';
 import Cart from '../../ui/Cart/Cart';
 
 type NavbarProps = {
   onOpenSidebar: () => void;
+  extraStyle?: {};
 };
 
-const Navbar = (props: NavbarProps) => {
-  const { onOpenSidebar, ...other } = props;
+const Navbar = ({ ...props }: NavbarProps) => {
+  const { onOpenSidebar, extraStyle, ...other } = props;
 
   return (
-    <NavbarRoot {...other}>
+    <NavbarRoot extraStyle={extraStyle} {...other}>
       <IconButton
         onClick={onOpenSidebar}
         sx={{
