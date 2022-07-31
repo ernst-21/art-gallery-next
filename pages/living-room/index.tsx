@@ -5,11 +5,17 @@ import RightDrawerLayout from '../../components/layouts/RightDrawerLayout';
 import { GetServerSidePropsContext } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import useToggle from '../../hooks/utils/useToggle';
+import ArtworksAccordion from '../../modules/artworks/components/LivingRoom/components/ArtworksAccordion/ArtworksAccordion';
 
 const LivingRoomPage: NextPage = () => {
   const { onOpen, isOpen, onClose } = useToggle();
+
   return (
-    <RightDrawerLayout onClose={onClose} open={isOpen}>
+    <RightDrawerLayout
+      onClose={onClose}
+      open={isOpen}
+      rightDrawerChildren={<ArtworksAccordion />}
+    >
       <LivingRoomContainer onOpen={onOpen} />
     </RightDrawerLayout>
   );
@@ -21,7 +27,7 @@ export const getStaticProps = async ({ locale }: GetServerSidePropsContext) => {
   return {
     props: {
       //@ts-ignore
-      ...(await serverSideTranslations(locale, ['home', 'common'])),
+      ...(await serverSideTranslations(locale, ['home', 'common', 'artworks'])),
     },
   };
 };

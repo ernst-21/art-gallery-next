@@ -10,6 +10,7 @@ type Props = {
   children: ReactNode;
   open?: boolean;
   onClose: () => void;
+  rightDrawerChildren: ReactNode;
 };
 
 const LayoutRoot = styled('main')(() => ({
@@ -18,7 +19,12 @@ const LayoutRoot = styled('main')(() => ({
   maxWidth: '100%',
 }));
 
-const RightDrawerLayout = ({ children, open, onClose }: Props) => {
+const RightDrawerLayout = ({
+  children,
+  open,
+  onClose,
+  rightDrawerChildren,
+}: Props) => {
   return (
     <LayoutRoot>
       <MainLayout
@@ -32,17 +38,19 @@ const RightDrawerLayout = ({ children, open, onClose }: Props) => {
       <Drawer
         sx={{
           display: { xs: 'none', md: 'block' },
+          padding: '20px 10px',
           width: drawerWidth,
           flexShrink: 0,
           '& .MuiDrawer-paper': {
             width: drawerWidth,
             boxSizing: 'border-box',
+            padding: '20px 10px',
           },
         }}
         variant="permanent"
         anchor="right"
       >
-        Artworks list here
+        {rightDrawerChildren}
       </Drawer>
       <Drawer
         sx={{
