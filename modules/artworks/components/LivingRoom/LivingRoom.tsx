@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { Box, Button, Stack } from '@mui/material';
 import Room from './components/Room';
-import SimilarArtworks from '../SimilarArtworks';
+import SelectedArtworkDetails from '../SelectedArtworkDetails';
 import { useTranslation } from 'next-i18next';
 
 type LivingRoomProps = {
@@ -18,11 +18,11 @@ const LivingRoom = ({ onOpen }: LivingRoomProps) => {
         justifyContent="center"
         sx={{ w: '100%', padding: 2 }}
       >
-        <Button variant="text" onClick={onOpen}>
+        <Button variant="outlined" onClick={onOpen}>
           {t('tryOtherArtworks')}
         </Button>
       </Box>
-      <SimilarArtworks />
+      <SelectedArtworkDetails />
     </Stack>
   );
 };

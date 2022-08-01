@@ -22,15 +22,7 @@ const Room = () => {
       }}
     >
       <SelectedArtwork />
-      <Image
-        priority
-        width={'100%'}
-        height={'100%'}
-        layout="fill"
-        objectFit={'cover'}
-        src={wall}
-        alt="home"
-      />
+      <Image priority layout="fill" objectFit={'cover'} src={wall} alt="home" />
     </Box>
   );
 };
