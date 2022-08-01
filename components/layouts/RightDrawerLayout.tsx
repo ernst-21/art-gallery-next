@@ -3,6 +3,7 @@ import Drawer from '@mui/material/Drawer';
 import { ReactNode } from 'react';
 import { MainLayout } from './MainLayout';
 import { styled } from '@mui/material/styles';
+import { Box, Toolbar } from '@mui/material';
 
 const drawerWidth = 340;
 
@@ -29,7 +30,7 @@ const RightDrawerLayout = ({
     <LayoutRoot>
       <MainLayout
         extraStyle={{
-          width: `calc(100% - ${drawerWidth}px)`,
+          width: { xs: '100%', md: `calc(100% - ${drawerWidth}px)` },
           left: 0,
         }}
       >
@@ -59,6 +60,7 @@ const RightDrawerLayout = ({
           flexShrink: 0,
           '& .MuiDrawer-paper': {
             height: '60vh',
+            padding: '10px',
             boxSizing: 'border-box',
           },
         }}
@@ -66,7 +68,8 @@ const RightDrawerLayout = ({
         open={open}
         onClose={onClose}
       >
-        Artworks list here
+        <Toolbar sx={{ position: 'sticky' }} />
+        <Box sx={{ overflowY: 'auto' }}>{rightDrawerChildren}</Box>
       </Drawer>
     </LayoutRoot>
   );

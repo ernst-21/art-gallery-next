@@ -1,45 +1,30 @@
 import React from 'react';
-import { Box, Typography } from '@mui/material';
+import { Box } from '@mui/material';
 import { useTranslation } from 'next-i18next';
-
-type NoSelectedProps = {
-  t: any;
-};
-
-const NoSelected = ({ t }: NoSelectedProps) => {
-  return (
-    <Box
-      sx={{
-        display: 'flex',
-        height: '80%',
-        width: '40%',
-        padding: 6,
-        justifyContent: 'center',
-        alignItems: 'center',
-        color: 'lightgray',
-        border: '2px solid lightgray',
-      }}
-    >
-      <Typography sx={{ fontSize: 24, textAlign: 'center' }}>{t}</Typography>
-    </Box>
-  );
-};
+import { useSelectedArtwork } from '../../../../../../context/artworks/selectedArtwork/SelectedArtworkContext';
+import HangingArtwork from './HangingArtwork';
+import NoSelected from './NoSelected';
 
 const SelectedArtwork = () => {
   const { t } = useTranslation('artworks');
+  const { selectedArtwork } = useSelectedArtwork();
   return (
     <Box
       sx={{
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        width: { md: '40%' },
+        width: { xs: '60%', lg: '40%' },
         height: { xs: '40%' },
         zIndex: 9,
-        marginTop: { xs: '20px', md: '50px' },
+        marginTop: { xs: '20px', md: '30px' },
       }}
     >
-      <NoSelected t={t('hangItHere')} />
+      {selectedArtwork ? (
+        <HangingArtwork />
+      ) : (
+        <NoSelected t={t('hangItHere')} />
+      )}
     </Box>
   );
 };

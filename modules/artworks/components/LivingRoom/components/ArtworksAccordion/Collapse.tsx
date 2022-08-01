@@ -12,6 +12,7 @@ import { IArtwork } from '../../../../../../interfaces';
 import { Card, Stack } from '@mui/material';
 import Image from 'next/image';
 import CardMedia from '@mui/material/CardMedia';
+import { useSelectedArtwork } from '../../../../../../context/artworks/selectedArtwork/SelectedArtworkContext';
 
 const Accordion = styled((props: AccordionProps) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -58,6 +59,8 @@ type CollapseProps = {
 
 const Collapse = ({ expanded, handleChange, title, data }: CollapseProps) => {
   const { t } = useTranslation('artworks');
+  const { setSelectedArtwork } = useSelectedArtwork();
+
   return (
     <div>
       <Accordion expanded={expanded} onChange={handleChange}>
@@ -69,7 +72,8 @@ const Collapse = ({ expanded, handleChange, title, data }: CollapseProps) => {
             {data?.map((artwork: IArtwork) => (
               <Card
                 key={artwork?._id}
-                onClick={() => console.log({ artwork })}
+                /*@ts-ignore*/
+                onClick={() => setSelectedArtwork(artwork)}
                 sx={{ border: '5px solid black', padding: 1 }}
               >
                 <CardMedia

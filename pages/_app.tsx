@@ -8,6 +8,7 @@ import { AuthProvider, UiProvider } from '../context';
 import { lightTheme } from '../themes';
 import './../styles/globals.css';
 import NextNProgress from 'nextjs-progressbar';
+import { SelectedArtworkProvider } from '../context/artworks/selectedArtwork/SelectedArtworkContext';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [domLoaded, setDomLoaded] = useState(false);
@@ -26,9 +27,11 @@ function MyApp({ Component, pageProps }: AppProps) {
         <AuthProvider>
           <UiProvider>
             <ThemeProvider theme={lightTheme}>
-              <CssBaseline />
-              <NextNProgress height={4} color="#3A64D8" />
-              <Component {...pageProps} />
+              <SelectedArtworkProvider>
+                <CssBaseline />
+                <NextNProgress height={4} color="#3A64D8" />
+                <Component {...pageProps} />
+              </SelectedArtworkProvider>
             </ThemeProvider>
           </UiProvider>
         </AuthProvider>
