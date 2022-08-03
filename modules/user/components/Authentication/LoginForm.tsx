@@ -16,6 +16,7 @@ import FormPasswordField from '../../../../components/ui/FormFields/Text/FormPas
 import useSignInForm from '../../hooks/useLoginForm';
 import FormTextField from '../../../../components/ui/FormFields/Text/FormTextField';
 import { GoogleButton, LoadingButton } from '../../../../components/ui/Buttons';
+import SpinLoader from '../../../../components/ui/Spinloader';
 
 const LoginForm = () => {
   const router = useRouter();
@@ -35,7 +36,9 @@ const LoginForm = () => {
         alignItems="center"
         sx={{ width: { xs: '100%', md: '60%' }, height: '100vh' }}
       >
-        <Typography>Redirecting...</Typography>
+        <Typography>
+          <SpinLoader />
+        </Typography>
       </Box>
     );
   }

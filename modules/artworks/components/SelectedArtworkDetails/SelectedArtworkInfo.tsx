@@ -1,6 +1,7 @@
 import React, { memo } from 'react';
-import { Grid, Stack, Typography } from '@mui/material';
+import { Box, Grid, Stack, Typography } from '@mui/material';
 import { IArtwork } from '../../../../interfaces';
+import UserActionsButtons from '../../../../components/ui/UserActionsButtons/UserActionsButtons';
 
 type SelectedProps = {
   selectedArtwork: IArtwork | undefined;
@@ -24,6 +25,9 @@ const SelectedArtworksInfo = ({ selectedArtwork }: SelectedProps) => {
         </Typography>
         <Typography paragraph>{selectedArtwork?.description}</Typography>
       </Stack>
+      <Box sx={{ mt: 2 }}>
+        <UserActionsButtons artwork={selectedArtwork} />
+      </Box>
     </Grid>
   );
 };

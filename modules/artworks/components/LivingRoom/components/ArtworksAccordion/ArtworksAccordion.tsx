@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useTranslation } from 'next-i18next';
 import { useMutation } from 'react-query';
 import { searchByCategory } from '../../../../services/artworks-api';
 import Collapse from './Collapse';
@@ -45,6 +44,7 @@ const ArtworksAccordion = () => {
           data={fetchedArtworks}
           handleChange={handleChange(c as string)}
           expanded={expanded === c}
+          isLoading={isLoading}
         />
       ))}
     </div>

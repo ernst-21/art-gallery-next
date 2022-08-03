@@ -9,10 +9,11 @@ import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
 import MuiAccordionDetails from '@mui/material/AccordionDetails';
 import { useTranslation } from 'next-i18next';
 import { IArtwork } from '../../../../../../interfaces';
-import { Card, Stack } from '@mui/material';
+import { Box, Card, Stack } from '@mui/material';
 import Image from 'next/image';
 import CardMedia from '@mui/material/CardMedia';
 import { useSelectedArtwork } from '../../../../../../context/artworks/selectedArtwork/SelectedArtworkContext';
+import SpinLoader from '../../../../../../components/ui/Spinloader';
 
 const Accordion = styled((props: AccordionProps) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -55,9 +56,16 @@ type CollapseProps = {
   title: string;
   handleChange: any;
   data: IArtwork[] | [];
+  isLoading: boolean;
 };
 
-const Collapse = ({ expanded, handleChange, title, data }: CollapseProps) => {
+const Collapse = ({
+  expanded,
+  handleChange,
+  title,
+  isLoading,
+  data,
+}: CollapseProps) => {
   const { t } = useTranslation('artworks');
   const { setSelectedArtwork } = useSelectedArtwork();
 
@@ -68,33 +76,45 @@ const Collapse = ({ expanded, handleChange, title, data }: CollapseProps) => {
           <Typography>{t(title)}</Typography>
         </AccordionSummary>
         <AccordionDetails sx={{ padding: 4 }}>
-          <Stack spacing={4}>
-            {data?.map((artwork: IArtwork) => (
-              <Card
-                key={artwork?._id}
-                /*@ts-ignore*/
-                onClick={() => setSelectedArtwork(artwork)}
-                sx={{ border: '5px solid black', padding: 1 }}
-              >
-                <CardMedia
+          {isLoading ? (
+            <Box
+              sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}
+            >
+              <SpinLoader />
+            </Box>
+          ) : (
+            <Stack spacing={4}>
+              {data?.map((artwork: IArtwork) => (
+                <Card
+                  key={artwork?._id}
+                  /*@ts-ignore*/
+                  onClick={() => setSelectedArtwork(artwork)}
                   sx={{
-                    height: 250,
-                    width: '100%',
-                    position: 'relative',
+                    border: '5px solid black',
+                    padding: 1,
+                    cursor: 'pointer',
                   }}
                 >
-                  <Image
-                    blurDataURL={artwork?.url}
-                    placeholder={artwork?.url ? 'blur' : undefined}
-                    src={artwork?.url}
-                    layout="fill"
-                    objectFit="cover"
-                    alt={artwork?.name}
-                  />
-                </CardMedia>
-              </Card>
-            ))}
-          </Stack>
+                  <CardMedia
+                    sx={{
+                      height: 250,
+                      width: '100%',
+                      position: 'relative',
+                    }}
+                  >
+                    <Image
+                      blurDataURL={artwork?.url}
+                      placeholder={artwork?.url ? 'blur' : undefined}
+                      src={artwork?.url}
+                      layout="fill"
+                      objectFit="cover"
+                      alt={artwork?.name}
+                    />
+                  </CardMedia>
+                </Card>
+              ))}
+            </Stack>
+          )}
         </AccordionDetails>
       </Accordion>
     </div>

@@ -1,18 +1,19 @@
 import React, { useMemo, memo } from 'react';
 import { CardContent, Stack } from '@mui/material';
 import CardActions from '@mui/material/CardActions';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import UserActionsButtons from '../../../../components/ui/UserActionsButtons/UserActionsButtons';
+import { IArtwork } from '../../../../interfaces';
 
-type ArtworkContentProps = {
-  featured: boolean;
-  price: number;
-  gallery: string;
-  category: string;
-  name: string;
-  artist: string;
-  voters: string[];
-};
+// type ArtworkContentProps = {
+//   featured: boolean;
+//   price: number;
+//   gallery: string;
+//   category: string;
+//   name: string;
+//   artist: string;
+//   voters: string[];
+// };
 
 const ArtworkCardContent = ({
   featured,
@@ -22,7 +23,8 @@ const ArtworkCardContent = ({
   name,
   artist,
   voters,
-}: ArtworkContentProps) => {
+  ...data
+}: IArtwork) => {
   const likes = useMemo(() => {
     return voters?.length;
   }, [voters]);
@@ -63,8 +65,8 @@ const ArtworkCardContent = ({
 
       {!featured && (
         <CardActions>
-          <Button size="small">Share</Button>
-          <Button size="small">Learn More</Button>
+          {/*@ts-ignore*/}
+          <UserActionsButtons artwork={data} />
         </CardActions>
       )}
     </>
