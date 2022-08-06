@@ -18,3 +18,15 @@ export interface IArtwork {
   createdAt?: string;
   updatedAt?: string;
 }
+
+export interface IArtworksFilter {
+  category?: string[];
+  orientation?: string[];
+  size?: string[];
+  gallery?: string[];
+  price?: number[];
+  voters?: number[];
+  artist?: string[];
+  tags?: string[];
+  colors?: string[];
+}

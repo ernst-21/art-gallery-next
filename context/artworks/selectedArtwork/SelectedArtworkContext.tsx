@@ -34,6 +34,7 @@ const SelectedArtworkProvider = (props: SelectedArtworkContextProps) => {
 
   return (
     <SelectedArtworkContext.Provider
+      // @ts-ignore
       value={{ selectedArtwork, setSelectedArtwork }}
       {...props}
     />

@@ -2,5 +2,6 @@
   "painting": "Painting",
   "photography": "Photography",
   "print": "Print",
-  "hangItHere": "HANG AN ARTWORK HERE"
+  "hangItHere": "HANG AN ARTWORK HERE",
+  "noData": "No data to display. Try another search"
 }

@@ -1,0 +1,36 @@
+import { memo } from 'react';
+import { Masonry } from '@mui/lab';
+import ArtworkCard from '../../../modules/artworks/components/ArtworkCard';
+import ArtistCard from '../../../modules/artists/components/ArtistCard';
+import { IArtist, IArtwork } from '../../../interfaces';
+import { Box } from '@mui/material';
+
+type ResultsGridProp = {
+  isArtwork?: boolean;
+  data: IArtwork[] | IArtist[];
+};
+
+const ResultsGrid = ({ data, isArtwork }: ResultsGridProp) => {
+  return (
+    <Box
+      sx={{
+        display: 'flex',
+        justifyContent: 'center',
+      }}
+    >
+      <Masonry columns={{ xs: 1, sm: 2, md: 3, xl: 4 }} spacing={3}>
+        {data.map((item: IArtist | IArtwork) =>
+          isArtwork === true ? (
+            // @ts-ignore
+            <ArtworkCard key={item._id} {...item} />
+          ) : (
+            // @ts-ignore
+            <ArtistCard key={item?._id} {...item} />
+          )
+        )}
+      </Masonry>
+    </Box>
+  );
+};
+
+export default memo(ResultsGrid);

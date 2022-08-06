@@ -13,3 +13,10 @@ export const searchByCategory = (
 ): Promise<IArtwork[]> => {
   return ApiClient.post('/artworks/living-room', params, config);
 };
+
+export const searchArtworks = (
+  params: any,
+  config?: RequestConfig
+): Promise<IArtwork[]> => {
+  return ApiClient.post('/artworks', params, config).then((data) => data.data);
+};

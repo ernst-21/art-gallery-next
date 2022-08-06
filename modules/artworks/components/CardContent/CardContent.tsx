@@ -5,16 +5,6 @@ import Typography from '@mui/material/Typography';
 import UserActionsButtons from '../../../../components/ui/UserActionsButtons/UserActionsButtons';
 import { IArtwork } from '../../../../interfaces';
 
-// type ArtworkContentProps = {
-//   featured: boolean;
-//   price: number;
-//   gallery: string;
-//   category: string;
-//   name: string;
-//   artist: string;
-//   voters: string[];
-// };
-
 const ArtworkCardContent = ({
   featured,
   price,
