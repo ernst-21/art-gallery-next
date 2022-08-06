@@ -9,7 +9,7 @@ import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
 import MuiAccordionDetails from '@mui/material/AccordionDetails';
 import { useTranslation } from 'next-i18next';
 import { IArtwork } from '../../../../../../interfaces';
-import { Box, Card, Stack } from '@mui/material';
+import { Box, Card } from '@mui/material';
 import Image from 'next/image';
 import CardMedia from '@mui/material/CardMedia';
 import { useSelectedArtwork } from '../../../../../../context/artworks/selectedArtwork/SelectedArtworkContext';
@@ -75,7 +75,7 @@ const Collapse = ({
         <AccordionSummary aria-controls={title} id={title}>
           <Typography>{t(title)}</Typography>
         </AccordionSummary>
-        <AccordionDetails sx={{ padding: 4 }}>
+        <AccordionDetails sx={{ padding: 1 }}>
           {isLoading ? (
             <Box
               sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}

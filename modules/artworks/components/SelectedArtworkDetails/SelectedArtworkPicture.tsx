@@ -10,7 +10,9 @@ type SelectedProps = {
 const SelectedArtworkPicture = ({ selectedArtwork }: SelectedProps) => {
   return (
     <Grid item xs={12} md={6}>
-      <Box sx={{ position: 'relative', minHeight: '450px' }}>
+      <Box
+        sx={{ position: 'relative', minHeight: { xs: '250px', md: '450px' } }}
+      >
         <Image
           src={selectedArtwork ? selectedArtwork?.url : ''}
           alt={selectedArtwork?.name}
