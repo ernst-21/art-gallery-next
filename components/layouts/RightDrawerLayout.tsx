@@ -5,8 +5,6 @@ import { MainLayout } from './MainLayout';
 import { styled } from '@mui/material/styles';
 import { Box, Toolbar } from '@mui/material';
 
-const drawerWidth = 340;
-
 type Props = {
   children: ReactNode;
   open?: boolean;
@@ -30,7 +28,7 @@ const RightDrawerLayout = ({
     <LayoutRoot>
       <MainLayout
         extraStyle={{
-          width: { xs: '100%', md: `calc(100% - ${drawerWidth}px)` },
+          width: { xs: '100%', md: '75%', lg: '80%' },
           left: 0,
         }}
       >
@@ -40,10 +38,10 @@ const RightDrawerLayout = ({
         sx={{
           display: { xs: 'none', md: 'block' },
           padding: '20px 10px',
-          width: drawerWidth,
+          width: { md: '25%', lg: '20%' },
           flexShrink: 0,
           '& .MuiDrawer-paper': {
-            width: drawerWidth,
+            width: { md: '25%', lg: '20%' },
             boxSizing: 'border-box',
             padding: '20px 10px',
           },

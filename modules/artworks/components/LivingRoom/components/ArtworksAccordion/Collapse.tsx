@@ -83,13 +83,20 @@ const Collapse = ({
               <SpinLoader />
             </Box>
           ) : (
-            <Stack spacing={4}>
+            <Box
+              display={'flex'}
+              justifyContent={'center'}
+              alignItems={'center'}
+              flexWrap={'wrap'}
+            >
               {data?.map((artwork: IArtwork) => (
                 <Card
                   key={artwork?._id}
                   /*@ts-ignore*/
                   onClick={() => setSelectedArtwork(artwork)}
                   sx={{
+                    width: 200,
+                    margin: { xs: 3, md: '20px' },
                     border: '5px solid black',
                     padding: 1,
                     cursor: 'pointer',
@@ -113,7 +120,7 @@ const Collapse = ({
                   </CardMedia>
                 </Card>
               ))}
-            </Stack>
+            </Box>
           )}
         </AccordionDetails>
       </Accordion>
