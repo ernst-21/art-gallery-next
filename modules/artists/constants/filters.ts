@@ -1,0 +1,5 @@
+export const artistFiltersDefaults = {
+  discipline: ['painter', 'sculptor', 'photographer', 'printmaker'],
+  recommended: [true, false],
+  likes: [0, 10],
+};
