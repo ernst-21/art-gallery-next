@@ -50,7 +50,7 @@ interface SeedData {
   users: SeedUser[];
   artists: SeedArtist[];
   artworks: SeedArtwork[];
-  testimonials: SeedTestimonial[]
+  testimonials: SeedTestimonial[];
 }
 
 export const initialData: SeedData = {
@@ -310,7 +310,7 @@ export const initialData: SeedData = {
       price: 3000,
       tags: ['body', 'naked', 'sculpture', 'mythology', 'people'],
       colors: ['white'],
-      voters: [],
+      voters: ['630548ee8653603b36c0de9c'],
       gallery: 'Berlin',
       featured: false,
       orientation: 'portrait',
@@ -605,39 +605,50 @@ export const initialData: SeedData = {
   testimonials: [
     {
       author: 'Jane Snow',
-      image: 'https://images.unsplash.com/photo-1607746882042-944635dfe10e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YXZhdGFyfGVufDB8MHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
+      image:
+        'https://images.unsplash.com/photo-1607746882042-944635dfe10e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YXZhdGFyfGVufDB8MHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
       authPosition: 'Editor at Art.inc',
-      testimonial: 'I think this is an awesome website for art lovers and artists that want to reach more people with their work.'
+      testimonial:
+        'I think this is an awesome website for art lovers and artists that want to reach more people with their work.',
     },
     {
       author: 'Phillip Galvin',
-      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8cG9ydHJhaXR8ZW58MHwwfDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+      image:
+        'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8cG9ydHJhaXR8ZW58MHwwfDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
       authPosition: 'Curator',
-      testimonial: 'Very good website with options for people who want to decorate their homes.'
+      testimonial:
+        'Very good website with options for people who want to decorate their homes.',
     },
     {
       author: 'Walter Renoir',
-      image: 'https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+      image:
+        'https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
       authPosition: 'Student at Harvard',
-      testimonial: 'Every time someone asks me about a website where they can find artworks I recommend VRTL'
+      testimonial:
+        'Every time someone asks me about a website where they can find artworks I recommend VRTL',
     },
     {
       author: 'Nolan Parker',
-      image: 'https://images.unsplash.com/photo-1530268729831-4b0b9e170218?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjJ8fHBvcnRyYWl0fGVufDB8MHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
+      image:
+        'https://images.unsplash.com/photo-1530268729831-4b0b9e170218?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjJ8fHBvcnRyYWl0fGVufDB8MHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
       authPosition: 'Writer',
-      testimonial: 'I just made my first visit to VRTL and I am ready to write a couple of articles about the amazing job they are doing.'
+      testimonial:
+        'I just made my first visit to VRTL and I am ready to write a couple of articles about the amazing job they are doing.',
     },
     {
       author: 'Katherine Bilbo',
-      image: 'https://images.unsplash.com/photo-1523825036634-aab3cce05919?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDJ8fHBvcnRyYWl0fGVufDB8MHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
+      image:
+        'https://images.unsplash.com/photo-1523825036634-aab3cce05919?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDJ8fHBvcnRyYWl0fGVufDB8MHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
       authPosition: 'Just a user',
-      testimonial: 'Keep going! You are doing a wonderful job.'
+      testimonial: 'Keep going! You are doing a wonderful job.',
     },
     {
       author: 'Clarence Schneider',
-      image: 'https://images.unsplash.com/photo-1566753323558-f4e0952af115?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fHBvcnRyYWl0fGVufDB8MHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
+      image:
+        'https://images.unsplash.com/photo-1566753323558-f4e0952af115?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fHBvcnRyYWl0fGVufDB8MHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
       authPosition: 'Painter',
-      testimonial: 'I remember when I started painting an VRTL helped me by exposing and promoting some of my artworks. I had my first exposition in a famous gallery because of them.'
-    }
-  ]
+      testimonial:
+        'I remember when I started painting an VRTL helped me by exposing and promoting some of my artworks. I had my first exposition in a famous gallery because of them.',
+    },
+  ],
 };

@@ -66,3 +66,11 @@ export const filterDefaults: IArtworksFilter = {
     'black',
   ],
 };
+
+export const PRICE_DEFAULT_VALUES = [0, 10000];
+
+export const PRICE_FILTER_NAME = 'price';
+
+export const LIKES_DEFAULT_VALUES = [0, 100];
+
+export const LIKES_FILTER_NAME = 'voters';

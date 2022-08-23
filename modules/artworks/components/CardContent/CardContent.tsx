@@ -40,10 +40,10 @@ const ArtworkCardContent = ({
                 {artist}
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                likes: {likes}
+                Likes: {likes}
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                price: ${price}
+                Price: ${price}
               </Typography>
               <Typography variant="body2" color="text.secondary">
                 Gallery: {gallery}
