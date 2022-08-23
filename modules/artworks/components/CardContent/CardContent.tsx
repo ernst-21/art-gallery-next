@@ -18,7 +18,7 @@ const ArtworkCardContent = ({ artwork }: CardContentProps) => {
     <>
       <CardContent>
         <Stack spacing={2}>
-          <Typography variant="h6" component="div">
+          <Typography variant="h6" component="h1">
             {artwork?.name}
           </Typography>
           <Typography variant="body1" color="text.secondary">
