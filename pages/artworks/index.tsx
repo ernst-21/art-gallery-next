@@ -6,6 +6,7 @@ import RightDrawerLayout from '../../components/layouts/RightDrawerLayout';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { ArtworksFilterProvider } from '../../context/artworks/FilterArtworks/FilterArtworkContext';
 import ArtworksContainer from '../../modules/artworks/containers/ArtworksContainer';
+import { CategoryFilter } from '../../modules/artworks/components/Filters/components/CategoryFilter';
 
 const ArtworksPage: NextPage = (props) => {
   const { onOpen, isOpen, onClose } = useToggle();
@@ -15,7 +16,7 @@ const ArtworksPage: NextPage = (props) => {
       <RightDrawerLayout
         onClose={onClose}
         open={isOpen}
-        rightDrawerChildren={<span>Hello</span>}
+        rightDrawerChildren={<CategoryFilter />}
       >
         <Box sx={{ minHeight: 'calc(100vh - 70px)' }}>
           <ArtworksContainer />

@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useMutation } from 'react-query';
 import { searchArtworks } from '../services/artworks-api';
-import { filterDefaults } from '../constants/filters';
 import PageWidthContainer from '../../../components/layouts/PageWidthContainer';
 import { useArtworksFilter } from '../../../context/artworks/FilterArtworks/FilterArtworkContext';
 import SpinLoader from '../../../components/ui/Spinloader';
