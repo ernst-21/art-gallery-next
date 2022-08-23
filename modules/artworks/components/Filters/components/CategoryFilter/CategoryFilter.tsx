@@ -3,9 +3,11 @@ import { Box, Button, Divider } from '@mui/material';
 import { CATEGORIES } from '../../../../constants/categories';
 import { useArtworksFilter } from '../../../../../../context/artworks/FilterArtworks/FilterArtworkContext';
 import { CategoryFilterItem } from '../CategoryFilterItem';
+import { useTranslation } from 'next-i18next';
 
 const CategoryFilter = () => {
   const { artworksFilter, setArtworksFilter } = useArtworksFilter();
+  const { t } = useTranslation('artworks');
 
   const filterByCategory = useCallback(
     (item: string) => {
@@ -48,11 +50,11 @@ const CategoryFilter = () => {
             onClick={() => filterByCategory(item.category)}
           />
         ))}
-        <Button variant={'text'} onClick={clearCategoryFilter}>
-          Clear filter
+        <Button variant={'outlined'} onClick={clearCategoryFilter}>
+          {t('filters.clearCategories')}
         </Button>
       </Box>
-      <Divider sx={{ my: 1 }} />
+      <Divider sx={{ my: 2 }} />
     </>
   );
 };

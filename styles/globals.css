@@ -57,3 +57,17 @@
   height: auto;
   padding: 1rem;
 }
+
+.my-masonry-grid {
+  width: 100%;
+  display: flex;
+}
+.my-masonry-grid_column {
+  padding: 10px 10px; /* gutter size */
+  background-clip: padding-box;
+}
+
+/* Style your items */
+.my-masonry-grid_column > div { /* change div to reference your elements you put in <Masonry> */
+  margin-bottom: 30px;
+}

@@ -1,9 +1,10 @@
 import { memo } from 'react';
-import { Masonry } from '@mui/lab';
 import ArtworkCard from '../../../modules/artworks/components/ArtworkCard';
 import ArtistCard from '../../../modules/artists/components/ArtistCard';
 import { IArtist, IArtwork } from '../../../interfaces';
 import { Box } from '@mui/material';
+//import Masonry from 'react-masonry-css';
+import { Masonry } from '@mui/lab';
 
 type ResultsGridProp = {
   isArtwork?: boolean;

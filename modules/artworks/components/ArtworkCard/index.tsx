@@ -28,36 +28,38 @@ const ArtworkCard = ({
   }, [featured, size]);
 
   return (
-    <NextMuiLink href={'/'}>
-      <ItemCard condition={featured}>
-        <CardMedia
-          sx={{
-            width: '100%',
-            minHeight: height,
-            borderBottom: '1px solid lightgray',
-            position: 'relative',
-            ...sx,
-          }}
-        >
-          <Image
-            blurDataURL={url}
-            placeholder={url ? 'blur' : undefined}
-            src={url}
-            layout="fill"
-            objectFit="cover"
-            alt={name}
+    <div>
+      <NextMuiLink href={'/'}>
+        <ItemCard condition={featured}>
+          <CardMedia
+            sx={{
+              width: '100%',
+              minHeight: height,
+              borderBottom: '1px solid lightgray',
+              position: 'relative',
+              ...sx,
+            }}
+          >
+            <Image
+              blurDataURL={url}
+              placeholder={url ? 'blur' : undefined}
+              src={url}
+              layout="fill"
+              objectFit="cover"
+              alt={name}
+            />
+          </CardMedia>
+          <ArtworkCardContent
+            url={url}
+            name={name}
+            artist={artist}
+            featured={featured}
+            size={size}
+            {...data}
           />
-        </CardMedia>
-        <ArtworkCardContent
-          url={url}
-          name={name}
-          artist={artist}
-          featured={featured}
-          size={size}
-          {...data}
-        />
-      </ItemCard>
-    </NextMuiLink>
+        </ItemCard>
+      </NextMuiLink>
+    </div>
   );
 };
 

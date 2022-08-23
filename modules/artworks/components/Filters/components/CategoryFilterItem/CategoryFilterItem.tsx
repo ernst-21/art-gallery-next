@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { memo } from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { ImageBtn, ImageSrc, ImageBackdrop, ImageMarked, ImageText } from './';
@@ -13,7 +14,6 @@ const CategoryFilterItem = ({ image, category, onClick }: ImageButtonProps) => {
   return (
     <Box onClick={onClick} sx={{ width: '45%' }}>
       <ImageBtn
-        focusRipple
         key={category}
         style={{
           width: '100%',
@@ -27,7 +27,7 @@ const CategoryFilterItem = ({ image, category, onClick }: ImageButtonProps) => {
             variant="subtitle1"
             color="inherit"
             sx={{
-              fontSize: 18,
+              fontSize: { xs: '12px', lg: '14px' },
               position: 'relative',
               p: 4,
               pt: 2,
@@ -43,4 +43,4 @@ const CategoryFilterItem = ({ image, category, onClick }: ImageButtonProps) => {
   );
 };
 
-export default CategoryFilterItem;
+export default memo(CategoryFilterItem);

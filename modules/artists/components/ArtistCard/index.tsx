@@ -14,43 +14,45 @@ const ArtistCard = ({ name, country, pic, likes, discipline }: IArtist) => {
   }, [likes.length]);
 
   return (
-    <NextMuiLink href={'/'}>
-      <ItemCard condition={false}>
-        <CardMedia
-          sx={{
-            height: 250,
-            width: '100%',
-            borderBottom: '1px solid lightgray',
-            position: 'relative',
-          }}
-        >
-          <Image
-            blurDataURL={pic}
-            placeholder={pic ? 'blur' : undefined}
-            src={pic}
-            layout="fill"
-            objectFit="cover"
-            alt={name}
-          />
-        </CardMedia>
-        <CardContent>
-          <Stack spacing={1}>
-            <Typography gutterBottom variant="h6" component="div">
-              {name}
-            </Typography>
-            <Typography variant="body1" color="text.secondary">
-              {discipline.charAt(0).toUpperCase() + discipline.slice(1)}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              Country: {country}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              likes: {numberOfLikes}
-            </Typography>
-          </Stack>
-        </CardContent>
-      </ItemCard>
-    </NextMuiLink>
+    <div>
+      <NextMuiLink href={'/'}>
+        <ItemCard condition={false}>
+          <CardMedia
+            sx={{
+              height: 250,
+              width: '100%',
+              borderBottom: '1px solid lightgray',
+              position: 'relative',
+            }}
+          >
+            <Image
+              blurDataURL={pic}
+              placeholder={pic ? 'blur' : undefined}
+              src={pic}
+              layout="fill"
+              objectFit="cover"
+              alt={name}
+            />
+          </CardMedia>
+          <CardContent>
+            <Stack spacing={1}>
+              <Typography gutterBottom variant="h6" component="div">
+                {name}
+              </Typography>
+              <Typography variant="body1" color="text.secondary">
+                {discipline.charAt(0).toUpperCase() + discipline.slice(1)}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                Country: {country}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                likes: {numberOfLikes}
+              </Typography>
+            </Stack>
+          </CardContent>
+        </ItemCard>
+      </NextMuiLink>
+    </div>
   );
 };
 

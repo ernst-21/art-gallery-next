@@ -3,5 +3,12 @@
   "photography": "Photography",
   "print": "Print",
   "hangItHere": "HANG AN ARTWORK HERE",
-  "noData": "No data to display. Try another search"
+  "noData": "No data to display. Try another search",
+  "filters": {
+    "all": "All",
+    "clear": "Clear filters",
+    "clearCategories": "Clear Category Filter",
+    "price": "Price:",
+    "clearPrice": "Clear"
+  }  
 }

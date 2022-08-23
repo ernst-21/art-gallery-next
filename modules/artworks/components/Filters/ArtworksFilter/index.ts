@@ -1,12 +1,1 @@
-import React from 'react';
-import {Stack} from '@mui/material'
-
-const ArtworksFilter = () => {
-  return (
-    <Stack>
-
-    </Stack>
-  )
-}
-
-export default ArtworksFilter;
+export { default as ArtworksFilter } from './ArtworksFilter';
