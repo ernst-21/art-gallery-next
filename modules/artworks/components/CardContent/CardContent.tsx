@@ -5,58 +5,53 @@ import Typography from '@mui/material/Typography';
 import UserActionsButtons from '../../../../components/ui/UserActionsButtons/UserActionsButtons';
 import { IArtwork } from '../../../../interfaces';
 
-const ArtworkCardContent = ({
-  featured,
-  price,
-  gallery,
-  category,
-  name,
-  artist,
-  voters,
-  ...data
-}: IArtwork) => {
+type CardContentProps = {
+  artwork: IArtwork;
+};
+
+const ArtworkCardContent = ({ artwork }: CardContentProps) => {
   const likes = useMemo(() => {
-    return voters?.length;
-  }, [voters]);
+    return artwork?.voters?.length;
+  }, [artwork?.voters]);
 
   return (
     <>
       <CardContent>
         <Stack spacing={2}>
           <Typography variant="h6" component="div">
-            {name}
+            {artwork?.name}
           </Typography>
           <Typography variant="body1" color="text.secondary">
-            {category.charAt(0).toUpperCase() + category.slice(1)}
+            {artwork?.category.charAt(0).toUpperCase() +
+              artwork?.category.slice(1)}
           </Typography>
-          {featured && (
+          {artwork?.featured && (
             <Typography variant="body2" color="text.secondary">
-              Right now in {gallery} gallery
+              Right now in {artwork?.gallery} gallery
             </Typography>
           )}
-          {!featured && (
+          {!artwork?.featured && (
             <>
               <Typography variant="body2" color="text.secondary">
-                {artist}
+                {artwork?.artist}
               </Typography>
               <Typography variant="body2" color="text.secondary">
                 Likes: {likes}
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Price: ${price}
+                Price: ${artwork?.price}
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Gallery: {gallery}
+                Gallery: {artwork?.gallery}
               </Typography>
             </>
           )}
         </Stack>
       </CardContent>
 
-      {!featured && (
+      {!artwork?.featured && (
         <CardActions>
-          {/*@ts-ignore*/}
-          <UserActionsButtons artwork={data} />
+          <UserActionsButtons artwork={artwork} />
         </CardActions>
       )}
     </>

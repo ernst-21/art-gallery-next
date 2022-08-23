@@ -23,10 +23,10 @@ const ResultsGrid = ({ data, isArtwork }: ResultsGridProp) => {
         {data.map((item: IArtist | IArtwork) =>
           isArtwork === true ? (
             // @ts-ignore
-            <ArtworkCard key={item._id} {...item} />
+            <ArtworkCard key={item._id} artwork={item} />
           ) : (
             // @ts-ignore
-            <ArtistCard key={item?._id} {...item} />
+            <ArtistCard key={item?._id} {...(item as IArtist)} />
           )
         )}
       </Masonry>

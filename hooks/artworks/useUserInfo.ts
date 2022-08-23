@@ -7,7 +7,7 @@ const cookiesArtworks = Cookies.get('cart')
   ? JSON.parse(Cookies.get('cart')!)
   : [];
 
-export const useUserInfo = (artwork: IArtwork | undefined) => {
+export const useUserInfo = (artwork: IArtwork) => {
   const { user } = useUser();
 
   const hasVoted = useMemo(() => {

@@ -8,7 +8,7 @@ import { useUserInfo } from '../../../hooks/artworks/useUserInfo';
 import { Box, IconButton } from '@mui/material';
 
 type Props = {
-  artwork: IArtwork | undefined;
+  artwork: IArtwork;
 };
 
 const UserActionsButtons = ({ artwork }: Props) => {
@@ -16,7 +16,11 @@ const UserActionsButtons = ({ artwork }: Props) => {
   return (
     <Box sx={{ display: 'flex', alignItems: 'center' }}>
       <IconButton sx={{ mr: 1 }} aria-label="favorite">
-        {hasVoted ? <FavoriteIcon /> : <FavoriteBorderOutlinedIcon />}
+        {hasVoted ? (
+          <FavoriteIcon sx={{ color: '#ff0000bf' }} />
+        ) : (
+          <FavoriteBorderOutlinedIcon />
+        )}
       </IconButton>
       <IconButton aria-label="add to cart">
         {hasAddedToCart ? (

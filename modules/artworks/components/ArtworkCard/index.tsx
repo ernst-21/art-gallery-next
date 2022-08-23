@@ -9,28 +9,23 @@ import { useMemo } from 'react';
 
 type HomeCardProps = {
   sx?: {};
+  artwork: IArtwork;
 };
 
-const ArtworkCard = ({
-  url,
-  name,
-  artist,
-  featured,
-  size,
-  sx,
-  ...data
-}: IArtwork & HomeCardProps) => {
+const ArtworkCard = ({ artwork, sx }: HomeCardProps) => {
   const height = useMemo(() => {
-    if (featured) return 250;
-    if (size === 'big') return 450;
-    if (size === 'medium') return 350;
+    if (artwork?.featured) return 250;
+    if (artwork?.size === 'big') return 450;
+    if (artwork?.size === 'medium') return 350;
     return 200;
-  }, [featured, size]);
+  }, [artwork?.featured, artwork?.size]);
+
+  const src = artwork?.url;
 
   return (
     <div>
       <NextMuiLink href={'/'}>
-        <ItemCard condition={featured}>
+        <ItemCard condition={artwork?.featured}>
           <CardMedia
             sx={{
               width: '100%',
@@ -40,23 +35,18 @@ const ArtworkCard = ({
               ...sx,
             }}
           >
-            <Image
-              blurDataURL={url}
-              placeholder={url ? 'blur' : undefined}
-              src={url}
-              layout="fill"
-              objectFit="cover"
-              alt={name}
-            />
+            {src && (
+              <Image
+                blurDataURL={artwork?.url}
+                placeholder={artwork?.url ? 'blur' : undefined}
+                src={src}
+                layout="fill"
+                objectFit="cover"
+                alt={artwork?.name}
+              />
+            )}
           </CardMedia>
-          <ArtworkCardContent
-            url={url}
-            name={name}
-            artist={artist}
-            featured={featured}
-            size={size}
-            {...data}
-          />
+          <ArtworkCardContent artwork={artwork} />
         </ItemCard>
       </NextMuiLink>
     </div>

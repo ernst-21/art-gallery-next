@@ -64,11 +64,9 @@ const getArtworks = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
     try {
       const artworks = await Artwork.find({
         $and: [{ purchased: { $nin: userId } }, { featured: { $in: false } }],
-      })
-        .select(
-          '_id name artist artist_Id description category price tags colors gallery featured orientation url size purchased voters'
-        )
-        .lean();
+      }).select(
+        '_id name artist artist_Id description category price tags colors gallery featured orientation url size purchased voters'
+      );
 
       await db.disconnect();
       return res.status(200).json(artworks);
@@ -82,11 +80,9 @@ const getArtworks = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
   try {
     const artworks = await Artwork.find({
       $and: generateQueryFilter(filter, userId),
-    })
-      .select(
-        '_id name artist artist_Id description category price tags colors gallery featured orientation url size purchased voters'
-      )
-      .lean();
+    }).select(
+      '_id name artist artist_Id description category price tags colors gallery featured orientation url size purchased voters'
+    );
 
     await db.disconnect();
 
