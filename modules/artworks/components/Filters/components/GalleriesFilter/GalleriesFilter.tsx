@@ -1,26 +1,24 @@
 import { Box, Divider } from '@mui/material';
 import React from 'react';
-import RangeFilter from '../../../../../../components/ui/RangeFilter/RangeFilter';
+import { SelectFilter } from '../../../../../../components/ui/SelectFilter';
 import { useArtworksFilter } from '../../../../../../context/artworks/FilterArtworks/FilterArtworkContext';
-import {
-  LIKES_DEFAULT_VALUES,
-  LIKES_FILTER_NAME,
-} from '../../../../constants/filters';
+import { filterDefaults } from '../../../../constants/filters';
 
-const LikesFilter = () => {
+const GalleriesFilter = () => {
   const { artworksFilter, setArtworksFilter } = useArtworksFilter();
   return (
-    <Box mt={2}>
-      <RangeFilter
+    <Box>
+      <SelectFilter
         filter={artworksFilter}
         setFunction={setArtworksFilter}
-        name={LIKES_FILTER_NAME}
-        defaultValue={LIKES_DEFAULT_VALUES}
-        label={'filters.likes'}
+        defaultValue={filterDefaults.gallery}
+        name={'gallery'}
+        label={'Gallery'}
+        options={filterDefaults.gallery}
       />
       <Divider sx={{ my: 2 }} />
     </Box>
   );
 };
 
-export default LikesFilter;
+export default GalleriesFilter;

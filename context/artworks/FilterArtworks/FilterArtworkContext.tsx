@@ -10,19 +10,20 @@ import { IArtworksFilter } from '../../../interfaces';
 
 // Data value of the provider context
 type ArtworksFilterContextValue = {
-  artworksFilter?: IArtworksFilter;
-  setArtworksFilter?: Dispatch<SetStateAction<IArtworksFilter>>;
+  artworksFilter: IArtworksFilter;
+  setArtworksFilter: Dispatch<SetStateAction<IArtworksFilter>>;
 };
 // default value of the context
 const defaultValue: ArtworksFilterContextValue = {
   artworksFilter: filterDefaults,
+  setArtworksFilter: () => filterDefaults,
 };
 
 // create context
 const ArtworksFilterContext =
   createContext<ArtworksFilterContextValue>(defaultValue);
 
-// Proptypes of Provider component
+// Prop types of Provider component
 type ArtworksFilterContextProps = {
   children: any;
 };

@@ -10,12 +10,13 @@ import { artistFiltersDefaults } from '../../../modules/artists/constants/filter
 
 // Data value of the provider context
 type ArtistsFilterContextValue = {
-  artistsFilter?: IArtistFilter;
-  setArtistsFilter?: Dispatch<SetStateAction<IArtistFilter>>;
+  artistsFilter: IArtistFilter;
+  setArtistsFilter: Dispatch<SetStateAction<IArtistFilter>>;
 };
 // default value of the context
 const defaultValue: ArtistsFilterContextValue = {
   artistsFilter: artistFiltersDefaults,
+  setArtistsFilter: () => artistFiltersDefaults,
 };
 
 // create context

@@ -1,17 +1,28 @@
 import * as React from 'react';
-import { memo, useCallback } from 'react';
+import { Dispatch, memo, SetStateAction, useCallback } from 'react';
 import Box from '@mui/material/Box';
 import { Typography, Slider, Button } from '@mui/material';
 import { useTranslation } from 'next-i18next';
-import { useArtworksFilter } from '../../../../../../context/artworks/FilterArtworks/FilterArtworkContext';
+import { useArtworksFilter } from '../../../context/artworks/FilterArtworks/FilterArtworkContext';
+import { IArtistFilter, IArtworksFilter } from '../../../interfaces';
 
 type RangeFilterProps = {
   label: string;
   name: string;
   defaultValue: number[];
+  filter: IArtworksFilter | IArtistFilter;
+  setFunction:
+    | Dispatch<SetStateAction<IArtworksFilter>>
+    | Dispatch<SetStateAction<IArtistFilter>>;
 };
 
-const RangeFilter = ({ defaultValue, label, name }: RangeFilterProps) => {
+const RangeFilter = ({
+  defaultValue,
+  label,
+  filter,
+  setFunction,
+  name,
+}: RangeFilterProps) => {
   const [value, setValue] = React.useState<number[]>(defaultValue);
   const { artworksFilter, setArtworksFilter } = useArtworksFilter();
   const { t } = useTranslation('artworks');
@@ -27,15 +38,13 @@ const RangeFilter = ({ defaultValue, label, name }: RangeFilterProps) => {
     event: React.SyntheticEvent | Event,
     value: number | Array<number>
   ) => {
-    if (setArtworksFilter)
-      setArtworksFilter({ ...artworksFilter, [name]: value as number[] });
+    setFunction({ ...filter, [name]: value as number[] });
   };
 
   const clearFilter = useCallback(() => {
     setValue(defaultValue);
-    if (setArtworksFilter)
-      setArtworksFilter({ ...artworksFilter, [name]: defaultValue });
-  }, [artworksFilter, setArtworksFilter, defaultValue, name]);
+    setFunction({ ...filter, [name]: defaultValue });
+  }, [filter, setFunction, defaultValue, name]);
 
   return (
     <Box sx={{ width: '100%' }}>
