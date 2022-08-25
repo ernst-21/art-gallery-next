@@ -7,6 +7,7 @@ import { ArtworksAuthorsFilter } from '../components/ArtworksAuthorsFilter';
 import { ThematicFilter } from '../components/TagsFilter';
 import { GalleriesFilter } from '../components/GalleriesFilter';
 import { OrientationFilter } from '../components/OrientationFilter';
+import { ColorsFilter } from '../components/ColorsFilter';
 
 const ArtworksFilter = () => {
   return (
@@ -20,6 +21,7 @@ const ArtworksFilter = () => {
         <GalleriesFilter />
       </Stack>
       <OrientationFilter />
+      <ColorsFilter />
     </Stack>
   );
 };
