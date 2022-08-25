@@ -1,16 +1,22 @@
 import * as React from 'react';
-import { memo } from 'react';
+import { memo, useRef } from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { ImageBtn, ImageSrc, ImageBackdrop, ImageMarked, ImageText } from './';
 
 type ImageButtonProps = {
   image: string;
+  isSelected: boolean;
   category: string;
   onClick: () => void;
 };
 
-const CategoryFilterItem = ({ image, category, onClick }: ImageButtonProps) => {
+const CategoryFilterItem = ({
+  image,
+  category,
+  onClick,
+  isSelected = false,
+}: ImageButtonProps) => {
   return (
     <Box onClick={onClick} sx={{ width: '45%' }}>
       <ImageBtn
@@ -35,7 +41,10 @@ const CategoryFilterItem = ({ image, category, onClick }: ImageButtonProps) => {
             }}
           >
             {category.toUpperCase()}
-            <ImageMarked className="MuiImageMarked-root" />
+            <ImageMarked
+              sx={isSelected ? { display: 'block', opacity: 1 } : null}
+              className="MuiImageMarked-root"
+            />
           </Typography>
         </ImageText>
       </ImageBtn>

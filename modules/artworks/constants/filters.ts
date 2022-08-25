@@ -1,4 +1,5 @@
 import { IArtworksFilter } from '../../../interfaces';
+import { ArtworkOrientation } from '../../../types/orientation';
 
 export const filterDefaults: IArtworksFilter = {
   category: ['painting', 'print', 'sculpture', 'photography'],
@@ -74,3 +75,9 @@ export const PRICE_FILTER_NAME = 'price';
 export const LIKES_DEFAULT_VALUES = [0, 100];
 
 export const LIKES_FILTER_NAME = 'voters';
+
+export const ORIENTATION_SX: ArtworkOrientation = {
+  landscape: { width: '25px', height: '15px', backgroundColor: 'gray', mr: 2 },
+  portrait: { width: '15px', height: '22px', backgroundColor: 'gray', mr: 2 },
+  square: { width: '18.5px', height: '18.5px', backgroundColor: 'gray' },
+};

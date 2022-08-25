@@ -6,6 +6,7 @@ import { LikesFilter } from '../components/LikesFilter';
 import { ArtworksAuthorsFilter } from '../components/ArtworksAuthorsFilter';
 import { ThematicFilter } from '../components/TagsFilter';
 import { GalleriesFilter } from '../components/GalleriesFilter';
+import { OrientationFilter } from '../components/OrientationFilter';
 
 const ArtworksFilter = () => {
   return (
@@ -18,6 +19,7 @@ const ArtworksFilter = () => {
         <ThematicFilter />
         <GalleriesFilter />
       </Stack>
+      <OrientationFilter />
     </Stack>
   );
 };
