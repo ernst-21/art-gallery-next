@@ -77,7 +77,24 @@ export const LIKES_DEFAULT_VALUES = [0, 100];
 export const LIKES_FILTER_NAME = 'voters';
 
 export const ORIENTATION_SX: ArtworkOrientation = {
-  landscape: { width: '25px', height: '15px', backgroundColor: 'gray', mr: 2 },
-  portrait: { width: '15px', height: '22px', backgroundColor: 'gray', mr: 2 },
-  square: { width: '18.5px', height: '18.5px', backgroundColor: 'gray' },
+  landscape: {
+    width: '25px',
+    height: '15px',
+    backgroundColor: 'gray',
+    mr: 2,
+    cursor: 'pointer',
+  },
+  portrait: {
+    width: '15px',
+    height: '22px',
+    backgroundColor: 'gray',
+    mr: 2,
+    cursor: 'pointer',
+  },
+  square: {
+    width: '18.5px',
+    height: '18.5px',
+    backgroundColor: 'gray',
+    cursor: 'pointer',
+  },
 };

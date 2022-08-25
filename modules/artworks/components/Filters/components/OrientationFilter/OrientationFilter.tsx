@@ -39,7 +39,7 @@ const OrientationFilter = () => {
       display="flex"
       justifyContent="space-between"
       alignItems="center"
-      sx={{ px: 1.5 }}
+      sx={{ px: 1, mt: 1 }}
     >
       <Typography>Orientation:</Typography>
       <Box display="flex" alignItems="center">
