@@ -54,10 +54,10 @@ const RightDrawerLayout = ({
       <Drawer
         sx={{
           display: { xs: 'block', md: 'none' },
-          height: '60vh',
+          height: '90vh',
           flexShrink: 0,
           '& .MuiDrawer-paper': {
-            height: '60vh',
+            height: '90vh',
             padding: '10px',
             boxSizing: 'border-box',
           },
