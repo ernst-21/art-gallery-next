@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Box, Button, Divider } from '@mui/material';
 import { CATEGORIES } from '../../../../constants/categories';
 import { useArtworksFilter } from '../../../../../../context/artworks/FilterArtworks/FilterArtworkContext';
@@ -23,6 +23,12 @@ const CategoryFilter = () => {
     },
     [artworksFilter, setArtworksFilter]
   );
+
+  useEffect(() => {
+    if (artworksFilter?.category?.length === 4) {
+      setSelected('');
+    }
+  }, [artworksFilter?.category?.length]);
 
   const clearCategoryFilter = useCallback(() => {
     const categories = CATEGORIES.map((item) => item.category);

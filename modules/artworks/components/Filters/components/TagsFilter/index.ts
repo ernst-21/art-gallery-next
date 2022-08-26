@@ -1,1 +1,1 @@
-export { default as ThematicFilter } from './ThematicFilter';
+export { default as TagsFilter } from './TagsFilter';

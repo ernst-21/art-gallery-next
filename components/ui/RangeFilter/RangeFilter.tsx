@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Dispatch, memo, SetStateAction, useCallback } from 'react';
+import { Dispatch, memo, SetStateAction, useCallback, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import { Typography, Slider, Button } from '@mui/material';
 import { useTranslation } from 'next-i18next';
@@ -24,7 +24,6 @@ const RangeFilter = ({
   name,
 }: RangeFilterProps) => {
   const [value, setValue] = React.useState<number[]>(defaultValue);
-  const { artworksFilter, setArtworksFilter } = useArtworksFilter();
   const { t } = useTranslation('artworks');
 
   const handleChange = useCallback(
@@ -45,6 +44,15 @@ const RangeFilter = ({
     setValue(defaultValue);
     setFunction({ ...filter, [name]: defaultValue });
   }, [filter, setFunction, defaultValue, name]);
+
+  useEffect(() => {
+    //@ts-ignore
+    const filterValueToString = JSON.stringify(filter[name]);
+    const defaultValueToString = JSON.stringify(defaultValue);
+    if (filterValueToString === defaultValueToString) {
+      setValue(defaultValue);
+    }
+  }, [defaultValue, filter, name]);
 
   return (
     <Box sx={{ width: '100%' }}>

@@ -49,7 +49,7 @@ const RightDrawerLayout = ({
         variant="permanent"
         anchor="right"
       >
-        {rightDrawerChildren}
+        <Box sx={{ overflowY: 'auto' }}>{rightDrawerChildren}</Box>
       </Drawer>
       <Drawer
         sx={{

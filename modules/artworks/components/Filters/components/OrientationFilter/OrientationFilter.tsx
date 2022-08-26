@@ -39,7 +39,7 @@ const OrientationFilter = () => {
       display="flex"
       justifyContent="space-between"
       alignItems="center"
-      sx={{ px: 1, mt: 1 }}
+      sx={{ mt: 1 }}
     >
       <Typography>Orientation:</Typography>
       <Box display="flex" alignItems="center">
@@ -49,7 +49,7 @@ const OrientationFilter = () => {
             sx={
               isSelected(item)
                 ? //@ts-ignore
-                  { ...ORIENTATION_SX[item], border: '3px solid black' }
+                  { ...ORIENTATION_SX[item], border: '3px solid red' }
                 : //@ts-ignore
                   ORIENTATION_SX[item]
             }

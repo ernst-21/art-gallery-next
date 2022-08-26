@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useMemo, memo } from 'react';
+import { useMemo, memo, useEffect } from 'react';
 import { Theme, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import OutlinedInput from '@mui/material/OutlinedInput';
@@ -65,6 +65,13 @@ const SelectMultipleFilter = ({
   const hasValues = useMemo(() => {
     return values.length > 0;
   }, [values]);
+
+  useEffect(() => {
+    //@ts-ignore
+    if (filter[name]?.length === defaultValue?.length) {
+      setValues([]);
+    }
+  }, [defaultValue?.length, filter, name]);
 
   return (
     <div>

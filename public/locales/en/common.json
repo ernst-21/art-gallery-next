@@ -23,6 +23,9 @@
   "firstName": "First Name",
   "lastName": "Last Name",
   "view": "Vista:",
+  "filters": {
+    "clearAll": "Clear all filters"
+  },
   "result": {
     "single": "Se encontró 1 resultado",
     "multi": "Se encontraron {{result}} resultados",

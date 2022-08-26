@@ -7,7 +7,7 @@ export const filterDefaults: IArtworksFilter = {
   size: ['big', 'small', 'medium'],
   gallery: ['Paris', 'London', 'Berlin', 'New York'],
   price: [0, 10000],
-  voters: [0, 10],
+  voters: [0, 100],
   artist: [
     'William Shakespeare',
     'Alice Walker',

@@ -10,6 +10,7 @@ const { colors } = filterDefaults;
 
 const ColorsFilter = () => {
   const { artworksFilter, setArtworksFilter } = useArtworksFilter();
+  const [hasReached, setHasReached] = useState(false);
   const [selectedColors, setSelectedColors] = useState<string[]>([]);
 
   const handleCheck = useCallback(
@@ -38,6 +39,12 @@ const ColorsFilter = () => {
     setSelectedColors([]);
   }, [artworksFilter, setArtworksFilter]);
 
+  useEffect(() => {
+    if (artworksFilter?.colors?.length === colors?.length) {
+      setSelectedColors([]);
+    }
+  }, [artworksFilter?.colors?.length]);
+
   return (
     <Box sx={{ width: '100%', mt: 2 }}>
       <Box
@@ -46,7 +53,6 @@ const ColorsFilter = () => {
           alignItems: 'center',
           mb: 1,
           justifyContent: 'space-between',
-          px: 1,
         }}
       >
         <Typography>Colors:</Typography>

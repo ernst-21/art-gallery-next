@@ -4,25 +4,37 @@ import { CategoryFilter } from '../components/CategoryFilter';
 import { PriceFilter } from '../components/PriceFilter';
 import { LikesFilter } from '../components/LikesFilter';
 import { ArtworksAuthorsFilter } from '../components/ArtworksAuthorsFilter';
-import { ThematicFilter } from '../components/TagsFilter';
+import { TagsFilter } from '../components/TagsFilter';
 import { GalleriesFilter } from '../components/GalleriesFilter';
 import { OrientationFilter } from '../components/OrientationFilter';
 import { ColorsFilter } from '../components/ColorsFilter';
+import { ClearFilter } from '../../../../../components/ui/ClearFilter';
+import { useArtworksFilter } from '../../../../../context/artworks/FilterArtworks/FilterArtworkContext';
+import { filterDefaults } from '../../../constants/filters';
 
 const ArtworksFilter = () => {
+  const { setArtworksFilter } = useArtworksFilter();
   return (
-    <Stack padding={2}>
-      <CategoryFilter />
-      <PriceFilter />
-      <LikesFilter />
-      <Stack spacing={2}>
-        <ArtworksAuthorsFilter />
-        <ThematicFilter />
-        <GalleriesFilter />
+    <>
+      <ClearFilter
+        defaultFilter={filterDefaults}
+        setFunction={setArtworksFilter}
+      />
+      <Stack
+        sx={{ py: 1, px: 2, h: '100%', overflowX: 'hidden', overflowY: 'auto' }}
+      >
+        <CategoryFilter />
+        <PriceFilter />
+        <LikesFilter />
+        <Stack spacing={2}>
+          <ArtworksAuthorsFilter />
+          <TagsFilter />
+          <GalleriesFilter />
+        </Stack>
+        <OrientationFilter />
+        <ColorsFilter />
       </Stack>
-      <OrientationFilter />
-      <ColorsFilter />
-    </Stack>
+    </>
   );
 };
 

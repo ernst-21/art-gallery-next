@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { memo, useMemo } from 'react';
+import { memo, useMemo, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -31,6 +31,13 @@ const SelectFilter = ({
   const hasValues = useMemo(() => {
     return value.length > 0;
   }, [value]);
+
+  useEffect(() => {
+    //@ts-ignore
+    if (filter[name]?.length === defaultValue?.length) {
+      setValue('');
+    }
+  }, [defaultValue?.length, filter, name]);
 
   return (
     <Box sx={{ minWidth: '100%' }}>
