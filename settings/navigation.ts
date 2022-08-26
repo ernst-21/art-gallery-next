@@ -100,50 +100,50 @@ export const mainMenu = [
     _id: '1',
     title: 'Artworks',
     link: '/artworks',
-    menuChildren: [
-      {
-        _id: '1',
-        title: 'Print',
-        link: '/category/print',
-      },
-      {
-        _id: '2',
-        title: 'Painting',
-        link: '/category/painting',
-      },
-      {
-        _id: '3',
-        title: 'Photography',
-        link: '/category/photography',
-      },
-    ],
+    // menuChildren: [
+    //   {
+    //     _id: '1',
+    //     title: 'Print',
+    //     link: '/category/print',
+    //   },
+    //   {
+    //     _id: '2',
+    //     title: 'Painting',
+    //     link: '/category/painting',
+    //   },
+    //   {
+    //     _id: '3',
+    //     title: 'Photography',
+    //     link: '/category/photography',
+    //   },
+    // ],
   },
   {
     _id: '2',
     title: 'Artists',
     link: '/artists',
-    menuChildren: [
-      {
-        _id: '1',
-        title: 'Photographers',
-        link: '/category/photographers',
-      },
-      {
-        _id: '2',
-        title: 'Painters',
-        link: '/category/painters',
-      },
-      {
-        _id: '3',
-        title: 'Printmaker',
-        link: '/category/print-workers',
-      },
-      {
-        _id: '4',
-        title: 'Sculptors',
-        link: '/category/sculptors',
-      },
-    ],
+    // menuChildren: [
+    //   {
+    //     _id: '1',
+    //     title: 'Photographers',
+    //     link: '/category/photographers',
+    //   },
+    //   {
+    //     _id: '2',
+    //     title: 'Painters',
+    //     link: '/category/painters',
+    //   },
+    //   {
+    //     _id: '3',
+    //     title: 'Printmaker',
+    //     link: '/category/print-workers',
+    //   },
+    //   {
+    //     _id: '4',
+    //     title: 'Sculptors',
+    //     link: '/category/sculptors',
+    //   },
+    // ],
   },
   {
     _id: '3',
