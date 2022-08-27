@@ -71,11 +71,11 @@ const ColorsFilter = () => {
       >
         {colors?.map((color) => {
           return selectedColors.includes(color) ? (
-            <Box onClick={() => handleUnCheck(color)}>
+            <Box key={color} onClick={() => handleUnCheck(color)}>
               <RadioButtonCheckedIcon sx={{ color, cursor: 'pointer' }} />
             </Box>
           ) : (
-            <Box onClick={() => handleCheck(color)}>
+            <Box key={color} onClick={() => handleCheck(color)}>
               <CircleIcon sx={{ color, cursor: 'pointer' }} />
             </Box>
           );

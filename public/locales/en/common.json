@@ -23,6 +23,7 @@
   "firstName": "First Name",
   "lastName": "Last Name",
   "view": "Vista:",
+  "noData": "No elements to display. Please try another search criteria.",
   "filters": {
     "clearAll": "Clear all filters"
   },

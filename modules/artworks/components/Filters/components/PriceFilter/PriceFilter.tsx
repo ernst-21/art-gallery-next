@@ -10,6 +10,7 @@ const PriceFilter = () => {
   const { artworksFilter, setArtworksFilter } = useArtworksFilter();
   return (
     <RangeFilter
+      translation="artworks"
       label="filters.price"
       filter={artworksFilter}
       setFunction={setArtworksFilter}

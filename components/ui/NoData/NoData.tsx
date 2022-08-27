@@ -4,7 +4,7 @@ import { Typography } from '@mui/material';
 import PageWidthContainer from '../../layouts/PageWidthContainer';
 
 const NoData = () => {
-  const { t } = useTranslation('artworks');
+  const { t } = useTranslation('common');
   return (
     <PageWidthContainer sx={{ textAlign: 'center' }}>
       <Typography>{t('noData')}</Typography>

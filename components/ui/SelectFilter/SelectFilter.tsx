@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { memo, useMemo, useEffect } from 'react';
+import { memo, useMemo, useEffect, useCallback, useState } from 'react';
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -8,6 +8,10 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { SelectFilterProps } from '../../../types/selectFilter.types';
 import { ClearFilterIcon } from '../ClearFilterIcon';
 
+type FilterCapitalProps = {
+  capitalize?: boolean;
+};
+
 const SelectFilter = ({
   filter,
   setFunction,
@@ -15,18 +19,26 @@ const SelectFilter = ({
   label,
   name,
   defaultValue,
-}: SelectFilterProps) => {
-  const [value, setValue] = React.useState('');
+  capitalize = false,
+}: SelectFilterProps & FilterCapitalProps) => {
+  const [value, setValue] = useState('');
 
   const handleChange = (event: SelectChangeEvent) => {
     setValue(event.target.value as string);
     setFunction({ ...filter, [name]: event.target.value });
   };
 
-  const handleClearFilter = React.useCallback(() => {
+  const handleClearFilter = useCallback(() => {
     setValue('');
     setFunction({ ...filter, [name]: defaultValue });
   }, [defaultValue, filter, name, setFunction]);
+
+  const renderCapital = useCallback(
+    (item: string) => {
+      return capitalize ? item.charAt(0).toUpperCase() + item.slice(1) : item;
+    },
+    [capitalize]
+  );
 
   const hasValues = useMemo(() => {
     return value.length > 0;
@@ -58,7 +70,7 @@ const SelectFilter = ({
         >
           {options?.map((item) => (
             <MenuItem key={item} value={item}>
-              {item}
+              {renderCapital(item)}
             </MenuItem>
           ))}
         </Select>

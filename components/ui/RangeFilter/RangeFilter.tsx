@@ -11,6 +11,7 @@ type RangeFilterProps = {
   name: string;
   defaultValue: number[];
   filter: IArtworksFilter | IArtistFilter;
+  translation: string;
   setFunction:
     | Dispatch<SetStateAction<IArtworksFilter>>
     | Dispatch<SetStateAction<IArtistFilter>>;
@@ -22,9 +23,10 @@ const RangeFilter = ({
   filter,
   setFunction,
   name,
+  translation,
 }: RangeFilterProps) => {
   const [value, setValue] = React.useState<number[]>(defaultValue);
-  const { t } = useTranslation('artworks');
+  const { t } = useTranslation(translation);
 
   const handleChange = useCallback(
     (event: Event, newValue: number | number[]) => {

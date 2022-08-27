@@ -7,6 +7,7 @@ import { ArtistsFilterProvider } from '../../context/artists/FilterArtists/Filte
 import { GetServerSideProps } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { ArtistsContainer } from '../../modules/artists/containers/ArtistsContainer';
+import { ArtistsFilter } from '../../modules/artists/components/Filters/ArtistsFilter';
 
 const ArtistsPage: NextPage = () => {
   const { isOpen, onClose, onOpen } = useToggle();
@@ -15,7 +16,7 @@ const ArtistsPage: NextPage = () => {
       <RightDrawerLayout
         open={isOpen}
         onClose={onClose}
-        rightDrawerChildren={<span>Artists here</span>}
+        rightDrawerChildren={<ArtistsFilter />}
       >
         <ArtistsContainer />
         <Button

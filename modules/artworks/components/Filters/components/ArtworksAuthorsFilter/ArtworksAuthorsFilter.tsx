@@ -1,6 +1,5 @@
 import React from 'react';
 import { SelectFilter } from '../../../../../../components/ui/SelectFilter';
-import { useArtistsFilter } from '../../../../../../context/artists/FilterArtists/FilterArtistsContext';
 import { useArtworksFilter } from '../../../../../../context/artworks/FilterArtworks/FilterArtworkContext';
 import { filterDefaults } from '../../../../constants/filters';
 

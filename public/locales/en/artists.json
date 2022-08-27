@@ -1,3 +1,9 @@
 {
-  "artists": "Artists"
+  "artists": "Artists",
+  "filters": {
+    "all": "All",
+    "discipline": "Discipline",
+    "recommended": "Recommended",
+    "likes": "Likes:"
+  }
 }

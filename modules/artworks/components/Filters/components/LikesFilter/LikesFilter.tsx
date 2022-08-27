@@ -12,6 +12,7 @@ const LikesFilter = () => {
   return (
     <Box mt={2}>
       <RangeFilter
+        translation="artworks"
         filter={artworksFilter}
         setFunction={setArtworksFilter}
         name={LIKES_FILTER_NAME}
