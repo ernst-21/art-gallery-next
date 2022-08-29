@@ -15,15 +15,15 @@ type ArtistsFilterContextValue = {
 };
 // default value of the context
 const defaultValue: ArtistsFilterContextValue = {
-  artistsFilter: artistFiltersDefaults,
-  setArtistsFilter: () => artistFiltersDefaults,
+  artistsFilter: {},
+  setArtistsFilter: () => {},
 };
 
 // create context
 const ArtistsFilterContext =
   createContext<ArtistsFilterContextValue>(defaultValue);
 
-// Proptypes of Provider component
+// Prop types of Provider component
 type ArtistsFilterContextProps = {
   children: any;
 };
@@ -32,7 +32,7 @@ type ArtistsFilterContextProps = {
  * Provider component
  * */
 const ArtistsFilterProvider = (props: ArtistsFilterContextProps) => {
-  const [artistsFilter, setArtistsFilter] = useState(artistFiltersDefaults);
+  const [artistsFilter, setArtistsFilter] = useState({});
 
   return (
     <ArtistsFilterContext.Provider

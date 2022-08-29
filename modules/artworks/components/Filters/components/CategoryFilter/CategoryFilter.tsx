@@ -25,10 +25,10 @@ const CategoryFilter = () => {
   );
 
   useEffect(() => {
-    if (artworksFilter?.category?.length === 4) {
+    if (!artworksFilter.category) {
       setSelected('');
     }
-  }, [artworksFilter?.category?.length]);
+  }, [artworksFilter?.category]);
 
   const clearCategoryFilter = useCallback(() => {
     const categories = CATEGORIES.map((item) => item.category);

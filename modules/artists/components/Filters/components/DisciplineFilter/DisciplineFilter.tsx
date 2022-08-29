@@ -12,7 +12,6 @@ const DisciplineFilter = () => {
       capitalize
       filter={artistsFilter}
       setFunction={setArtistsFilter}
-      defaultValue={artistFiltersDefaults.discipline}
       name={'discipline'}
       label={t('filters.discipline')}
       options={artistFiltersDefaults.discipline}

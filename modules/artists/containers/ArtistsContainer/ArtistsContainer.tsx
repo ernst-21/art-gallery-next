@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useArtistsFilter } from '../../../../context/artists/FilterArtists/FilterArtistsContext';
 import { useMutation } from 'react-query';
 import { IArtistFilter } from '../../../../interfaces';
-import { searchArtists } from '../../services/artists-api';
+import { searchArtistsByFilter } from '../../services/artists-api';
 import { EmptyContainer } from '../../../../components/ui/EmptyContainer';
 import SpinLoader from '../../../../components/ui/Spinloader';
 import { NoData } from '../../../../components/ui/NoData';
@@ -23,7 +23,7 @@ const ArtistsContainer = () => {
     isLoading,
     isError,
   } = useMutation(['filter', artistsFilter], (filter: ArtistsFilter) =>
-    searchArtists(filter)
+    searchArtistsByFilter(filter)
   );
 
   useEffect(() => {

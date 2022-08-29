@@ -35,15 +35,18 @@ const ColorsFilter = () => {
   );
 
   const handleClear = useCallback(() => {
-    setArtworksFilter({ ...artworksFilter, colors });
+    const newFilter = artworksFilter;
+    //@ts-ignore
+    delete newFilter.colors;
+    setArtworksFilter({ ...newFilter });
     setSelectedColors([]);
   }, [artworksFilter, setArtworksFilter]);
 
   useEffect(() => {
-    if (artworksFilter?.colors?.length === colors?.length) {
+    if (!artworksFilter?.colors) {
       setSelectedColors([]);
     }
-  }, [artworksFilter?.colors?.length]);
+  }, [artworksFilter?.colors]);
 
   return (
     <Box sx={{ width: '100%', mt: 2 }}>

@@ -5,7 +5,6 @@ import Checkbox from '@mui/material/Checkbox';
 import { useTranslation } from 'next-i18next';
 import { useArtistsFilter } from '../../../../../../context/artists/FilterArtists/FilterArtistsContext';
 import { Box } from '@mui/material';
-import { artistFiltersDefaults } from '../../../../constants/filters';
 
 const RecommendedArtistsFilter = () => {
   const { t } = useTranslation('artists');
@@ -29,9 +28,7 @@ const RecommendedArtistsFilter = () => {
   );
 
   useEffect(() => {
-    const recommendedToString = JSON.stringify(artistsFilter.recommended);
-    const defaultToString = JSON.stringify(artistFiltersDefaults.recommended);
-    if (recommendedToString == defaultToString) setChecked(false);
+    if (!artistsFilter.recommended) setChecked(false);
   }, [artistsFilter.recommended]);
 
   return (

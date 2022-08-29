@@ -33,7 +33,6 @@ function getStyles(name: string, values: readonly string[], theme: Theme) {
 
 const SelectMultipleFilter = ({
   name,
-  defaultValue,
   filter,
   setFunction,
   options,
@@ -59,8 +58,12 @@ const SelectMultipleFilter = ({
 
   const handleClearFilter = React.useCallback(() => {
     setValues([]);
-    setFunction({ ...filter, [name]: defaultValue });
-  }, [defaultValue, filter, name, setFunction]);
+    const newFilter = filter;
+    //@ts-ignore
+    delete newFilter[name];
+    setFunction({ ...newFilter });
+    //setFunction({ ...filter, [name]: defaultValue });
+  }, [filter, name, setFunction]);
 
   const hasValues = useMemo(() => {
     return values.length > 0;
@@ -68,10 +71,10 @@ const SelectMultipleFilter = ({
 
   useEffect(() => {
     //@ts-ignore
-    if (filter[name]?.length === defaultValue?.length) {
+    if (!filter[name]) {
       setValues([]);
     }
-  }, [defaultValue?.length, filter, name]);
+  }, [filter, name]);
 
   return (
     <div>

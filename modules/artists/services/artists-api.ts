@@ -2,7 +2,7 @@ import { ApiClient } from '../../../api';
 import { RequestConfig } from '../../../types/axios';
 import { IArtist } from '../../../interfaces';
 
-export const searchArtists = (
+export const searchArtistsByFilter = (
   params: any,
   config?: RequestConfig
 ): Promise<IArtist[]> => {

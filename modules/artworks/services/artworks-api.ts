@@ -20,3 +20,7 @@ export const searchArtworks = (
 ): Promise<IArtwork[]> => {
   return ApiClient.post('/artworks', params, config).then((data) => data.data);
 };
+
+export const getArtists = () => {
+  return handleResponse(ApiClient.get(`/artists`));
+};

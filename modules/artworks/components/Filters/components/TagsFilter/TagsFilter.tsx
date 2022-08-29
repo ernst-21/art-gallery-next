@@ -11,7 +11,6 @@ const TagsFilter = () => {
       <SelectMultipleFilter
         filter={artworksFilter}
         setFunction={setArtworksFilter}
-        defaultValue={filterDefaults.tags}
         options={filterDefaults.tags}
         name={'tags'}
         label={'Tags'}

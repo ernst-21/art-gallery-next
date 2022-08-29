@@ -3,7 +3,6 @@ import { Dispatch, memo, SetStateAction, useCallback, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import { Typography, Slider, Button } from '@mui/material';
 import { useTranslation } from 'next-i18next';
-import { useArtworksFilter } from '../../../context/artworks/FilterArtworks/FilterArtworkContext';
 import { IArtistFilter, IArtworksFilter } from '../../../interfaces';
 
 type RangeFilterProps = {
@@ -44,14 +43,15 @@ const RangeFilter = ({
 
   const clearFilter = useCallback(() => {
     setValue(defaultValue);
-    setFunction({ ...filter, [name]: defaultValue });
+    const newFilter = filter;
+    //@ts-ignore
+    delete newFilter[name];
+    setFunction({ ...newFilter });
   }, [filter, setFunction, defaultValue, name]);
 
   useEffect(() => {
     //@ts-ignore
-    const filterValueToString = JSON.stringify(filter[name]);
-    const defaultValueToString = JSON.stringify(defaultValue);
-    if (filterValueToString === defaultValueToString) {
+    if (!filter[name]) {
       setValue(defaultValue);
     }
   }, [defaultValue, filter, name]);

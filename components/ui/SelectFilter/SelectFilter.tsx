@@ -15,10 +15,11 @@ type FilterCapitalProps = {
 const SelectFilter = ({
   filter,
   setFunction,
+  isLoading,
+  isError,
   options,
   label,
   name,
-  defaultValue,
   capitalize = false,
 }: SelectFilterProps & FilterCapitalProps) => {
   const [value, setValue] = useState('');
@@ -30,8 +31,11 @@ const SelectFilter = ({
 
   const handleClearFilter = useCallback(() => {
     setValue('');
-    setFunction({ ...filter, [name]: defaultValue });
-  }, [defaultValue, filter, name, setFunction]);
+    const newFilter = filter;
+    //@ts-ignore
+    delete newFilter[name];
+    setFunction({ ...newFilter });
+  }, [filter, name, setFunction]);
 
   const renderCapital = useCallback(
     (item: string) => {
@@ -40,16 +44,30 @@ const SelectFilter = ({
     [capitalize]
   );
 
+  const renderSelectMenu = useCallback(() => {
+    return !isLoading ? (
+      options?.map((item) => (
+        <MenuItem key={item} value={item}>
+          {renderCapital(item)}
+        </MenuItem>
+      ))
+    ) : !isError ? (
+      <MenuItem>Loading ...</MenuItem>
+    ) : (
+      <MenuItem>Error...</MenuItem>
+    );
+  }, [isLoading, isError, options, renderCapital]);
+
   const hasValues = useMemo(() => {
     return value.length > 0;
   }, [value]);
 
   useEffect(() => {
     //@ts-ignore
-    if (filter[name]?.length === defaultValue?.length) {
+    if (!filter[name]) {
       setValue('');
     }
-  }, [defaultValue?.length, filter, name]);
+  }, [filter, name]);
 
   return (
     <Box sx={{ minWidth: '100%' }}>
@@ -68,11 +86,7 @@ const SelectFilter = ({
           label={value[0]}
           onChange={handleChange}
         >
-          {options?.map((item) => (
-            <MenuItem key={item} value={item}>
-              {renderCapital(item)}
-            </MenuItem>
-          ))}
+          {renderSelectMenu()}
         </Select>
       </FormControl>
     </Box>

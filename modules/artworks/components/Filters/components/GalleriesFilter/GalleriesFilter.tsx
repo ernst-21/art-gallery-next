@@ -11,7 +11,6 @@ const GalleriesFilter = () => {
       <SelectFilter
         filter={artworksFilter}
         setFunction={setArtworksFilter}
-        defaultValue={filterDefaults.gallery}
         name={'gallery'}
         label={'Gallery'}
         options={filterDefaults.gallery}

@@ -15,8 +15,8 @@ type ArtworksFilterContextValue = {
 };
 // default value of the context
 const defaultValue: ArtworksFilterContextValue = {
-  artworksFilter: filterDefaults,
-  setArtworksFilter: () => filterDefaults,
+  artworksFilter: {},
+  setArtworksFilter: () => {},
 };
 
 // create context
@@ -32,7 +32,7 @@ type ArtworksFilterContextProps = {
  * Provider component
  * */
 const ArtworksFilterProvider = (props: ArtworksFilterContextProps) => {
-  const [artworksFilter, setArtworksFilter] = useState(filterDefaults);
+  const [artworksFilter, setArtworksFilter] = useState({});
 
   return (
     <ArtworksFilterContext.Provider
