@@ -20,6 +20,8 @@ const RecommendedArtistsFilter = () => {
 
   const handleChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
+      const newFilter = artistsFilter;
+      delete newFilter['recommended'];
       setChecked(event.target.checked);
       event.target.checked
         ? setArtistsFilter({
@@ -27,8 +29,7 @@ const RecommendedArtistsFilter = () => {
             recommended: [true],
           })
         : setArtistsFilter({
-            ...artistsFilter,
-            recommended: [true, false],
+            ...newFilter,
           });
     },
     [artistsFilter, setArtistsFilter]
