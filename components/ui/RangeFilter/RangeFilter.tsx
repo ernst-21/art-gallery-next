@@ -1,9 +1,17 @@
 import * as React from 'react';
-import { Dispatch, memo, SetStateAction, useCallback, useEffect } from 'react';
+import {
+  Dispatch,
+  memo,
+  SetStateAction,
+  useCallback,
+  useEffect,
+  useMemo,
+} from 'react';
 import Box from '@mui/material/Box';
 import { Typography, Slider, Button } from '@mui/material';
 import { useTranslation } from 'next-i18next';
 import { IArtistFilter, IArtworksFilter } from '../../../interfaces';
+import { useInitialValue } from '../../../hooks/utils/useInitialValue';
 
 type RangeFilterProps = {
   label: string;
@@ -24,7 +32,8 @@ const RangeFilter = ({
   name,
   translation,
 }: RangeFilterProps) => {
-  const [value, setValue] = React.useState<number[]>(defaultValue);
+  const { initialValue } = useInitialValue(filter, name, defaultValue);
+  const [value, setValue] = React.useState<number[]>(initialValue);
   const { t } = useTranslation(translation);
 
   const handleChange = useCallback(

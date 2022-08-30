@@ -3,9 +3,10 @@ import {
   Dispatch,
   SetStateAction,
   useContext,
+  useEffect,
   useState,
 } from 'react';
-import { filterDefaults } from '../../../modules/artworks/constants/filters';
+import { useLocalStorage } from '../../../hooks/utils/useLocalStorage';
 import { IArtworksFilter } from '../../../interfaces';
 
 // Data value of the provider context
@@ -32,7 +33,15 @@ type ArtworksFilterContextProps = {
  * Provider component
  * */
 const ArtworksFilterProvider = (props: ArtworksFilterContextProps) => {
-  const [artworksFilter, setArtworksFilter] = useState({});
+  const { storageOrInitialValue, storeData } = useLocalStorage(
+    'artworksFilter',
+    {}
+  );
+  const [artworksFilter, setArtworksFilter] = useState(storageOrInitialValue);
+
+  useEffect(() => {
+    storeData('artworksFilter', artworksFilter);
+  }, [artworksFilter, storeData]);
 
   return (
     <ArtworksFilterContext.Provider

@@ -3,10 +3,11 @@ import {
   Dispatch,
   SetStateAction,
   useContext,
+  useEffect,
   useState,
 } from 'react';
+import { useLocalStorage } from '../../../hooks/utils/useLocalStorage';
 import { IArtistFilter } from '../../../interfaces';
-import { artistFiltersDefaults } from '../../../modules/artists/constants/filters';
 
 // Data value of the provider context
 type ArtistsFilterContextValue = {
@@ -31,8 +32,17 @@ type ArtistsFilterContextProps = {
 /**
  * Provider component
  * */
+
 const ArtistsFilterProvider = (props: ArtistsFilterContextProps) => {
-  const [artistsFilter, setArtistsFilter] = useState({});
+  const { storageOrInitialValue, storeData } = useLocalStorage(
+    'artistsFilter',
+    {}
+  );
+  const [artistsFilter, setArtistsFilter] = useState(storageOrInitialValue);
+
+  useEffect(() => {
+    storeData('artistsFilter', artistsFilter);
+  }, [artistsFilter, storeData]);
 
   return (
     <ArtistsFilterContext.Provider

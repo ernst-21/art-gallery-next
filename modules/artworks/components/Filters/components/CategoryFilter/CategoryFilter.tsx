@@ -4,10 +4,14 @@ import { CATEGORIES } from '../../../../constants/categories';
 import { useArtworksFilter } from '../../../../../../context/artworks/FilterArtworks/FilterArtworkContext';
 import { CategoryFilterItem } from '../CategoryFilterItem';
 import { useTranslation } from 'next-i18next';
+import { useInitialValue } from '../../../../../../hooks/utils/useInitialValue';
 
 const CategoryFilter = () => {
   const { artworksFilter, setArtworksFilter } = useArtworksFilter();
-  const [selected, setSelected] = useState('');
+  const { initialValue } = useInitialValue(artworksFilter, 'category', '');
+  const [selected, setSelected] = useState(
+    initialValue.length ? initialValue[0] : initialValue
+  );
   const { t } = useTranslation('artworks');
 
   const filterByCategory = useCallback(
@@ -31,12 +35,11 @@ const CategoryFilter = () => {
   }, [artworksFilter?.category]);
 
   const clearCategoryFilter = useCallback(() => {
-    const categories = CATEGORIES.map((item) => item.category);
     if (setArtworksFilter) {
+      const newFilter = artworksFilter;
+      delete newFilter['category'];
       setArtworksFilter({
-        ...artworksFilter,
-        //@ts-ignore
-        category: categories,
+        ...newFilter,
       });
     }
     setSelected('');

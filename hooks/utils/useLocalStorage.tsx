@@ -1,24 +1,21 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useMemo } from 'react';
 
-const useLocalStorage = (key:string, initialValue: any) => {
-  const [data, setData] = useState(initialValue);
-  useEffect(() => {
-    const getData = window.localStorage.getItem(key);
-
-    if (getData) {
-      setData(JSON.parse(getData));
-    }
+export const useLocalStorage = (key: string, initialValue: any) => {
+  const dataFromStorage = useMemo(() => {
+    return window.localStorage.getItem(key);
   }, [key]);
 
-  const storeData = useCallback((updateValue: any) => {
-    setData(updateValue);
+  const storageOrInitialValue = dataFromStorage
+    ? JSON.parse(dataFromStorage)
+    : initialValue;
+
+  const storeData = useCallback((key: string, updateValue: any) => {
     window.localStorage.setItem(key, JSON.stringify(updateValue));
-  },[]);
+  }, []);
 
   return {
-    data,
-    storeData
+    dataFromStorage,
+    storageOrInitialValue,
+    storeData,
   };
 };
-
-export default useLocalStorage;

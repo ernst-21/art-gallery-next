@@ -1,10 +1,18 @@
 import * as React from 'react';
-import { useState, memo, Dispatch, SetStateAction, useEffect } from 'react';
+import {
+  useState,
+  memo,
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useMemo,
+} from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import { CircularProgress } from '@mui/material';
 import { IArtistFilter, IArtworksFilter } from '../../../interfaces';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
+import { useInitialValue } from '../../../hooks/utils/useInitialValue';
 
 type ComponentProps = {
   label: string;
@@ -39,7 +47,8 @@ const AutoCompleteFilter = ({
   searchFn,
 }: ComponentProps) => {
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState<string | null>('');
+  const { initialValue } = useInitialValue(filter, name, '');
+  const [value, setValue] = useState<string | null>(initialValue);
   const [inputValue, setInputValue] = React.useState('');
 
   const handleChange = (event: any, newValue: any) => {
@@ -80,9 +89,7 @@ const AutoCompleteFilter = ({
         setOpen(true);
         searchFn();
       }}
-      onClose={() => {
-        setOpen(false);
-      }}
+      onClose={() => setOpen(false)}
       inputValue={inputValue}
       onInputChange={(event, newInputValue) => {
         setInputValue(newInputValue);

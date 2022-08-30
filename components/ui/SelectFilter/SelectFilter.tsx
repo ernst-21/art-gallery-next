@@ -7,6 +7,7 @@ import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { SelectFilterProps } from '../../../types/selectFilter.types';
 import { ClearFilterIcon } from '../ClearFilterIcon';
+import { useInitialValue } from '../../../hooks/utils/useInitialValue';
 
 type FilterCapitalProps = {
   capitalize?: boolean;
@@ -22,7 +23,8 @@ const SelectFilter = ({
   name,
   capitalize = false,
 }: SelectFilterProps & FilterCapitalProps) => {
-  const [value, setValue] = useState('');
+  const { initialValue } = useInitialValue(filter, name, '');
+  const [value, setValue] = useState(initialValue);
 
   const handleChange = (event: SelectChangeEvent) => {
     setValue(event.target.value as string);

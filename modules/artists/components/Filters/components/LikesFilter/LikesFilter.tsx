@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import RangeFilter from '../../../../../../components/ui/RangeFilter/RangeFilter';
 import { useArtistsFilter } from '../../../../../../context/artists/FilterArtists/FilterArtistsContext';
 import { ARTISTS_LIKES_RANGE } from '../../../../constants/filters';

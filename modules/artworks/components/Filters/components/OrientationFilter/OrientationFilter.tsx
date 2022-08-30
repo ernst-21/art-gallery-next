@@ -3,17 +3,15 @@ import { Box, Typography } from '@mui/material';
 import { ClearFilterIcon } from '../../../../../../components/ui/ClearFilterIcon';
 import { useArtworksFilter } from '../../../../../../context/artworks/FilterArtworks/FilterArtworkContext';
 import { filterDefaults } from '../../../../constants/filters';
-import { ORIENTATION_SX } from '../../../../constants/filters';
-
-const { orientation } = filterDefaults;
+import { ORIENTATION_SX, ORIENTATION } from '../../../../constants/filters';
+import { useInitialValue } from '../../../../../../hooks/utils/useInitialValue';
 
 const OrientationFilter = () => {
-  const [selected, setSelected] = useState<string>('');
   const { artworksFilter, setArtworksFilter } = useArtworksFilter();
-
-  const handleClear = useCallback(() => {
-    setArtworksFilter({ ...artworksFilter, orientation });
-  }, [artworksFilter, setArtworksFilter]);
+  const { initialValue } = useInitialValue(artworksFilter, 'orientation', '');
+  const [selected, setSelected] = useState<string>(
+    initialValue.length ? initialValue[0] : initialValue
+  );
 
   const selectOrientation = useCallback(
     (otn: string) => {
@@ -34,6 +32,12 @@ const OrientationFilter = () => {
     [artworksFilter?.orientation, selected]
   );
 
+  const handleClear = useCallback(() => {
+    const newFilter = artworksFilter;
+    delete newFilter['orientation'];
+    setArtworksFilter({ ...newFilter });
+  }, [artworksFilter, setArtworksFilter]);
+
   return (
     <Box
       display="flex"
@@ -43,7 +47,7 @@ const OrientationFilter = () => {
     >
       <Typography>Orientation:</Typography>
       <Box display="flex" alignItems="center">
-        {orientation?.map((item: string) => (
+        {ORIENTATION?.map((item: string) => (
           <Box
             key={item}
             sx={

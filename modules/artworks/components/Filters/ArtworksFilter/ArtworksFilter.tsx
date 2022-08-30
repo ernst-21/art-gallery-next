@@ -13,13 +13,10 @@ import { useArtworksFilter } from '../../../../../context/artworks/FilterArtwork
 import { filterDefaults } from '../../../constants/filters';
 
 const ArtworksFilter = () => {
-  const { setArtworksFilter } = useArtworksFilter();
+  const { artworksFilter, setArtworksFilter } = useArtworksFilter();
   return (
     <>
-      <ClearFilter
-        defaultFilter={filterDefaults}
-        setFunction={setArtworksFilter}
-      />
+      <ClearFilter filter={artworksFilter} setFunction={setArtworksFilter} />
       <Stack
         sx={{ py: 1, px: 2, h: '100%', overflowX: 'hidden', overflowY: 'auto' }}
       >

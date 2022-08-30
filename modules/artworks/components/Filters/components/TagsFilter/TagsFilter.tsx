@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box } from '@mui/material';
 import { useArtworksFilter } from '../../../../../../context/artworks/FilterArtworks/FilterArtworkContext';
-import { filterDefaults } from '../../../../constants/filters';
+import { TAGS } from '../../../../constants/filters';
 import { SelectMultipleFilter } from '../../../../../../components/ui/SelectMultipleFilter';
 
 const TagsFilter = () => {
@@ -11,7 +11,7 @@ const TagsFilter = () => {
       <SelectMultipleFilter
         filter={artworksFilter}
         setFunction={setArtworksFilter}
-        options={filterDefaults.tags}
+        options={TAGS}
         name={'tags'}
         label={'Tags'}
       />

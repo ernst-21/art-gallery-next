@@ -9,10 +9,10 @@ import { ArtistsLikesFilter } from '../components/LikesFilter';
 import { RecommendedArtistsFilter } from '../components/RecommendedArtistsFilter';
 
 const ArtistsFilter = () => {
-  const { setArtistsFilter } = useArtistsFilter();
+  const { artistsFilter, setArtistsFilter } = useArtistsFilter();
   return (
     <>
-      <ClearFilter setFunction={setArtistsFilter} />
+      <ClearFilter filter={artistsFilter} setFunction={setArtistsFilter} />
       <Stack
         sx={{ py: 1, px: 2, h: '100%', overflowX: 'hidden', overflowY: 'auto' }}
         spacing={2}

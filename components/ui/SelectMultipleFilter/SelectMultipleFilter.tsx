@@ -10,6 +10,7 @@ import Chip from '@mui/material/Chip';
 import { InputLabel } from '@mui/material';
 import { SelectFilterProps } from '../../../types/selectFilter.types';
 import { ClearFilterIcon } from '../ClearFilterIcon';
+import { useInitialValue } from '../../../hooks/utils/useInitialValue';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -39,7 +40,8 @@ const SelectMultipleFilter = ({
   label,
 }: SelectFilterProps) => {
   const theme = useTheme();
-  const [values, setValues] = React.useState<string[]>([]);
+  const { initialValue } = useInitialValue(filter, name, []);
+  const [values, setValues] = React.useState<string[]>(initialValue);
 
   const handleChange = (event: SelectChangeEvent<typeof values>) => {
     const {

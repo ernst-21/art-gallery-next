@@ -5,13 +5,13 @@ import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
 import CircleIcon from '@mui/icons-material/Circle';
 import { ClearFilterIcon } from '../../../../../../components/ui/ClearFilterIcon';
 import { useArtworksFilter } from '../../../../../../context/artworks/FilterArtworks/FilterArtworkContext';
-
-const { colors } = filterDefaults;
+import { useInitialValue } from '../../../../../../hooks/utils/useInitialValue';
+import { COLORS } from '../../../../constants/filters';
 
 const ColorsFilter = () => {
   const { artworksFilter, setArtworksFilter } = useArtworksFilter();
-  const [hasReached, setHasReached] = useState(false);
-  const [selectedColors, setSelectedColors] = useState<string[]>([]);
+  const { initialValue } = useInitialValue(artworksFilter, 'colors', []);
+  const [selectedColors, setSelectedColors] = useState<string[]>(initialValue);
 
   const handleCheck = useCallback(
     (item: string) => {
@@ -28,7 +28,7 @@ const ColorsFilter = () => {
     (item: string) => {
       const uncheck = selectedColors.filter((color) => color !== item);
       setSelectedColors(uncheck);
-      const colorsToFilter = uncheck.length === 0 ? colors : uncheck;
+      const colorsToFilter = uncheck.length === 0 ? COLORS : uncheck;
       setArtworksFilter({ ...artworksFilter, colors: colorsToFilter });
     },
     [artworksFilter, selectedColors, setArtworksFilter]
@@ -72,7 +72,7 @@ const ColorsFilter = () => {
           borderRadius: 1,
         }}
       >
-        {colors?.map((color) => {
+        {COLORS?.map((color) => {
           return selectedColors.includes(color) ? (
             <Box key={color} onClick={() => handleUnCheck(color)}>
               <RadioButtonCheckedIcon sx={{ color, cursor: 'pointer' }} />

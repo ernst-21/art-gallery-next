@@ -68,6 +68,8 @@ export const filterDefaults: IArtworksFilter = {
   ],
 };
 
+export const ORIENTATION = ['landscape', 'portrait', 'square'];
+
 export const PRICE_DEFAULT_VALUES = [0, 10000];
 
 export const PRICE_FILTER_NAME = 'price';
@@ -98,3 +100,54 @@ export const ORIENTATION_SX: ArtworkOrientation = {
     cursor: 'pointer',
   },
 };
+
+export const COLORS = [
+  'maroon',
+  'orange',
+  'yellow',
+  'limegreen',
+  'olive',
+  'green',
+  'darkcyan',
+  'blue',
+  'darkblue',
+  'darkviolet',
+  'pink',
+  'magenta',
+  'white',
+  'gray',
+  'black',
+];
+
+export const TAGS = [
+  'flowers',
+  'sea',
+  'beach',
+  'nature',
+  'man',
+  'men',
+  'woman',
+  'women',
+  'abstract',
+  'boat',
+  'river',
+  'lake',
+  'statue',
+  'head',
+  'children',
+  'dog',
+  'naked',
+  'dish',
+  'bottle',
+  'pottery',
+  'relaxing',
+  'jump',
+  'skating',
+  'colorful',
+  'road',
+  'camera',
+  'people',
+  'animals',
+  'village',
+  'mythology',
+];

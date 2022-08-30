@@ -5,11 +5,18 @@ import Checkbox from '@mui/material/Checkbox';
 import { useTranslation } from 'next-i18next';
 import { useArtistsFilter } from '../../../../../../context/artists/FilterArtists/FilterArtistsContext';
 import { Box } from '@mui/material';
+import { useInitialValue } from '../../../../../../hooks/utils/useInitialValue';
 
 const RecommendedArtistsFilter = () => {
   const { t } = useTranslation('artists');
   const { artistsFilter, setArtistsFilter } = useArtistsFilter();
   const [checked, setChecked] = useState(false);
+
+  useEffect(() => {
+    if (artistsFilter.recommended && artistsFilter.recommended.length === 1) {
+      setChecked(true);
+    }
+  }, [artistsFilter.recommended]);
 
   const handleChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -34,6 +41,7 @@ const RecommendedArtistsFilter = () => {
   return (
     <Box>
       <FormControlLabel
+        value={checked}
         sx={{ ml: 0 }}
         control={<Checkbox checked={checked} onChange={handleChange} />}
         label={t('filters.recommended')}
