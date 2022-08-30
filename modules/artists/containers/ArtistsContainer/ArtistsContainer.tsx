@@ -9,6 +9,7 @@ import { EmptyContainer } from '../../../../components/ui/EmptyContainer';
 import SpinLoader from '../../../../components/ui/Spinloader';
 import { NoData } from '../../../../components/ui/NoData';
 import ArtistGrid from '../../components/ArtistGrid';
+import { ScrollToTop } from '../../../../components/ui/ScrollToTop';
 
 type ArtistsFilter = {
   filter?: IArtistFilter;
@@ -47,9 +48,12 @@ const ArtistsContainer = () => {
   }
 
   return (
-    <GridContainer backgroundColor={'secondary.light'} title={t('artists')}>
-      <ArtistGrid spacing={4} xs={12} sm={6} lg={3} data={data} />
-    </GridContainer>
+    <>
+      <GridContainer backgroundColor={'secondary.light'} title={t('artists')}>
+        <ArtistGrid spacing={4} xs={12} sm={6} lg={3} data={data} />
+      </GridContainer>
+      <ScrollToTop showBelow={250} />
+    </>
   );
 };
 

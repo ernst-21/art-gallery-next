@@ -9,6 +9,8 @@ import { NoData } from '../../../components/ui/NoData';
 import { EmptyContainer } from '../../../components/ui/EmptyContainer';
 import { ResultsGrid } from '../../../components/ui/ResultsGrid';
 import { IArtworksFilter } from '../../../interfaces';
+import { ScrollToTop } from '../../../components/ui/ScrollToTop';
+import { Box } from '@mui/material';
 
 type ArtworkFilter = {
   filter?: IArtworksFilter;
@@ -46,11 +48,14 @@ const ArtworksContainer = () => {
   }
 
   return (
-    <GridContainer backgroundColor={'secondary.light'} title={'Artworks'}>
-      <PageWidthContainer>
-        <ResultsGrid data={data} isArtwork />
-      </PageWidthContainer>
-    </GridContainer>
+    <Box>
+      <GridContainer backgroundColor={'secondary.light'} title={'Artworks'}>
+        <PageWidthContainer>
+          <ResultsGrid data={data} isArtwork />
+        </PageWidthContainer>
+      </GridContainer>
+      <ScrollToTop showBelow={250} />
+    </Box>
   );
 };
 
