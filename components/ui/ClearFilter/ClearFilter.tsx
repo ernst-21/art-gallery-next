@@ -1,7 +1,6 @@
 import { Badge, Box, Button, Divider, Toolbar } from '@mui/material';
 import { useTranslation } from 'next-i18next';
 import React, { Dispatch, SetStateAction, useCallback, useMemo } from 'react';
-import { useLocalStorage } from '../../../hooks/utils/useLocalStorage';
 import { IArtistFilter, IArtworksFilter } from '../../../interfaces';
 import isEmpty from 'lodash/isEmpty';
 

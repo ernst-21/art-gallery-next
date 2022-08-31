@@ -2,7 +2,6 @@ import { Stack } from '@mui/material';
 import React from 'react';
 import { ClearFilter } from '../../../../../components/ui/ClearFilter';
 import { useArtistsFilter } from '../../../../../context/artists/FilterArtists/FilterArtistsContext';
-import { artistFiltersDefaults } from '../../../constants/filters';
 import { ArtistNameFilter } from '../components/ArtistNameFilter';
 import { DisciplineFilter } from '../components/DisciplineFilter';
 import { ArtistsLikesFilter } from '../components/LikesFilter';

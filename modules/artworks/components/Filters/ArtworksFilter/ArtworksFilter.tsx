@@ -10,7 +10,6 @@ import { OrientationFilter } from '../components/OrientationFilter';
 import { ColorsFilter } from '../components/ColorsFilter';
 import { ClearFilter } from '../../../../../components/ui/ClearFilter';
 import { useArtworksFilter } from '../../../../../context/artworks/FilterArtworks/FilterArtworkContext';
-import { filterDefaults } from '../../../constants/filters';
 
 const ArtworksFilter = () => {
   const { artworksFilter, setArtworksFilter } = useArtworksFilter();
