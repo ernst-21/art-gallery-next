@@ -9,7 +9,6 @@ import { NoData } from '../../../components/ui/NoData';
 import { EmptyContainer } from '../../../components/ui/EmptyContainer';
 import { ResultsGrid } from '../../../components/ui/ResultsGrid';
 import { IArtworksFilter } from '../../../interfaces';
-import { ScrollToTop } from '../../../components/ui/ScrollToTop';
 import { Box } from '@mui/material';
 
 type ArtworkFilter = {
@@ -54,7 +53,6 @@ const ArtworksContainer = () => {
           <ResultsGrid data={data} isArtwork />
         </PageWidthContainer>
       </GridContainer>
-      <ScrollToTop showBelow={250} />
     </Box>
   );
 };

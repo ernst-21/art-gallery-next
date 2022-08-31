@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { memo, useRef } from 'react';
+import { memo } from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { ImageBtn, ImageSrc, ImageBackdrop, ImageMarked, ImageText } from './';
@@ -33,7 +33,7 @@ const CategoryFilterItem = ({
             variant="subtitle1"
             color="inherit"
             sx={{
-              fontSize: { xs: '12px', lg: '14px' },
+              fontSize: { xs: '10px', lg: '12px', xl: '14px' },
               position: 'relative',
               p: 4,
               pt: 2,

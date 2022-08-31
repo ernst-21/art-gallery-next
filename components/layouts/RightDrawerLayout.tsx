@@ -3,7 +3,7 @@ import Drawer from '@mui/material/Drawer';
 import { ReactNode } from 'react';
 import { MainLayout } from './MainLayout';
 import { styled } from '@mui/material/styles';
-import { Box, Toolbar } from '@mui/material';
+import { Box } from '@mui/material';
 
 type Props = {
   children: ReactNode;
@@ -66,8 +66,7 @@ const RightDrawerLayout = ({
         open={open}
         onClose={onClose}
       >
-        <Toolbar sx={{ position: 'sticky' }} />
-        <Box sx={{ overflowY: 'auto' }}>{rightDrawerChildren}</Box>
+        <Box sx={{ overflowY: 'auto', mt: 2 }}>{rightDrawerChildren}</Box>
       </Drawer>
     </LayoutRoot>
   );

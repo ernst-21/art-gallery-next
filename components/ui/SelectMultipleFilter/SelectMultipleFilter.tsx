@@ -64,7 +64,6 @@ const SelectMultipleFilter = ({
     //@ts-ignore
     delete newFilter[name];
     setFunction({ ...newFilter });
-    //setFunction({ ...filter, [name]: defaultValue });
   }, [filter, name, setFunction]);
 
   const hasValues = useMemo(() => {

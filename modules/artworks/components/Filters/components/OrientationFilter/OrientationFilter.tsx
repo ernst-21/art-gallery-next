@@ -2,7 +2,6 @@ import React, { useCallback, useState } from 'react';
 import { Box, Typography } from '@mui/material';
 import { ClearFilterIcon } from '../../../../../../components/ui/ClearFilterIcon';
 import { useArtworksFilter } from '../../../../../../context/artworks/FilterArtworks/FilterArtworkContext';
-import { filterDefaults } from '../../../../constants/filters';
 import { ORIENTATION_SX, ORIENTATION } from '../../../../constants/filters';
 import { useInitialValue } from '../../../../../../hooks/utils/useInitialValue';
 

@@ -1,24 +1,10 @@
 import React, { useEffect, useState, memo } from 'react';
-import Fab from '@mui/material/Fab';
 import ExpandLessOutlined from '@mui/icons-material/ExpandLessOutlined';
-import { styled } from '@mui/material/styles';
+import { StyledFab } from '../StyledFabButton';
 
 type ComponentProps = {
   showBelow: number;
 };
-
-const StyledFab = styled(Fab)(({ theme }) => ({
-  zIndex: 2,
-  position: 'fixed',
-  bottom: '10vh',
-  backgroundColor: theme.palette.secondary.main,
-  color: 'white',
-  '&:hover, &.Mui-focusVisible': {
-    transition: '0.3s',
-    color: '#397BA6',
-    backgroundColor: '#DCDCDC',
-  },
-}));
 
 const ScrollToTop = ({ showBelow }: ComponentProps) => {
   const [show, setShow] = useState(false);
@@ -49,7 +35,10 @@ const ScrollToTop = ({ showBelow }: ComponentProps) => {
     <div>
       {show && (
         <StyledFab
-          sx={{ right: { xs: '5%', md: '27%', lg: '22%' } }}
+          sx={{
+            right: { xs: '5%', md: '27%', lg: '22%' },
+            bottom: { xs: '15vh', md: '5vh' },
+          }}
           onClick={handleClick}
           color="primary"
           aria-label="add"
