@@ -3,14 +3,14 @@ import { useMutation } from 'react-query';
 import { AutoCompleteFilter } from '../../../../../../components/ui/AutoCompleteFilter';
 import { useArtistsFilter } from '../../../../../../context/artists/FilterArtists/FilterArtistsContext';
 import { IArtist } from '../../../../../../interfaces';
-import { searchArtistsByFilter } from '../../../../services/artists-api';
+import { getAllArtists } from '../../../../services/artists-api';
 
 const ArtistNameFilter = () => {
   const { artistsFilter, setArtistsFilter } = useArtistsFilter();
   const [options, setOptions] = useState<IArtist[]>([]);
   const { mutateAsync: searchArtists, isLoading } = useMutation(
     ['artistByName'],
-    (filter) => searchArtistsByFilter(filter),
+    () => getAllArtists(),
     {
       onSuccess: (data: IArtist[]) => setOptions(data),
     }
@@ -29,8 +29,7 @@ const ArtistNameFilter = () => {
       setFilterFunction={setArtistsFilter}
       options={options}
       name={'name'}
-      //@ts-ignore
-      searchFn={() => searchArtists({ filter: {} })}
+      searchFn={() => searchArtists()}
       isLoading={isLoading}
       equalToValueFn={(option: any, value: any): boolean =>
         option.name === value

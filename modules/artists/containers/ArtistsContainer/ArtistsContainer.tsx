@@ -1,36 +1,37 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import GridContainer from '../../../../components/ui/GridContainer/GridContainer';
 import { useTranslation } from 'react-i18next';
 import { useArtistsFilter } from '../../../../context/artists/FilterArtists/FilterArtistsContext';
 import { useMutation } from 'react-query';
-import { IArtistFilter } from '../../../../interfaces';
+import { IArtist, IArtistFilter } from '../../../../interfaces';
 import { searchArtistsByFilter } from '../../services/artists-api';
 import { EmptyContainer } from '../../../../components/ui/EmptyContainer';
 import SpinLoader from '../../../../components/ui/Spinloader';
 import { NoData } from '../../../../components/ui/NoData';
 import ArtistGrid from '../../components/ArtistGrid';
+import { useRouter } from 'next/router';
+import qs from 'qs';
+import { NextParsedUrlQuery } from 'next/dist/server/request-meta';
+//import { ParsedUrlQuery } from 'querystring';
 
 type ArtistsFilter = {
   filter?: IArtistFilter;
 };
 
-const ArtistsContainer = () => {
+type ArtistsResults = {
+  artists: IArtist[];
+};
+
+const ArtistsContainer = ({ artists }: ArtistsResults) => {
   const { t } = useTranslation('artists');
-  const { artistsFilter } = useArtistsFilter();
-  const {
-    mutateAsync: findArtists,
-    data,
-    isLoading,
-    isError,
-  } = useMutation(['filter', artistsFilter], (filter: ArtistsFilter) =>
-    searchArtistsByFilter(filter)
-  );
+  const { isFallback } = useRouter();
+  //const { artistsFilter } = useArtistsFilter();
 
-  useEffect(() => {
-    findArtists({ filter: artistsFilter });
-  }, [findArtists, artistsFilter]);
+  // useEffect(() => {
+  //   searchArtistsByFilter();
+  // }, [artistsFilter]);
 
-  if (isLoading) {
+  if (isFallback) {
     return (
       <EmptyContainer>
         <SpinLoader />
@@ -38,7 +39,7 @@ const ArtistsContainer = () => {
     );
   }
 
-  if (isError || !data || !data?.length) {
+  if (!artists || !artists?.length) {
     return (
       <EmptyContainer>
         <NoData />
@@ -53,7 +54,7 @@ const ArtistsContainer = () => {
         backgroundColor={'secondary.light'}
         title={t('artists')}
       >
-        <ArtistGrid spacing={4} xs={12} sm={6} lg={3} data={data} />
+        <ArtistGrid spacing={4} xs={12} sm={6} lg={3} data={artists} />
       </GridContainer>
     </>
   );
