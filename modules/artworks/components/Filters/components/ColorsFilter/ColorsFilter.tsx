@@ -1,6 +1,5 @@
-import { Box, Checkbox, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import React, { useCallback, useEffect, useState } from 'react';
-import { filterDefaults } from '../../../../constants/filters';
 import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
 import CircleIcon from '@mui/icons-material/Circle';
 import { ClearFilterIcon } from '../../../../../../components/ui/ClearFilterIcon';
@@ -24,16 +23,6 @@ const ColorsFilter = () => {
     [artworksFilter, selectedColors, setArtworksFilter]
   );
 
-  const handleUnCheck = useCallback(
-    (item: string) => {
-      const uncheck = selectedColors.filter((color) => color !== item);
-      setSelectedColors(uncheck);
-      const colorsToFilter = uncheck.length === 0 ? COLORS : uncheck;
-      setArtworksFilter({ ...artworksFilter, colors: colorsToFilter });
-    },
-    [artworksFilter, selectedColors, setArtworksFilter]
-  );
-
   const handleClear = useCallback(() => {
     const newFilter = artworksFilter;
     //@ts-ignore
@@ -41,6 +30,17 @@ const ColorsFilter = () => {
     setArtworksFilter({ ...newFilter });
     setSelectedColors([]);
   }, [artworksFilter, setArtworksFilter]);
+
+  const handleUnCheck = useCallback(
+    (item: string) => {
+      const uncheck = selectedColors.filter((color) => color !== item);
+      setSelectedColors(uncheck);
+      return uncheck.length === 0
+        ? handleClear()
+        : setArtworksFilter({ ...artworksFilter, colors: uncheck });
+    },
+    [artworksFilter, handleClear, selectedColors, setArtworksFilter]
+  );
 
   useEffect(() => {
     if (!artworksFilter?.colors) {

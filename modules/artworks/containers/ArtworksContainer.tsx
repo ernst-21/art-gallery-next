@@ -9,7 +9,6 @@ import { NoData } from '../../../components/ui/NoData';
 import { EmptyContainer } from '../../../components/ui/EmptyContainer';
 import { ResultsGrid } from '../../../components/ui/ResultsGrid';
 import { IArtworksFilter } from '../../../interfaces';
-import { Box } from '@mui/material';
 
 type ArtworkFilter = {
   filter?: IArtworksFilter;
@@ -47,13 +46,15 @@ const ArtworksContainer = () => {
   }
 
   return (
-    <Box>
-      <GridContainer backgroundColor={'secondary.light'} title={'Artworks'}>
-        <PageWidthContainer>
-          <ResultsGrid data={data} isArtwork />
-        </PageWidthContainer>
-      </GridContainer>
-    </Box>
+    <GridContainer
+      sx={{ minHeight: 'calc(100vh - 70px)' }}
+      backgroundColor={'secondary.light'}
+      title={'Artworks'}
+    >
+      <PageWidthContainer>
+        <ResultsGrid data={data} isArtwork />
+      </PageWidthContainer>
+    </GridContainer>
   );
 };
 

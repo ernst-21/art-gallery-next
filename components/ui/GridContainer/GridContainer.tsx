@@ -6,15 +6,17 @@ type GridContainerProps = {
   backgroundColor: string;
   title: string;
   children: ReactNode;
+  sx?: {};
 };
 
 const GridContainer = ({
   backgroundColor,
   title,
   children,
+  sx,
 }: GridContainerProps) => {
   return (
-    <Box sx={{ backgroundColor }}>
+    <Box sx={{ backgroundColor, ...sx }}>
       <PageWidthContainer>
         <Box
           display="flex"

@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { Avatar, Button } from '@mui/material';
+import { Avatar } from '@mui/material';
 import { useUser } from '../../../hooks/security/useUser';
 import ProfilePopover from '../ProfilePopover/ProfilePopover';
 
@@ -23,7 +23,9 @@ const NavAvatar = () => {
 
   return (
     <>
-      <Avatar onClick={handleClick}>{avatarLetter}</Avatar>
+      <Avatar sx={{ cursor: 'pointer' }} onClick={handleClick}>
+        {avatarLetter}
+      </Avatar>
       <ProfilePopover
         open={open}
         handleClose={handleClose}

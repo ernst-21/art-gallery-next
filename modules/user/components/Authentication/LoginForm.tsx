@@ -1,27 +1,20 @@
-import React, { useEffect, useMemo, useState } from 'react';
-import {
-  Box,
-  Button,
-  Chip,
-  Divider,
-  Grid,
-  Link,
-  Typography,
-} from '@mui/material';
+import React, { useMemo, useState } from 'react';
+import { Box, Chip, Divider, Grid, Link, Typography } from '@mui/material';
 import { ErrorOutlined } from '@mui/icons-material';
 import NextLink from 'next/link';
-import { getProviders, signIn } from 'next-auth/react';
+import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import FormPasswordField from '../../../../components/ui/FormFields/Text/FormPasswordField';
 import useSignInForm from '../../hooks/useLoginForm';
 import FormTextField from '../../../../components/ui/FormFields/Text/FormTextField';
 import { GoogleButton, LoadingButton } from '../../../../components/ui/Buttons';
 import SpinLoader from '../../../../components/ui/Spinloader';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 const LoginForm = () => {
   const router = useRouter();
   const [showError, setShowError] = useState(false);
-  const { onSubmit, control, isLoading, error, isSuccess, data } =
+  const { onSubmit, control, isLoading, isSuccess, data } =
     useSignInForm(setShowError);
 
   const destination = useMemo(() => {
@@ -102,7 +95,27 @@ const LoginForm = () => {
                 Submit
               </LoadingButton>
             </Grid>
-            <Grid item xs={12} display="flex" justifyContent={'flex-end'}>
+            <Grid
+              item
+              xs={12}
+              md={6}
+              display="flex"
+              justifyContent={{ xs: 'center', md: 'flex-start' }}
+            >
+              <NextLink href={`/${destination}`} passHref>
+                <Link display="flex" alignItems={'center'} underline="none">
+                  <ArrowBackIcon sx={{ mr: 1 }} />
+                  <Typography>Continue exploring</Typography>
+                </Link>
+              </NextLink>
+            </Grid>
+            <Grid
+              item
+              xs={12}
+              md={6}
+              display="flex"
+              justifyContent={{ xs: 'center', md: 'flex-end' }}
+            >
               <NextLink href={`/auth/register?p=${destination}`} passHref>
                 <Link underline="always">Don&apos;t have an account yet?</Link>
               </NextLink>
