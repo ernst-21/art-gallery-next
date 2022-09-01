@@ -5,6 +5,7 @@ import Navbar from './Navbar/Navbar';
 import useToggle from '../../hooks/utils/useToggle';
 import { Footer } from './Footer';
 import { SideBar } from './Sidebar';
+import Head from 'next/head';
 
 const LayoutRoot = styled('main')(() => ({
   display: 'flex',
@@ -14,17 +15,21 @@ const LayoutRoot = styled('main')(() => ({
 }));
 
 export type MainLayoutRootProps = {
+  title?: string;
   children?: ReactNode;
   extraStyle?: {};
 };
 
 export const MainLayoutRoot = (props: MainLayoutRootProps) => {
-  const { children, extraStyle } = props;
+  const { title, children, extraStyle } = props;
   const { isOpen, onOpen, onClose } = useToggle(false);
 
   return (
     <>
       <LayoutRoot>
+        <Head>
+          <title>{title}</title>
+        </Head>
         <Box
           sx={{
             display: 'flex',

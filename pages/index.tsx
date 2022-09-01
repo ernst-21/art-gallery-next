@@ -23,7 +23,7 @@ const HomePage: NextPage<HomeProps> = ({
   testimonials,
 }) => {
   return (
-    <MainLayout>
+    <MainLayout title="Home">
       <Stack>
         <HomeHeaderContainer />
         <FeaturedContainer featured={featured} />

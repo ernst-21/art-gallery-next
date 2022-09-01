@@ -12,6 +12,7 @@ const LivingRoomPage: NextPage = () => {
 
   return (
     <RightDrawerLayout
+      title={'Living Room'}
       onClose={onClose}
       open={isOpen}
       rightDrawerChildren={<ArtworksAccordion />}

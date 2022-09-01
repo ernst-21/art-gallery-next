@@ -19,6 +19,7 @@ const ArtistsPage: NextPage = (props) => {
   return (
     <ArtistsFilterProvider>
       <RightDrawerLayout
+        title={'Artists'}
         open={isOpen}
         onClose={onClose}
         rightDrawerChildren={<ArtistsFilter />}

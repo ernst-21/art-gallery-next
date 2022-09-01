@@ -5,12 +5,8 @@ import GridContainer from '../../../components/ui/GridContainer/GridContainer';
 import { NoData } from '../../../components/ui/NoData';
 import { EmptyContainer } from '../../../components/ui/EmptyContainer';
 import { ResultsGrid } from '../../../components/ui/ResultsGrid';
-import { IArtwork, IArtworksFilter } from '../../../interfaces';
+import { IArtwork } from '../../../interfaces';
 import { useRouter } from 'next/router';
-
-type ArtworkFilter = {
-  filter?: IArtworksFilter;
-};
 
 type ComponentProps = {
   artworks: IArtwork[];

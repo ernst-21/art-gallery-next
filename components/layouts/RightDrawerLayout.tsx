@@ -6,6 +6,7 @@ import { styled } from '@mui/material/styles';
 import { Box } from '@mui/material';
 
 type Props = {
+  title: string;
   children: ReactNode;
   open?: boolean;
   onClose: () => void;
@@ -19,6 +20,7 @@ const LayoutRoot = styled('main')(() => ({
 }));
 
 const RightDrawerLayout = ({
+  title,
   children,
   open,
   onClose,
@@ -27,6 +29,7 @@ const RightDrawerLayout = ({
   return (
     <LayoutRoot>
       <MainLayout
+        title={title}
         extraStyle={{
           width: { xs: '100%', md: '75%', lg: '80%' },
           left: 0,
