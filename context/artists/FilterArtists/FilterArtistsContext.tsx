@@ -11,6 +11,8 @@ import { IArtistFilter } from '../../../interfaces';
 import qs from 'qs';
 import { useRouter } from 'next/router';
 import isEmpty from 'lodash/isEmpty';
+import { stringifyQuery } from '../../../utils/stringifyQuery';
+import { usePushToQuery } from '../../../hooks/utils/usePushToQuery';
 
 // Data value of the provider context
 type ArtistsFilterContextValue = {
@@ -36,9 +38,9 @@ type ArtistsFilterContextProps = {
  * Provider component
  * */
 
-const parse = (state: any) => {
-  return qs.stringify(state, { indices: false });
-};
+// const parse = (state: any) => {
+//   return qs.stringify(state, { indices: false });
+// };
 
 const ArtistsFilterProvider = (props: ArtistsFilterContextProps) => {
   const { storageOrInitialValue, storeData } = useLocalStorage(
@@ -46,19 +48,7 @@ const ArtistsFilterProvider = (props: ArtistsFilterContextProps) => {
     {}
   );
   const [artistsFilter, setArtistsFilter] = useState(storageOrInitialValue);
-  const { push, pathname } = useRouter();
-
-  useEffect(() => {
-    storeData('artistsFilter', artistsFilter);
-  }, [artistsFilter, storeData]);
-
-  useEffect(() => {
-    isEmpty(artistsFilter)
-      ? push(`${pathname}`)
-      : push(`${pathname}?${parse(artistsFilter)}`);
-
-    //eslint-disable-next-line
-  }, [artistsFilter]);
+  const {} = usePushToQuery('artistsFilter', artistsFilter, storeData);
 
   return (
     <ArtistsFilterContext.Provider

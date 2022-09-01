@@ -7,6 +7,7 @@ import {
   useState,
 } from 'react';
 import { useLocalStorage } from '../../../hooks/utils/useLocalStorage';
+import { usePushToQuery } from '../../../hooks/utils/usePushToQuery';
 import { IArtworksFilter } from '../../../interfaces';
 
 // Data value of the provider context
@@ -38,6 +39,7 @@ const ArtworksFilterProvider = (props: ArtworksFilterContextProps) => {
     {}
   );
   const [artworksFilter, setArtworksFilter] = useState(storageOrInitialValue);
+  const {} = usePushToQuery('artworksFilter', artworksFilter, storeData);
 
   useEffect(() => {
     storeData('artworksFilter', artworksFilter);

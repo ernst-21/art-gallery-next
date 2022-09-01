@@ -8,9 +8,14 @@ import { ArtworksFilterProvider } from '../../context/artworks/FilterArtworks/Fi
 import ArtworksContainer from '../../modules/artworks/containers/ArtworksContainer';
 import { ArtworksFilter } from '../../modules/artworks/components/Filters/ArtworksFilter';
 import { FloatingButtons } from '../../components/ui/FloatingButtons';
+import { getArtworksByQuery } from '../../database/dbArtworks';
+import { getSession } from 'next-auth/react';
 
 const ArtworksPage: NextPage = (props) => {
   const { onOpen, isOpen, onClose } = useToggle();
+
+  //@ts-ignore
+  const { artworks } = props;
 
   return (
     <ArtworksFilterProvider>
@@ -20,7 +25,7 @@ const ArtworksPage: NextPage = (props) => {
         rightDrawerChildren={<ArtworksFilter />}
       >
         <Box sx={{ minHeight: 'calc(100vh - 70px)' }}>
-          <ArtworksContainer />
+          <ArtworksContainer artworks={artworks} />
           <FloatingButtons onClick={onOpen} showBelow={250} />
         </Box>
       </RightDrawerLayout>
@@ -30,9 +35,22 @@ const ArtworksPage: NextPage = (props) => {
 
 export default ArtworksPage;
 
-export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
+export const getServerSideProps: GetServerSideProps = async ({
+  locale,
+  req,
+  query,
+}) => {
+  const session = await getSession({ req });
+  //@ts-ignore
+  const userId = session?.user?._id;
+
+  console.log({ userId });
+
+  const artworks = await getArtworksByQuery(query, userId);
+
   return {
     props: {
+      artworks,
       //@ts-ignore
       ...(await serverSideTranslations(locale, ['common', 'artworks'])),
     },

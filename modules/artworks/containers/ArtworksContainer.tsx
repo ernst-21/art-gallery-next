@@ -1,35 +1,25 @@
-import React, { useEffect } from 'react';
-import { useMutation } from 'react-query';
-import { searchArtworks } from '../services/artworks-api';
+import React from 'react';
 import PageWidthContainer from '../../../components/layouts/PageWidthContainer';
-import { useArtworksFilter } from '../../../context/artworks/FilterArtworks/FilterArtworkContext';
 import SpinLoader from '../../../components/ui/Spinloader';
 import GridContainer from '../../../components/ui/GridContainer/GridContainer';
 import { NoData } from '../../../components/ui/NoData';
 import { EmptyContainer } from '../../../components/ui/EmptyContainer';
 import { ResultsGrid } from '../../../components/ui/ResultsGrid';
-import { IArtworksFilter } from '../../../interfaces';
+import { IArtwork, IArtworksFilter } from '../../../interfaces';
+import { useRouter } from 'next/router';
 
 type ArtworkFilter = {
   filter?: IArtworksFilter;
 };
 
-const ArtworksContainer = () => {
-  const { artworksFilter } = useArtworksFilter();
-  const {
-    mutateAsync: findArtworks,
-    data,
-    isLoading,
-    isError,
-  } = useMutation(['filter', artworksFilter], (filter: ArtworkFilter) =>
-    searchArtworks(filter)
-  );
+type ComponentProps = {
+  artworks: IArtwork[];
+};
 
-  useEffect(() => {
-    findArtworks({ filter: artworksFilter });
-  }, [findArtworks, artworksFilter]);
+const ArtworksContainer = ({ artworks }: ComponentProps) => {
+  const { isFallback } = useRouter();
 
-  if (isLoading) {
+  if (isFallback) {
     return (
       <EmptyContainer>
         <SpinLoader />
@@ -37,7 +27,7 @@ const ArtworksContainer = () => {
     );
   }
 
-  if (isError || !data || !data?.length) {
+  if (!artworks || !artworks?.length) {
     return (
       <EmptyContainer>
         <NoData />
@@ -52,7 +42,7 @@ const ArtworksContainer = () => {
       title={'Artworks'}
     >
       <PageWidthContainer>
-        <ResultsGrid data={data} isArtwork />
+        <ResultsGrid data={artworks} isArtwork />
       </PageWidthContainer>
     </GridContainer>
   );

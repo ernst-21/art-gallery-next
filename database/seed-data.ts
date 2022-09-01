@@ -310,7 +310,7 @@ export const initialData: SeedData = {
       price: 3000,
       tags: ['body', 'naked', 'sculpture', 'mythology', 'people'],
       colors: ['white'],
-      voters: ['62d86f5668ed12c6ef637df0'],
+      voters: ['6310f9cf598514923cc9a976'],
       gallery: 'Berlin',
       featured: false,
       orientation: 'portrait',
