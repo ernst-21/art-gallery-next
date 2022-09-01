@@ -44,8 +44,6 @@ export const getServerSideProps: GetServerSideProps = async ({
   //@ts-ignore
   const userId = session?.user?._id;
 
-  console.log({ userId });
-
   const artworks = await getArtworksByQuery(query, userId);
 
   return {
