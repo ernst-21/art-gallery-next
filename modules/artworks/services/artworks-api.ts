@@ -18,7 +18,9 @@ export const searchArtworks = (
   params: any,
   config?: RequestConfig
 ): Promise<IArtwork[]> => {
-  return ApiClient.post('/artworks', params, config).then((data) => data.data);
+  return ApiClient.post('/artworks/:slug', params, config).then(
+    (data) => data.data
+  );
 };
 
 export const getArtists = () => {

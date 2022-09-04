@@ -1,13 +1,12 @@
 import React from 'react';
 import { Box } from '@mui/material';
 import { useTranslation } from 'next-i18next';
-import { useSelectedArtwork } from '../../../../../../context/artworks/selectedArtwork/SelectedArtworkContext';
 import HangingArtwork from './HangingArtwork';
 import NoSelected from './NoSelected';
+import { ArtworkType } from '../../../../../../types/common.types';
 
-const SelectedArtwork = () => {
+const SelectedArtwork = ({ artwork }: ArtworkType) => {
   const { t } = useTranslation('artworks');
-  const { selectedArtwork } = useSelectedArtwork();
   return (
     <Box
       sx={{
@@ -20,8 +19,8 @@ const SelectedArtwork = () => {
         marginTop: { xs: '20px', md: '30px' },
       }}
     >
-      {selectedArtwork ? (
-        <HangingArtwork />
+      {artwork ? (
+        <HangingArtwork artwork={artwork} />
       ) : (
         <NoSelected t={t('hangItHere')} />
       )}

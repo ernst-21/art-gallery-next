@@ -9,7 +9,7 @@ export const getFeaturedArtworks = async (): Promise<IArtwork[]> => {
   const artworks = await Artwork.find({
     featured: true,
   })
-    .select('name category url gallery featured -_id')
+    .select('name category url gallery featured slug -_id')
     .lean();
 
   await db.disconnect();
@@ -56,7 +56,7 @@ export const getArtworksByQuery = async (query: any, userId: string) => {
       const artworks = await Artwork.find({
         $and: [{ purchased: { $nin: userId } }, { featured: { $in: false } }],
       }).select(
-        '_id name artist artist_Id description category price tags colors gallery featured orientation url size purchased voters'
+        '_id name artist artist_Id description category price tags colors gallery featured orientation url size purchased voters slug'
       );
 
       await db.disconnect();
@@ -72,7 +72,7 @@ export const getArtworksByQuery = async (query: any, userId: string) => {
     const artworks = await Artwork.find({
       $and: generateQueryFilter(query, userId),
     }).select(
-      '_id name artist artist_Id description category price tags colors gallery featured orientation url size purchased voters'
+      '_id name artist artist_Id description category price tags colors gallery featured orientation url size purchased voters slug'
     );
 
     await db.disconnect();
@@ -83,4 +83,31 @@ export const getArtworksByQuery = async (query: any, userId: string) => {
       JSON.parse(JSON.stringify({ message: err }));
     }
   }
+};
+
+interface ArtworkSlug {
+  slug: string;
+}
+
+export const getArtworksSlugs = async (): Promise<ArtworkSlug[]> => {
+  await db.connect();
+  const slugs = await Artwork.find().select('slug -_id').lean();
+
+  await db.disconnect();
+
+  return slugs;
+};
+
+export const getArtworkBySlug = async (
+  slug: string
+): Promise<IArtwork | null> => {
+  await db.connect();
+  const artwork = await Artwork.findOne({ slug }).lean();
+  await db.disconnect();
+
+  if (!artwork) {
+    return null;
+  }
+
+  return JSON.parse(JSON.stringify(artwork));
 };

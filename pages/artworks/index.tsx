@@ -26,7 +26,7 @@ const ArtworksPage: NextPage = (props) => {
         rightDrawerChildren={<ArtworksFilter />}
       >
         <Box sx={{ minHeight: 'calc(100vh - 70px)' }}>
-          <ArtworksContainer artworks={artworks} />
+          <ArtworksContainer artworks={artworks} title={'Artworks'} />
           <FloatingButtons onClick={onOpen} showBelow={250} />
         </Box>
       </RightDrawerLayout>

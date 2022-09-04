@@ -10,9 +10,10 @@ import { useRouter } from 'next/router';
 
 type ComponentProps = {
   artworks: IArtwork[];
+  title: string;
 };
 
-const ArtworksContainer = ({ artworks }: ComponentProps) => {
+const ArtworksContainer = ({ artworks, title }: ComponentProps) => {
   const { isFallback } = useRouter();
 
   if (isFallback) {
@@ -35,7 +36,7 @@ const ArtworksContainer = ({ artworks }: ComponentProps) => {
     <GridContainer
       sx={{ minHeight: 'calc(100vh - 70px)' }}
       backgroundColor={'secondary.light'}
-      title={'Artworks'}
+      title={title}
     >
       <PageWidthContainer>
         <ResultsGrid data={artworks} isArtwork />

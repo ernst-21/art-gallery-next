@@ -15,6 +15,7 @@ export interface IArtwork {
   size: 'small' | 'medium' | 'big';
   purchased: string[];
   voters: string[];
+  slug: string;
   createdAt?: string;
   updatedAt?: string;
 }

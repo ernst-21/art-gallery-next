@@ -23,8 +23,8 @@ const ArtworkCard = ({ artwork, sx }: HomeCardProps) => {
   const src = artwork?.url;
 
   return (
-    <div>
-      <NextMuiLink href={'/'}>
+    <div onClick={() => console.log(artwork.slug)}>
+      <NextMuiLink href={`/artworks/${artwork.slug}`}>
         <ItemCard condition={artwork?.featured}>
           <CardMedia
             sx={{

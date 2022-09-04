@@ -1,11 +1,10 @@
 import React, { useMemo } from 'react';
-import { useSelectedArtwork } from '../../../../../../context/artworks/selectedArtwork/SelectedArtworkContext';
 import { Box, Popover } from '@mui/material';
 import Image from 'next/image';
 import SocialIconsList from '../SocialIconsList/SocialIconsList';
+import { ArtworkType } from '../../../../../../types/common.types';
 
-const HangingArtwork = () => {
-  const { selectedArtwork } = useSelectedArtwork();
+const HangingArtwork = ({ artwork }: ArtworkType) => {
   const [anchorEl, setAnchorEl] = React.useState<HTMLDivElement | null>(null);
 
   const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
@@ -20,34 +19,12 @@ const HangingArtwork = () => {
   const id = open ? 'simple-popover' : undefined;
 
   const selectedArtworkHeight = useMemo(() => {
-    return selectedArtwork?.size === 'big'
+    return artwork?.size === 'big'
       ? '100%'
-      : selectedArtwork?.size === 'small'
+      : artwork?.size === 'small'
       ? '50%'
       : '70%';
-  }, [selectedArtwork?.size]);
-
-  const selectedArtworkWidth = useMemo(() => {
-    if (
-      selectedArtwork?.size === 'big' &&
-      selectedArtwork.orientation === 'landscape'
-    ) {
-      return '100%';
-    }
-    if (
-      selectedArtwork?.size === 'small' &&
-      selectedArtwork.orientation === 'landscape'
-    ) {
-      return '40%';
-    }
-    if (
-      selectedArtwork?.size === 'medium' &&
-      selectedArtwork.orientation === 'landscape'
-    ) {
-      return '70%';
-    }
-    return '50%';
-  }, [selectedArtwork?.orientation, selectedArtwork?.size]);
+  }, [artwork?.size]);
 
   return (
     <>
@@ -58,8 +35,9 @@ const HangingArtwork = () => {
           display: 'block',
           justifyContent: 'center',
           alignItems: 'center',
+          minHeight: '50%',
           height: selectedArtworkHeight,
-          width: selectedArtworkWidth,
+          minWidth: { xs: '60%', md: '30%' },
           opacity: 0.8,
           backgroundColor: 'white',
           padding: 1,
@@ -68,16 +46,17 @@ const HangingArtwork = () => {
           cursor: 'pointer',
         }}
       >
-        <Box sx={{ position: 'relative', width: '100%', height: '100%' }}>
-          <Image
-            blurDataURL={selectedArtwork?.url}
-            placeholder={selectedArtwork?.url ? 'blur' : undefined}
-            src={selectedArtwork ? selectedArtwork?.url : ''}
-            layout="fill"
-            objectFit={'contain'}
-            alt={selectedArtwork?.name}
-          />
-        </Box>
+        <Box
+          sx={{
+            position: 'relative',
+            width: '100%',
+            height: '100%',
+            backgroundImage: `url(${artwork?.url})`,
+            backgroundPosition: 'center',
+            backgroundSize: 'contain',
+            backgroundRepeat: 'no-repeat',
+          }}
+        />
       </Box>
       <Popover
         id={id}
@@ -99,7 +78,7 @@ const HangingArtwork = () => {
           horizontal: 'left',
         }}
       >
-        <SocialIconsList url={selectedArtwork?.url} />
+        <SocialIconsList url={artwork?.url} />
       </Popover>
     </>
   );

@@ -145,11 +145,11 @@ export const mainMenu = [
     //   },
     // ],
   },
-  {
-    _id: '3',
-    title: 'Living Room',
-    link: '/living-room',
-  },
+  // {
+  //   _id: '3',
+  //   title: 'Living Room',
+  //   link: '/living-room',
+  // },
   {
     _id: '4',
     title: 'News',

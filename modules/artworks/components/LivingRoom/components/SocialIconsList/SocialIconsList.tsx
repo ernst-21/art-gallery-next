@@ -10,6 +10,7 @@ type SocialIconProps = {
   title?: string;
   hasHashTag?: boolean;
   hashtag?: string;
+  round?: boolean;
   url: string | undefined;
 };
 
@@ -19,6 +20,7 @@ const SocialIcon = ({
   title,
   hasHashTag,
   hashtag,
+  round,
   url,
 }: SocialIconProps) => {
   const Icon = icon;
@@ -36,11 +38,11 @@ const SocialIcon = ({
     >
       {hasHashTag ? (
         <ShareButton url={url} hashtag={hashtag} separator=":: ">
-          <Icon size={32} round />
+          <Icon size={32} round={round} />
         </ShareButton>
       ) : (
         <ShareButton url={url} title={title} separator=":: ">
-          <Icon size={32} round />
+          <Icon size={32} round={round} />
         </ShareButton>
       )}
     </Box>
@@ -49,7 +51,7 @@ const SocialIcon = ({
 
 type SocialIconsListProps = Partial<SocialIconProps>;
 
-const SocialIconsList = ({ url, hashtag }: SocialIconsListProps) => {
+const SocialIconsList = ({ url, hashtag, round }: SocialIconsListProps) => {
   return (
     <Box display={'flex'} justifyContent={'space-around'} alignItems={'center'}>
       {socialItems?.map((item) => (
@@ -61,6 +63,7 @@ const SocialIconsList = ({ url, hashtag }: SocialIconsListProps) => {
           hasHashTag={item?.hasHashTag}
           hashtag={hashtag}
           url={url}
+          round={round}
         />
       ))}
     </Box>

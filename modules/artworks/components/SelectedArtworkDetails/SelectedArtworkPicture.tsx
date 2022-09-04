@@ -1,26 +1,26 @@
 import React, { memo } from 'react';
-import { Box, Grid } from '@mui/material';
-import Image from 'next/image';
+import { Box } from '@mui/material';
+import InnerImageZoom from 'react-inner-image-zoom';
+import 'react-inner-image-zoom/lib/InnerImageZoom/styles.min.css';
 import { IArtwork } from '../../../../interfaces';
 
 type SelectedProps = {
-  selectedArtwork: IArtwork | undefined;
+  artwork: IArtwork | undefined;
 };
 
-const SelectedArtworkPicture = ({ selectedArtwork }: SelectedProps) => {
+const SelectedArtworkPicture = ({ artwork }: SelectedProps) => {
+  if (!artwork?.url || !artwork) return null;
+
   return (
-    <Grid item xs={12} md={6}>
-      <Box
-        sx={{ position: 'relative', minHeight: { xs: '250px', md: '450px' } }}
-      >
-        <Image
-          src={selectedArtwork ? selectedArtwork?.url : ''}
-          alt={selectedArtwork?.name}
-          layout={'fill'}
-          objectFit={'contain'}
-        />
-      </Box>
-    </Grid>
+    <Box
+      sx={{
+        maxWidth: { xs: '100%', md: '50%' },
+        display: 'flex',
+        justifyContent: 'center',
+      }}
+    >
+      <InnerImageZoom src={artwork ? artwork?.url : ''} zoomScale={2} />
+    </Box>
   );
 };
 

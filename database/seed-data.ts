@@ -37,6 +37,7 @@ export interface SeedArtwork {
   size: 'small' | 'medium' | 'big';
   purchased: string[];
   voters: string[];
+  slug: string;
 }
 
 interface SeedTestimonial {
@@ -186,9 +187,10 @@ export const initialData: SeedData = {
       size: 'medium',
       purchased: [],
       voters: [],
+      slug: 'the-flowers-in-garden-f4180',
     },
     {
-      name: 'The beach in the morning.',
+      name: 'The beach in the morning',
       artist: 'Jane Eyre',
       artist_Id: '613f8fead70037b9cb5f417f',
       description: 'The Sea was very important in childhood of the artists.',
@@ -213,6 +215,7 @@ export const initialData: SeedData = {
       size: 'small',
       purchased: [],
       voters: [],
+      slug: 'the-beach-in-the-morning-f417f',
     },
     {
       name: 'End of the road',
@@ -238,6 +241,7 @@ export const initialData: SeedData = {
       size: 'big',
       purchased: [],
       voters: [],
+      slug: 'end-of-the-road-f417d',
     },
     {
       name: 'Springtime',
@@ -264,6 +268,7 @@ export const initialData: SeedData = {
       size: 'small',
       purchased: [],
       voters: [],
+      slug: 'springtime-f4181',
     },
     {
       name: 'Colors in the wall',
@@ -282,6 +287,7 @@ export const initialData: SeedData = {
       size: 'big',
       purchased: [],
       voters: [],
+      slug: 'colors-in-the-wall-f417e',
     },
     {
       name: 'Women heads',
@@ -300,6 +306,7 @@ export const initialData: SeedData = {
       size: 'big',
       purchased: [],
       voters: [],
+      slug: 'women-heads-f417e',
     },
     {
       name: 'Fleeing from heaven',
@@ -317,6 +324,7 @@ export const initialData: SeedData = {
       url: 'https://images.unsplash.com/photo-1561839561-b13bcfe95249?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=327&q=80',
       size: 'big',
       purchased: [],
+      slug: 'fleeing-from-heaven-f4182',
     },
     {
       name: 'Once upon a time in Asia',
@@ -345,6 +353,7 @@ export const initialData: SeedData = {
       size: 'medium',
       purchased: [],
       voters: [],
+      slug: 'once-upon-a-time-in-asia-f4183',
     },
     {
       name: 'Preparing the message',
@@ -371,6 +380,7 @@ export const initialData: SeedData = {
       size: 'small',
       purchased: [],
       voters: [],
+      slug: 'preparing-the-message-f4183',
     },
     {
       name: 'New Venus',
@@ -396,6 +406,7 @@ export const initialData: SeedData = {
       size: 'medium',
       purchased: [],
       voters: [],
+      slug: 'new-venus-f4182',
     },
     {
       name: 'Direct to the river',
@@ -414,6 +425,7 @@ export const initialData: SeedData = {
       size: 'medium',
       purchased: [],
       voters: [],
+      slug: 'direct-to-the-river-f4181',
     },
     {
       name: 'Table stuffs',
@@ -431,6 +443,7 @@ export const initialData: SeedData = {
       size: 'small',
       purchased: [],
       voters: [],
+      slug: 'table-stuffs-f4181',
     },
     {
       name: 'People on the boat',
@@ -457,6 +470,7 @@ export const initialData: SeedData = {
       size: 'medium',
       purchased: [],
       voters: [],
+      slug: 'people-on-the-boat-f4183',
     },
     {
       name: 'Camera to the horizon',
@@ -474,6 +488,7 @@ export const initialData: SeedData = {
       size: 'small',
       purchased: [],
       voters: [],
+      slug: 'camera-to-the-horizon-f417f',
     },
     {
       name: 'Carrying the precious liquid',
@@ -492,6 +507,7 @@ export const initialData: SeedData = {
       url: 'https://images.unsplash.com/photo-1577720643272-265f09367456?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=345&q=80',
       size: 'big',
       purchased: [],
+      slug: 'carrying-the-precious-liquid-f4180',
     },
     {
       name: 'Skating to the sky',
@@ -510,6 +526,7 @@ export const initialData: SeedData = {
       size: 'medium',
       purchased: [],
       voters: [],
+      slug: 'skating-to-the-sky-f417d',
     },
     {
       name: 'Near the wall',
@@ -527,6 +544,7 @@ export const initialData: SeedData = {
       size: 'medium',
       purchased: [],
       voters: [],
+      slug: 'near-the-wall-f417e',
     },
     {
       name: 'My village',
@@ -554,6 +572,7 @@ export const initialData: SeedData = {
       size: 'small',
       purchased: [],
       voters: [],
+      slug: 'my-village-f4180',
     },
     {
       name: 'Artemis',
@@ -571,6 +590,7 @@ export const initialData: SeedData = {
       size: 'medium',
       purchased: [],
       voters: [],
+      slug: 'artemis-f4182',
     },
     {
       name: 'Just relaxing',
@@ -599,8 +619,8 @@ export const initialData: SeedData = {
       size: 'medium',
       purchased: [],
       voters: [],
+      slug: 'just-relaxing-f417d',
     },
-    /////////////////////////////// NEW ARTWORKS ///////////////////////////
   ],
   testimonials: [
     {
