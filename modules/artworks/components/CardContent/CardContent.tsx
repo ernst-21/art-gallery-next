@@ -18,9 +18,9 @@ const ArtworkCardContent = ({ artwork }: CardContentProps) => {
   }, [artwork?.voters]);
 
   const artistIdentifier = useMemo(() => {
-    if (artwork) {
+    if (artwork && !artwork.featured) {
       return stringWrangler.joinNames(artwork?.artist, artwork?.artist_Id);
-    }
+    } else return '';
   }, [artwork]);
 
   return (
