@@ -26,7 +26,7 @@ const getArtists = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
 
   try {
     let foundArtist = await Artist.find().select(
-      'name artworks category _id discipline likes recommended pic country'
+      'name artworks category _id discipline likes recommended pic country identifier'
     );
 
     await db.disconnect();

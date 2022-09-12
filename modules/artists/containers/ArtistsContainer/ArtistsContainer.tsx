@@ -25,11 +25,6 @@ type ArtistsResults = {
 const ArtistsContainer = ({ artists }: ArtistsResults) => {
   const { t } = useTranslation('artists');
   const { isFallback } = useRouter();
-  //const { artistsFilter } = useArtistsFilter();
-
-  // useEffect(() => {
-  //   searchArtistsByFilter();
-  // }, [artistsFilter]);
 
   if (isFallback) {
     return (

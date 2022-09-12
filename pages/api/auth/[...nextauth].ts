@@ -66,7 +66,6 @@ export default NextAuth({
   // Callbacks
   callbacks: {
     async jwt({ token, account, user }) {
-      //console.log({ token, account, user });
       if (account) {
         token.accessToken = account.access_token;
         switch (account.type) {
@@ -86,7 +85,6 @@ export default NextAuth({
     },
 
     async session({ session, token, user }) {
-      //console.log({ session, token, user });
       session.accessToken = token.accessToken;
       session.user = token.user as any;
 

@@ -18,7 +18,8 @@ interface SeedArtist {
   pic: string;
   country: string;
   recommended: boolean;
-  artworks: string[];
+  identifier: string;
+  //artworks: string[];
 }
 
 export interface SeedArtwork {
@@ -76,11 +77,12 @@ export const initialData: SeedData = {
       pic: 'https://images.unsplash.com/photo-1442328166075-47fe7153c128?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
       country: 'England',
       recommended: true,
-      artworks: [
-        '613f8c70d70037b9cb5f417c',
-        '613f8c15d70037b9cb5f4178',
-        '613f8a2fd70037b9cb5f416b',
-      ],
+      // artworks: [
+      //   '613f8c70d70037b9cb5f417c',
+      //   '613f8c15d70037b9cb5f4178',
+      //   '613f8a2fd70037b9cb5f416b',
+      // ],
+      identifier: 'william-shakespeare-f417c',
     },
     {
       name: 'Walt Whitman',
@@ -91,11 +93,12 @@ export const initialData: SeedData = {
       pic: 'https://images.unsplash.com/photo-1495568995596-9e40959aa178?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=806&q=80',
       country: 'USA',
       recommended: false,
-      artworks: [
-        '613f8b86d70037b9cb5f4174',
-        '613f8b4fd70037b9cb5f4173',
-        '613f8a3cd70037b9cb5f416c',
-      ],
+      // artworks: [
+      //   '613f8b86d70037b9cb5f4174',
+      //   '613f8b4fd70037b9cb5f4173',
+      //   '613f8a3cd70037b9cb5f416c',
+      // ],
+      identifier: 'walt-whitman-f4174',
     },
     {
       name: 'John Doe',
@@ -106,11 +109,12 @@ export const initialData: SeedData = {
       pic: 'https://images.unsplash.com/photo-1463453091185-61582044d556?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
       country: 'USA',
       recommended: false,
-      artworks: [
-        '613f8c55d70037b9cb5f417b',
-        '613f8b46d70037b9cb5f4172',
-        '613f8ab7d70037b9cb5f416f',
-      ],
+      // artworks: [
+      //   '613f8c55d70037b9cb5f417b',
+      //   '613f8b46d70037b9cb5f4172',
+      //   '613f8ab7d70037b9cb5f416f',
+      // ],
+      identifier: 'john-doe-f417b',
     },
     {
       name: 'Alice Walker',
@@ -121,11 +125,12 @@ export const initialData: SeedData = {
       pic: 'https://images.unsplash.com/photo-1512361436605-a484bdb34b5f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
       country: 'USA',
       recommended: true,
-      artworks: [
-        '613f8c29d70037b9cb5f4179',
-        '613f8a97d70037b9cb5f416e',
-        '613f8a50d70037b9cb5f416d',
-      ],
+      // artworks: [
+      //   '613f8c29d70037b9cb5f4179',
+      //   '613f8a97d70037b9cb5f416e',
+      //   '613f8a50d70037b9cb5f416d',
+      // ],
+      identifier: 'alice-walker-f4179',
     },
     {
       name: 'Jane Eyre',
@@ -136,7 +141,8 @@ export const initialData: SeedData = {
       pic: 'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
       country: 'England',
       recommended: true,
-      artworks: ['613f8bded70037b9cb5f4176', '613f8a10d70037b9cb5f416a'],
+      //artworks: ['613f8bded70037b9cb5f4176', '613f8a10d70037b9cb5f416a'],
+      identifier: 'jane-eyre-f4176',
     },
     {
       name: 'Victor Hugo',
@@ -147,11 +153,12 @@ export const initialData: SeedData = {
       pic: 'https://images.unsplash.com/photo-1501797362492-608847952c4d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
       country: 'France',
       recommended: true,
-      artworks: [
-        '613f8c3cd70037b9cb5f417a',
-        '613f8bf7d70037b9cb5f4177',
-        '613f89e3d70037b9cb5f4169',
-      ],
+      // artworks: [
+      //   '613f8c3cd70037b9cb5f417a',
+      //   '613f8bf7d70037b9cb5f4177',
+      //   '613f89e3d70037b9cb5f4169',
+      // ],
+      identifier: 'victor-hugo-f417a',
     },
     {
       name: 'Alexandre Dumas',
@@ -162,11 +169,12 @@ export const initialData: SeedData = {
       pic: 'https://images.unsplash.com/photo-1605038593290-475661bfbba3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
       country: 'Germany',
       recommended: false,
-      artworks: [
-        '613f8bc9d70037b9cb5f4175',
-        '613f8b0bd70037b9cb5f4171',
-        '613f8aded70037b9cb5f4170',
-      ],
+      // artworks: [
+      //   '613f8bc9d70037b9cb5f4175',
+      //   '613f8b0bd70037b9cb5f4171',
+      //   '613f8aded70037b9cb5f4170',
+      // ],
+      identifier: 'alexandre-dumas-f4175',
     },
   ],
   artworks: [

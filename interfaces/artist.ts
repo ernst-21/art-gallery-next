@@ -8,6 +8,7 @@ export interface IArtist {
   country: string;
   recommended: boolean;
   artworks: string[];
+  identifier: string;
   createdAt?: string;
   updatedAt?: string;
 }

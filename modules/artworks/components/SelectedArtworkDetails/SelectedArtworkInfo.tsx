@@ -1,10 +1,14 @@
-import React, { memo, useCallback } from 'react';
+import React, { memo, useCallback, useMemo } from 'react';
 import { Box, IconButton, Stack, Typography } from '@mui/material';
 import { IArtwork } from '../../../../interfaces';
 import UserActionsButtons from '../../../../components/ui/UserActionsButtons/UserActionsButtons';
 import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
 import { SelectedArtworkModal } from './components/SelectedArtworkModal';
 import SocialIconsList from '../LivingRoom/components/SocialIconsList/SocialIconsList';
+
+import Link from 'next/link';
+import { Link as MuiLink } from '@mui/material';
+import { stringWrangler } from '../../../../utils';
 
 type SelectedProps = {
   artwork: IArtwork;
@@ -14,6 +18,12 @@ const SelectedArtworksInfo = ({ artwork }: SelectedProps) => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const artistIdentifier = useMemo(() => {
+    if (artwork) {
+      return stringWrangler.joinNames(artwork?.artist, artwork?.artist_Id);
+    }
+  }, [artwork]);
 
   const handleOpenModal = useCallback(() => {
     if (artwork) {
@@ -41,7 +51,12 @@ const SelectedArtworksInfo = ({ artwork }: SelectedProps) => {
             {artwork?.category}
           </Typography>
           <Typography paragraph>${artwork?.price} USD</Typography>
-          <Typography paragraph>{artwork?.artist}</Typography>
+          <Link href={`/artists/${artistIdentifier}`} passHref>
+            <MuiLink sx={{ cursor: 'pointer' }}>
+              <Typography paragraph>{artwork?.artist}</Typography>
+            </MuiLink>
+          </Link>
+
           <Typography paragraph>Size: {artwork?.size}</Typography>
           <Typography sx={{ mb: 4 }} paragraph>
             Voters: {artwork?.voters?.length}

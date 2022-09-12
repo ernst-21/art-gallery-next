@@ -8,14 +8,21 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { NextMuiLink } from '../../../../components/ui/Link/NextMuiLink';
 
-const ArtistCard = ({ name, country, pic, likes, discipline }: IArtist) => {
+const ArtistCard = ({
+  name,
+  country,
+  pic,
+  likes,
+  discipline,
+  identifier,
+}: IArtist) => {
   const numberOfLikes = useMemo(() => {
     return likes.length;
   }, [likes.length]);
 
   return (
     <div>
-      <NextMuiLink href={'/'}>
+      <NextMuiLink href={`/artists/${identifier}`}>
         <ItemCard condition={false}>
           <CardMedia
             sx={{

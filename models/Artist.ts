@@ -1,30 +1,35 @@
 import mongoose, { Schema, model, Model } from 'mongoose';
-const {ObjectId} = mongoose.Schema.Types;
+const { ObjectId } = mongoose.Schema.Types;
 import { IArtist } from '../interfaces';
 
-const artistSchema = new Schema({
+const artistSchema = new Schema(
+  {
     name: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
-    artworks : [{type: ObjectId, ref: 'Artwork'}],
+    //artworks: [{ type: ObjectId, ref: 'Artwork' }],
     recommended: {
-        type: Boolean,
-        required: true
+      type: Boolean,
+      required: true,
     },
-    about: {type: String, required: true},
+    about: { type: String, required: true },
     pic: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
-    discipline: {type:String},
+    discipline: { type: String },
     country: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
-    likes : [{type: ObjectId, ref: 'User'}]
-}, { timestamps: true });
+    likes: [{ type: ObjectId, ref: 'User' }],
+    identifier: { type: String, required: true },
+  },
+  { timestamps: true }
+);
 
-const Artist: Model<IArtist> = mongoose.models.Artist || model('Artist', artistSchema);
+const Artist: Model<IArtist> =
+  mongoose.models.Artist || model('Artist', artistSchema);
 
 export default Artist;

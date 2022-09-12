@@ -9,7 +9,7 @@ export const getRecommendedArtists = async (): Promise<IArtist[]> => {
   const artists = await Artist.find({
     recommended: true,
   })
-    .select('name recommended pic discipline country likes -_id')
+    .select('name recommended pic discipline country likes identifier -_id')
     .lean();
 
   await db.disconnect();
@@ -43,7 +43,7 @@ export const getArtistsByFilter = async (query: any): Promise<IArtist[]> => {
 
   if (isEmpty(query)) {
     const artists = await Artist.find().select(
-      'name artworks category _id discipline likes recommended pic country'
+      'name artworks category _id discipline likes recommended pic country identifier'
     );
 
     await db.disconnect();
@@ -53,9 +53,36 @@ export const getArtistsByFilter = async (query: any): Promise<IArtist[]> => {
   let foundArtist = await Artist.find({
     $and: generateQueryFilter(query),
   }).select(
-    'name artworks category _id discipline likes recommended pic country'
+    'name artworks category _id discipline likes recommended pic country identifier'
   );
 
   await db.disconnect();
   return JSON.parse(JSON.stringify(foundArtist));
+};
+
+interface ArtistIdentifier {
+  identifier: string;
+}
+
+export const getArtistIdentifiers = async (): Promise<ArtistIdentifier[]> => {
+  await db.connect();
+  const identifiers = await Artist.find().select('identifier -_id').lean();
+
+  await db.disconnect();
+
+  return identifiers;
+};
+
+export const getArtistByIdentifier = async (
+  identifier: string
+): Promise<IArtist | null> => {
+  await db.connect();
+  const artist = await Artist.findOne({ identifier }).lean();
+  await db.disconnect();
+
+  if (!artist) {
+    return null;
+  }
+
+  return JSON.parse(JSON.stringify(artist));
 };
