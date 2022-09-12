@@ -14,7 +14,7 @@ export const getRecommendedArtists = async (): Promise<IArtist[]> => {
 
   await db.disconnect();
 
-  return artists;
+  return JSON.parse(JSON.stringify(artists));
 };
 
 const generateQueryFilter = (query: any) => {

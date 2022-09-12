@@ -4,8 +4,8 @@ import Image from 'next/image';
 import { IArtwork } from '../../../../interfaces';
 import ArtworkCardContent from '../CardContent/CardContent';
 import ItemCard from '../../../../components/ui/ItemCard/ItemCard';
-import { NextMuiLink } from '../../../../components/ui/Link/NextMuiLink';
-import { useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
+import { useRouter } from 'next/router';
 
 type HomeCardProps = {
   sx?: {};
@@ -13,6 +13,7 @@ type HomeCardProps = {
 };
 
 const ArtworkCard = ({ artwork, sx }: HomeCardProps) => {
+  const { push } = useRouter();
   const height = useMemo(() => {
     if (artwork?.featured) return 250;
     if (artwork?.size === 'big') return 450;
@@ -20,35 +21,37 @@ const ArtworkCard = ({ artwork, sx }: HomeCardProps) => {
     return 200;
   }, [artwork?.featured, artwork?.size]);
 
+  const handleNavigateToAuthor = useCallback(() => {
+    push(`/artworks/${artwork.slug}`);
+  }, [artwork.slug, push]);
+
   const src = artwork?.url;
 
   return (
-    <div>
-      <NextMuiLink href={`/artworks/${artwork.slug}`}>
-        <ItemCard condition={artwork?.featured}>
-          <CardMedia
-            sx={{
-              width: '100%',
-              minHeight: height,
-              borderBottom: '1px solid lightgray',
-              position: 'relative',
-              ...sx,
-            }}
-          >
-            {src && (
-              <Image
-                blurDataURL={artwork?.url}
-                placeholder={artwork?.url ? 'blur' : undefined}
-                src={src}
-                layout="fill"
-                objectFit="cover"
-                alt={artwork?.name}
-              />
-            )}
-          </CardMedia>
-          <ArtworkCardContent artwork={artwork} />
-        </ItemCard>
-      </NextMuiLink>
+    <div style={{ cursor: 'pointer' }} onClick={handleNavigateToAuthor}>
+      <ItemCard condition={artwork?.featured}>
+        <CardMedia
+          sx={{
+            width: '100%',
+            minHeight: height,
+            borderBottom: '1px solid lightgray',
+            position: 'relative',
+            ...sx,
+          }}
+        >
+          {src && (
+            <Image
+              blurDataURL={artwork?.url}
+              placeholder={artwork?.url ? 'blur' : undefined}
+              src={src}
+              layout="fill"
+              objectFit="cover"
+              alt={artwork?.name}
+            />
+          )}
+        </CardMedia>
+        <ArtworkCardContent artwork={artwork} />
+      </ItemCard>
     </div>
   );
 };

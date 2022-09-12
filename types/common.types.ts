@@ -12,3 +12,8 @@ export type ArtworkType = {
 export type ArtistType = {
   artist: IArtist;
 };
+
+export type ArtistVoteType = {
+  identifier: string;
+  userId?: string;
+};

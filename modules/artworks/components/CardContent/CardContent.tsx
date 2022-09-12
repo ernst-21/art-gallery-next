@@ -7,6 +7,7 @@ import { IArtwork } from '../../../../interfaces';
 import { stringWrangler } from '../../../../utils';
 import Link from 'next/link';
 import { Link as MuiLink } from '@mui/material';
+import { NextMuiLink } from '../../../../components/ui/Link/NextMuiLink';
 
 type CardContentProps = {
   artwork: IArtwork;
@@ -42,13 +43,11 @@ const ArtworkCardContent = ({ artwork }: CardContentProps) => {
           )}
           {!artwork?.featured && (
             <>
-              <Link href={`/artists/${artistIdentifier}`} passHref>
-                <MuiLink>
-                  <Typography variant="body2" color="text.secondary">
-                    {artwork?.artist}
-                  </Typography>
-                </MuiLink>
-              </Link>
+              <NextMuiLink href={`/artists/${artistIdentifier}`}>
+                <Typography variant="body2" color="text.secondary">
+                  {artwork?.artist}
+                </Typography>
+              </NextMuiLink>
               <Typography variant="body2" color="text.secondary">
                 Likes: {likes}
               </Typography>

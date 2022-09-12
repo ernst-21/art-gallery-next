@@ -24,6 +24,7 @@
   "lastName": "Last Name",
   "view": "Vista:",
   "noData": "No elements to display. Please try another search criteria.",
+  "loginToVote": "You need to login to perform this action.",
   "filters": {
     "clearAll": "Clear all filters"
   },

@@ -1,12 +1,5 @@
 import * as React from 'react';
-import {
-  useState,
-  memo,
-  Dispatch,
-  SetStateAction,
-  useEffect,
-  useMemo,
-} from 'react';
+import { useState, memo, Dispatch, SetStateAction, useEffect } from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import { CircularProgress } from '@mui/material';
