@@ -1,4 +1,5 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import React from 'react';
 import MainLayout from '../../components/layouts/MainLayout';
 import { dbArtworks } from '../../database';
@@ -32,7 +33,7 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
   };
 };
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
   const { slug = '' } = params as { slug: string };
   const artwork = await dbArtworks.getArtworkBySlug(slug);
 
@@ -48,6 +49,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   return {
     props: {
       artwork,
+      //@ts-ignore
+      ...(await serverSideTranslations(locale, ['common', 'artworks'])),
     },
     // every 24hrs
     revalidate: 60 * 60 * 24,
