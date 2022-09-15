@@ -15,12 +15,13 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 400,
+  width: 450,
   bgcolor: 'background.paper',
   display: 'flex',
   flexDirection: 'column',
   textAlign: 'center',
   justifyContent: 'center',
+  borderRadius: 1,
   boxShadow: 24,
   p: 4,
 };
@@ -61,7 +62,7 @@ const LoginMessageModal = ({ open, handleClose }: ComponentProps) => {
               }}
             >
               <NextMuiLink href={`/auth/login?p=${router.asPath}`}>
-                <Button sx={{ width: '40%' }} variant="outlined">
+                <Button sx={{ width: 80, mt: 1 }} variant="contained">
                   Login
                 </Button>
               </NextMuiLink>
