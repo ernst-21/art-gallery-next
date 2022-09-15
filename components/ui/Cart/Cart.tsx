@@ -4,6 +4,8 @@ import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useUser } from '../../../hooks/security/useUser';
+import { useContext } from 'react';
+import { CartContext } from '../../../context/cart';
 
 export const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
   '& .MuiBadge-badge': {
@@ -20,6 +22,7 @@ type CartProps = {
 
 const Cart = ({ isInDrawer = false }: CartProps) => {
   const { isAuthenticated } = useUser();
+  const { numberOfItems } = useContext(CartContext);
 
   if (!isAuthenticated) {
     return null;
@@ -27,7 +30,7 @@ const Cart = ({ isInDrawer = false }: CartProps) => {
 
   return (
     <IconButton sx={{ ml: isInDrawer ? 0 : 1 }} aria-label="cart">
-      <StyledBadge badgeContent={4} color="secondary">
+      <StyledBadge badgeContent={numberOfItems} color="secondary">
         <ShoppingCartIcon />
       </StyledBadge>
     </IconButton>

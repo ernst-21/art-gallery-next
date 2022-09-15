@@ -15,8 +15,7 @@ import { navigateTo } from '../../../utils/navigateTo';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useTranslation } from 'react-i18next';
-import Cart from '../Cart/Cart';
-import { AuthContext } from '../../../context';
+import { CartContext } from '../../../context/cart';
 
 type SidebarUserMenu = {
   onClose: () => void;
@@ -26,6 +25,7 @@ const SidebarUserMenu = ({ onClose }: SidebarUserMenu) => {
   const { t } = useTranslation('common');
   const { isAuthenticated, logout } = useUser();
   const router = useRouter();
+  const { numberOfItems } = useContext(CartContext);
 
   const handleNavigation = (url: string) => {
     navigateTo(router, url);
@@ -77,7 +77,7 @@ const SidebarUserMenu = ({ onClose }: SidebarUserMenu) => {
       <ListItem disablePadding>
         <ListItemButton>
           <ListItemIcon>
-            <Badge badgeContent={4} color="secondary">
+            <Badge badgeContent={numberOfItems} color="secondary">
               <ShoppingCartOutlinedIcon />
             </Badge>
           </ListItemIcon>

@@ -1,11 +1,7 @@
 import { IArtist, IArtwork } from '../../interfaces';
 import { useUser } from '../security/useUser';
-import { useMemo } from 'react';
-import Cookies from 'js-cookie';
-
-const cookiesArtworks = Cookies.get('cart')
-  ? JSON.parse(Cookies.get('cart')!)
-  : [];
+import { useContext, useMemo } from 'react';
+import { CartContext } from '../../context/cart';
 
 export const useHasUserVoted = (arr: string[], entity: IArtwork | IArtist) => {
   const { user } = useUser();
@@ -21,15 +17,19 @@ export const useHasUserVoted = (arr: string[], entity: IArtwork | IArtist) => {
 };
 
 export const useUserInfo = (artwork: IArtwork) => {
-  const { user } = useUser();
   const { hasVoted } = useHasUserVoted(artwork?.voters, artwork);
+  const { isAuthenticated } = useUser();
+  const { numberOfItems } = useContext(CartContext);
 
   const hasAddedToCart = useMemo(() => {
-    if (artwork) {
-      return cookiesArtworks.includes(artwork._id);
-    }
-    return false;
-  }, [artwork]);
+    const cartArtworks = JSON.parse(localStorage.getItem('art-cart')!);
+    let foundArtwork = cartArtworks?.find(
+      (item: IArtwork) => item._id === artwork?._id
+    );
+    console.log({ foundArtwork });
+    return !isAuthenticated ? false : !!foundArtwork;
+    //eslint-disable-next-line
+  }, [artwork, numberOfItems, isAuthenticated]);
 
-  return { hasVoted, hasAddedToCart };
+  return { hasVoted, hasAddedToCart, isAuthenticated };
 };

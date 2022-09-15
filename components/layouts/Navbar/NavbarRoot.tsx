@@ -1,14 +1,8 @@
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import useScrollTrigger from '@mui/material/useScrollTrigger';
-import Slide from '@mui/material/Slide';
 import { FunctionComponent, memo, ReactNode } from 'react';
 import { styled } from '@mui/material/styles';
 import PageWidthContainer from '../PageWidthContainer';
-
-interface HideOnScrollProps {
-  children?: ReactNode | any;
-}
 
 interface NavbarProps {
   children?: ReactNode | any;
@@ -30,40 +24,26 @@ const NavbarStyle = styled(AppBar)(({ theme }) => ({
       }),
 }));
 
-const HideOnScroll: FunctionComponent<HideOnScrollProps> = (props) => {
-  const { children } = props;
-  const trigger = useScrollTrigger();
-
-  return (
-    <Slide appear={false} direction="down" in={!trigger}>
-      {children}
-    </Slide>
-  );
-};
-
 const NavbarRoot: FunctionComponent<NavbarProps> = ({
   children,
   extraStyle,
   ...props
 }) => {
   return (
-    <HideOnScroll {...props}>
-      <NavbarStyle sx={{ ...extraStyle }}>
-        <PageWidthContainer>
-          <Toolbar
-            disableGutters
-            sx={{
-              minHeight: 64,
-              left: 0,
-            }}
-          >
-            {children}
-          </Toolbar>
-        </PageWidthContainer>
-      </NavbarStyle>
-    </HideOnScroll>
+    <NavbarStyle sx={{ ...extraStyle }}>
+      <PageWidthContainer>
+        <Toolbar
+          disableGutters
+          sx={{
+            minHeight: 64,
+            left: 0,
+          }}
+        >
+          {children}
+        </Toolbar>
+      </PageWidthContainer>
+    </NavbarStyle>
   );
 };
 
-// @ts-ignore
 export default memo(NavbarRoot);

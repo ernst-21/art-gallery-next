@@ -1,8 +1,6 @@
 import React, { memo, useEffect } from 'react';
 import { Box, Divider, Drawer, List, ListItem } from '@mui/material';
 import { mainMenu } from '../../../settings/navigation';
-import Image from 'next/image';
-import ELink from '../../ui/Link/ELink';
 import { useRouter } from 'next/router';
 import SidebarMenuItem from '../../ui/SidebarMenu/SidebarMenuItem';
 import { NextMuiLink } from '../../ui/Link/NextMuiLink';
