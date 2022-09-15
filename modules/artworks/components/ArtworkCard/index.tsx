@@ -6,6 +6,7 @@ import ArtworkCardContent from '../CardContent/CardContent';
 import ItemCard from '../../../../components/ui/ItemCard/ItemCard';
 import { useCallback, useMemo } from 'react';
 import { useRouter } from 'next/router';
+import { Box } from '@mui/material';
 
 type HomeCardProps = {
   sx?: {};
@@ -28,28 +29,32 @@ const ArtworkCard = ({ artwork, sx }: HomeCardProps) => {
   const src = artwork?.url;
 
   return (
-    <div style={{ cursor: 'pointer' }} onClick={handleNavigateToAuthor}>
+    <div>
       <ItemCard condition={artwork?.featured}>
-        <CardMedia
-          sx={{
-            width: '100%',
-            minHeight: height,
-            borderBottom: '1px solid lightgray',
-            position: 'relative',
-            ...sx,
-          }}
-        >
-          {src && (
-            <Image
-              blurDataURL={artwork?.url}
-              placeholder={artwork?.url ? 'blur' : undefined}
-              src={src}
-              layout="fill"
-              objectFit="cover"
-              alt={artwork?.name}
-            />
-          )}
-        </CardMedia>
+        <Box onClick={handleNavigateToAuthor}>
+          <CardMedia
+            sx={{
+              cursor: 'pointer',
+              width: '100%',
+              minHeight: height,
+              borderBottom: '1px solid lightgray',
+              position: 'relative',
+              ...sx,
+            }}
+          >
+            {src && (
+              <Image
+                blurDataURL={artwork?.url}
+                placeholder={artwork?.url ? 'blur' : undefined}
+                src={src}
+                layout="fill"
+                objectFit="cover"
+                alt={artwork?.name}
+              />
+            )}
+          </CardMedia>
+        </Box>
+
         <ArtworkCardContent artwork={artwork} />
       </ItemCard>
     </div>

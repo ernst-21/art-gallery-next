@@ -10,8 +10,8 @@ import LoginMessageModal from '../LoginMessageModal/LoginMessageModal';
 
 type Props = {
   artwork: IArtwork;
-  voteOrLogin?: (e: SyntheticEvent) => void;
-  downVoteOrLogin?: (e: SyntheticEvent) => void;
+  voteOrLogin?: () => void;
+  downVoteOrLogin?: () => void;
   isOpen: boolean;
   onClose: () => void;
   onOpen: () => void;

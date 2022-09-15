@@ -1,4 +1,4 @@
-import React, { useMemo, memo, useState, SyntheticEvent } from 'react';
+import React, { useMemo, memo, useState } from 'react';
 import { CardContent, Stack } from '@mui/material';
 import CardActions from '@mui/material/CardActions';
 import Typography from '@mui/material/Typography';
@@ -52,15 +52,13 @@ const ArtworkCardContent = ({ artwork }: CardContentProps) => {
     } else return '';
   }, [artwork]);
 
-  const downVoteOrLogin = (e: SyntheticEvent) => {
-    e.stopPropagation();
+  const downVoteOrLogin = () => {
     return !isAuthenticated
       ? onOpen()
       : downVoteArtworkByClick({ artworkId: artwork._id!, userId: user?._id });
   };
 
-  const voteOrLogin = (e: SyntheticEvent) => {
-    e.stopPropagation();
+  const voteOrLogin = () => {
     return !isAuthenticated
       ? onOpen()
       : voteArtworkByClick({ artworkId: artwork._id!, userId: user?._id });
@@ -70,9 +68,11 @@ const ArtworkCardContent = ({ artwork }: CardContentProps) => {
     <>
       <CardContent>
         <Stack spacing={2}>
-          <Typography variant="h6" component="h1">
-            {artwork?.name}
-          </Typography>
+          <NextMuiLink href={`/artworks/${artwork?.slug}`}>
+            <Typography variant="h6" component="h1">
+              {artwork?.name}
+            </Typography>
+          </NextMuiLink>
 
           <Typography variant="body1" color="text.secondary">
             {artwork?.category.charAt(0).toUpperCase() +
