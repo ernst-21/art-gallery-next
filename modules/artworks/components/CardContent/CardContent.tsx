@@ -1,4 +1,4 @@
-import React, { useMemo, memo, useState } from 'react';
+import React, { useMemo, memo, useState, useCallback, useEffect } from 'react';
 import { CardContent, Stack } from '@mui/material';
 import CardActions from '@mui/material/CardActions';
 import Typography from '@mui/material/Typography';
@@ -11,6 +11,7 @@ import { useUser } from '../../../../hooks/security/useUser';
 import { useMutation } from 'react-query';
 import { ArtworkVoteType } from '../../../../types/common.types';
 import { downVoteArtwork, voteArtwork } from '../../services/artworks-api';
+import { useArtworksFilter } from '../../../../context/artworks/FilterArtworks/FilterArtworkContext';
 
 type CardContentProps = {
   artwork: IArtwork;
@@ -18,6 +19,8 @@ type CardContentProps = {
 
 const ArtworkCardContent = ({ artwork }: CardContentProps) => {
   const { isOpen, onClose, onOpen } = useToggle();
+  const { artworksFilter, setArtworksFilter } = useArtworksFilter();
+  const [hasDownVoted, setHasDownVoted] = useState(false);
   const { isAuthenticated, user } = useUser();
   const [updatedArtwork, setUpdatedArtwork] = useState(null);
   const { mutate: voteArtworkByClick } = useMutation(
@@ -52,10 +55,13 @@ const ArtworkCardContent = ({ artwork }: CardContentProps) => {
     } else return '';
   }, [artwork]);
 
+  const downVoteAndRemoveFromFilter = useCallback(() => {
+    downVoteArtworkByClick({ artworkId: artwork._id!, userId: user?._id });
+    setHasDownVoted(true);
+  }, [artwork._id, downVoteArtworkByClick, user?._id]);
+
   const downVoteOrLogin = () => {
-    return !isAuthenticated
-      ? onOpen()
-      : downVoteArtworkByClick({ artworkId: artwork._id!, userId: user?._id });
+    return !isAuthenticated ? onOpen() : downVoteAndRemoveFromFilter();
   };
 
   const voteOrLogin = () => {
@@ -63,6 +69,13 @@ const ArtworkCardContent = ({ artwork }: CardContentProps) => {
       ? onOpen()
       : voteArtworkByClick({ artworkId: artwork._id!, userId: user?._id });
   };
+
+  useEffect(() => {
+    if (hasDownVoted && likes === 0) {
+      setArtworksFilter({ ...artworksFilter });
+      setHasDownVoted(false);
+    }
+  }, [artworksFilter, hasDownVoted, likes, setArtworksFilter]);
 
   return (
     <>
