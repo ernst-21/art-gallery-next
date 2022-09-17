@@ -26,7 +26,6 @@ export const useUserInfo = (artwork: IArtwork) => {
     let foundArtwork = cartArtworks?.find(
       (item: IArtwork) => item._id === artwork?._id
     );
-    console.log({ foundArtwork });
     return !isAuthenticated ? false : !!foundArtwork;
     //eslint-disable-next-line
   }, [artwork, numberOfItems, isAuthenticated]);

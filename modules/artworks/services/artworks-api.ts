@@ -8,13 +8,6 @@ export const testApi = (config?: RequestConfig) => {
   return handleResponse(ApiClient.get('/hello', config));
 };
 
-export const searchByCategory = (
-  params: any,
-  config?: RequestConfig
-): Promise<IArtwork[]> => {
-  return ApiClient.post('/artworks/living-room', params, config);
-};
-
 export const searchArtworks = (
   params: any,
   config?: RequestConfig

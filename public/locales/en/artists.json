@@ -1,5 +1,6 @@
 {
   "artists": "Artists",
+  "favoriteArtists": "My favorite artists",
   "filters": {
     "all": "All",
     "discipline": "Discipline",

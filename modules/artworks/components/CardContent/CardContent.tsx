@@ -12,17 +12,25 @@ import { useMutation } from 'react-query';
 import { ArtworkVoteType } from '../../../../types/common.types';
 import { downVoteArtwork, voteArtwork } from '../../services/artworks-api';
 import { useArtworksFilter } from '../../../../context/artworks/FilterArtworks/FilterArtworkContext';
+import { useRouter } from 'next/router';
+import { useFavoriteArtworks } from '../../../../context/artworks/FavoriteArtworksContext/FavoriteArtworksContext';
 
 type CardContentProps = {
   artwork: IArtwork;
+  removeFromFavorites: () => void;
 };
 
-const ArtworkCardContent = ({ artwork }: CardContentProps) => {
+const ArtworkCardContent = ({
+  artwork,
+  removeFromFavorites,
+}: CardContentProps) => {
   const { isOpen, onClose, onOpen } = useToggle();
+  const { pathname } = useRouter();
   const { artworksFilter, setArtworksFilter } = useArtworksFilter();
   const [hasDownVoted, setHasDownVoted] = useState(false);
   const { isAuthenticated, user } = useUser();
   const [updatedArtwork, setUpdatedArtwork] = useState(null);
+  const { setFavoritesCount } = useFavoriteArtworks();
   const { mutate: voteArtworkByClick } = useMutation(
     ['artwork-vote', artwork?._id],
     (body: ArtworkVoteType) => voteArtwork(body),
@@ -71,11 +79,28 @@ const ArtworkCardContent = ({ artwork }: CardContentProps) => {
   };
 
   useEffect(() => {
-    if (hasDownVoted && likes === 0) {
+    if (hasDownVoted && likes === 0 && artworksFilter.voters) {
       setArtworksFilter({ ...artworksFilter });
       setHasDownVoted(false);
     }
   }, [artworksFilter, hasDownVoted, likes, setArtworksFilter]);
+
+  useEffect(() => {
+    if (hasDownVoted && pathname === '/auth/profile') {
+      removeFromFavorites();
+      //@ts-ignore
+      setFavoritesCount((prev) => prev - 1);
+      setHasDownVoted(false);
+    }
+  }, [
+    artworksFilter,
+    hasDownVoted,
+    likes,
+    pathname,
+    removeFromFavorites,
+    setArtworksFilter,
+    setFavoritesCount,
+  ]);
 
   return (
     <>

@@ -1,11 +1,11 @@
 import * as React from 'react';
+import { useCallback, useMemo, useState } from 'react';
+import { useRouter } from 'next/router';
 import CardMedia from '@mui/material/CardMedia';
 import Image from 'next/image';
 import { IArtwork } from '../../../../interfaces';
 import ArtworkCardContent from '../CardContent/CardContent';
 import ItemCard from '../../../../components/ui/ItemCard/ItemCard';
-import { useCallback, useMemo } from 'react';
-import { useRouter } from 'next/router';
 import { Box } from '@mui/material';
 
 type HomeCardProps = {
@@ -15,6 +15,8 @@ type HomeCardProps = {
 
 const ArtworkCard = ({ artwork, sx }: HomeCardProps) => {
   const { push } = useRouter();
+  const [isCardVisible, setIsCardVisible] = useState(true);
+
   const height = useMemo(() => {
     if (artwork?.featured) return 250;
     if (artwork?.size === 'big') return 450;
@@ -27,6 +29,10 @@ const ArtworkCard = ({ artwork, sx }: HomeCardProps) => {
   }, [artwork.slug, push]);
 
   const src = artwork?.url;
+
+  if (!isCardVisible) {
+    return null;
+  }
 
   return (
     <div>
@@ -55,7 +61,10 @@ const ArtworkCard = ({ artwork, sx }: HomeCardProps) => {
           </CardMedia>
         </Box>
 
-        <ArtworkCardContent artwork={artwork} />
+        <ArtworkCardContent
+          removeFromFavorites={() => setIsCardVisible(false)}
+          artwork={artwork}
+        />
       </ItemCard>
     </div>
   );

@@ -7,7 +7,7 @@ type ArtistGridProps = {
   data: IArtist[];
 };
 
-const ArtworksGrid = ({
+const ArtistGrid = ({
   data,
   spacing,
   ...props
@@ -23,4 +23,4 @@ const ArtworksGrid = ({
   );
 };
 
-export default memo(ArtworksGrid);
+export default memo(ArtistGrid);

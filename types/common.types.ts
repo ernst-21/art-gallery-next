@@ -9,6 +9,11 @@ export type ArtworkType = {
   artwork: IArtwork;
 };
 
+export type ArtworkAndArtistFavorites = {
+  artworks?: IArtwork[];
+  artists?: IArtist[];
+};
+
 export type ArtistType = {
   artist: IArtist;
 };
