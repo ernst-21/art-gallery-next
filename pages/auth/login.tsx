@@ -2,7 +2,7 @@ import React from 'react';
 import { GetServerSideProps } from 'next';
 import { getSession } from 'next-auth/react';
 import { AuthLayoutWithImage } from '../../components/layouts';
-import LoginForm from '../../modules/user/components/Authentication/LoginForm';
+import { LoginForm } from '../../modules/user/components/Authentication/components/LoginForm';
 
 const LoginPage = () => {
   return (

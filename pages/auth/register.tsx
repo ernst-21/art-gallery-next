@@ -2,15 +2,13 @@ import React from 'react';
 import { GetServerSideProps } from 'next';
 import { getSession } from 'next-auth/react';
 import { AuthLayoutWithImage } from '../../components/layouts';
-import RegisterForm from '../../modules/user/components/Authentication/RegisterForm';
-
+import { RegisterForm } from '../../modules/user/components/Authentication/components/RegisterForm';
 
 const RegisterPage = () => {
-
   return (
-      <AuthLayoutWithImage isRegisterView title={'Signup'}>
-        <RegisterForm />
-      </AuthLayoutWithImage>
+    <AuthLayoutWithImage isRegisterView title={'Signup'}>
+      <RegisterForm />
+    </AuthLayoutWithImage>
   );
 };
 

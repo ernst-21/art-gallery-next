@@ -25,6 +25,8 @@
   "view": "Vista:",
   "noData": "No elements to display. Please try another search criteria.",
   "loginToVote": "You need to login to perform this action.",
+  "noFavoritesYet": "No favorites yet.",
+  "exploreAndChooseFavorites": "Explore Artworks and Artists. Your favorites will appear here.",
   "filters": {
     "clearAll": "Clear all filters"
   },

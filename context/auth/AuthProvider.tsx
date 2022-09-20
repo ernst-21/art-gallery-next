@@ -82,12 +82,45 @@ export const AuthProvider = ({ children }: ProviderProps) => {
     await signOut();
   };
 
+  const editUser = async (
+    name: string,
+    email: string,
+    password: string
+  ): Promise<{ hasError: boolean; message?: string }> => {
+    try {
+      const { data } = await ApiClient.post('/user/edit', {
+        name,
+        email,
+        password,
+      });
+      const { user } = data;
+      dispatch({ type: '[Auth] - Logout', payload: user });
+      return {
+        hasError: false,
+      };
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        return {
+          hasError: true,
+          // @ts-ignore
+          message: error.response?.data.message,
+        };
+      }
+
+      return {
+        hasError: true,
+        message: 'Something went wrong by registering the user',
+      };
+    }
+  };
+
   return (
     <AuthContext.Provider
       value={{
         ...state,
         loginUser,
         registerUser,
+        editUser,
         logout,
       }}
     >

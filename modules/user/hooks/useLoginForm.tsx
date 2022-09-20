@@ -15,17 +15,19 @@ const useSignInForm = (cb: (arg0: boolean) => void): FormHookType => {
     resolver: yupResolver(signInSchema),
     defaultValues: {
       email: '',
-      password: ''
-    }
+      password: '',
+    },
   });
 
   const onLoginUser = async (data: FormData) => {
     cb(false);
-
+    console.log('dataFrom Login', data);
     await signIn('credentials', data);
   };
 
-  const {mutateAsync, error, isLoading, isSuccess, data} = useMutation((data: FormData) => onLoginUser(data));
+  const { mutateAsync, error, isLoading, isSuccess, data } = useMutation(
+    (data: FormData) => onLoginUser(data)
+  );
 
   return {
     control,
@@ -33,8 +35,8 @@ const useSignInForm = (cb: (arg0: boolean) => void): FormHookType => {
     isLoading,
     isSuccess,
     data,
-    onSubmit: handleSubmit((values) => mutateAsync(values))
+    onSubmit: handleSubmit((values) => mutateAsync(values)),
   };
 };
 
-export default  useSignInForm;
+export default useSignInForm;

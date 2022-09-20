@@ -27,3 +27,14 @@ export type ArtworkVoteType = {
   artworkId: string;
   userId?: string;
 };
+
+export type UserProps = {
+  user: {
+    email: string;
+    name: string;
+    role: string;
+    _id: string;
+  };
+  // password?: string;
+  // passwordRepeat?: string
+};

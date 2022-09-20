@@ -12,12 +12,14 @@ const ProfilePage: NextPage = (props) => {
   //@ts-ignore
   const { user, artworks, artists } = props;
 
-  console.log({ userId: user._id });
-
   return (
     <FavoriteArtworksProvider>
       <MainLayout title={`${user?.name} - Profile`}>
-        <UserProfileContainer artworks={artworks} artists={artists} />
+        <UserProfileContainer
+          artworks={artworks}
+          artists={artists}
+          user={user}
+        />
       </MainLayout>
     </FavoriteArtworksProvider>
   );

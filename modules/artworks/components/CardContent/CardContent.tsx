@@ -111,8 +111,7 @@ const ArtworkCardContent = ({
               {artwork?.name}
             </Typography>
           </NextMuiLink>
-
-          <Typography variant="body1" color="text.secondary">
+          <Typography>
             {artwork?.category.charAt(0).toUpperCase() +
               artwork?.category.slice(1)}
           </Typography>

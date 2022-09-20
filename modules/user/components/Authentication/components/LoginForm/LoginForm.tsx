@@ -4,11 +4,14 @@ import { ErrorOutlined } from '@mui/icons-material';
 import NextLink from 'next/link';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/router';
-import FormPasswordField from '../../../../components/ui/FormFields/Text/FormPasswordField';
-import useSignInForm from '../../hooks/useLoginForm';
-import FormTextField from '../../../../components/ui/FormFields/Text/FormTextField';
-import { GoogleButton, LoadingButton } from '../../../../components/ui/Buttons';
-import SpinLoader from '../../../../components/ui/Spinloader';
+import FormPasswordField from '../../../../../../components/ui/FormFields/Text/FormPasswordField';
+import useSignInForm from '../../../../hooks/useLoginForm';
+import FormTextField from '../../../../../../components/ui/FormFields/Text/FormTextField';
+import {
+  GithubButton,
+  LoadingButton,
+} from '../../../../../../components/ui/Buttons';
+import SpinLoader from '../../../../../../components/ui/Spinloader';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 const LoginForm = () => {
@@ -102,7 +105,7 @@ const LoginForm = () => {
               display="flex"
               justifyContent={{ xs: 'center', md: 'flex-start' }}
             >
-              <NextLink href={`/${destination}`} passHref>
+              <NextLink href={`${destination}`} passHref>
                 <Link display="flex" alignItems={'center'} underline="none">
                   <ArrowBackIcon sx={{ mr: 1 }} />
                   <Typography>Continue exploring</Typography>
@@ -128,16 +131,16 @@ const LoginForm = () => {
               justifyContent={'end'}
             >
               <Divider sx={{ mb: 3, width: '100%' }} />
-              <GoogleButton
-                key={'google'}
+              <GithubButton
+                key={'github'}
                 fullWidth
                 variant="outlined"
                 color="primary"
                 sx={{ mb: 1, height: '48px' }}
-                onClick={() => signIn('google')}
+                onClick={() => signIn('github')}
               >
-                Google
-              </GoogleButton>
+                Github
+              </GithubButton>
             </Grid>
           </Grid>
         </form>

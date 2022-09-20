@@ -4,12 +4,14 @@ import { User } from '../../../models';
 import bcrypt from 'bcryptjs';
 import { jwt } from '../../../utils';
 
-type Data = | {
-  message: string
-} | {
-  token: string;
-  user: { name: string; email: string; role: string }
-}
+type Data =
+  | {
+      message: string;
+    }
+  | {
+      token: string;
+      user: { name: string; email: string; role: string };
+    };
 
 const loginUser = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
   const { email = '', password = '' } = req.body;
@@ -19,11 +21,15 @@ const loginUser = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
   await db.disconnect();
 
   if (!user) {
-    return res.status(400).json({ message: 'Correo o contraseña no válidos - EMAIL ' });
+    return res
+      .status(400)
+      .json({ message: 'Email or password is not valid - EMAIL ' });
   }
 
   if (!bcrypt.compareSync(password, user.password!)) {
-    return res.status(400).json({ message: 'Correo o contraseña no válidos - Password ' });
+    return res
+      .status(400)
+      .json({ message: 'Email or password is not valid - Password ' });
   }
 
   const { role, name, _id } = user;
@@ -38,10 +44,12 @@ const loginUser = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
       name,
     },
   });
-
 };
 
-export default function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
+export default function handler(
+  req: NextApiRequest,
+  res: NextApiResponse<Data>
+) {
   switch (req.method) {
     case 'POST':
       return loginUser(req, res);

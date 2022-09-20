@@ -6,6 +6,7 @@ const UserFavoriteArtists = ({ artists }: ArtworkAndArtistFavorites) => {
   if (!artists || !artists.length) {
     return null;
   }
+
   return (
     <ArtistsContainer
       color={'white'}
