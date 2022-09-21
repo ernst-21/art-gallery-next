@@ -86,19 +86,3 @@ export const getArtistByIdentifier = async (
 
   return JSON.parse(JSON.stringify(artist));
 };
-
-export const getUserFavoriteArtists = async (
-  userId: string
-): Promise<IArtist[]> => {
-  await db.connect();
-
-  const artists = await Artist.find({
-    likes: { $in: userId },
-  })
-    .select('name recommended pic discipline country likes identifier _id')
-    .lean();
-
-  await db.disconnect();
-
-  return JSON.parse(JSON.stringify(artists));
-};

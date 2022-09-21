@@ -27,6 +27,7 @@
   "loginToVote": "You need to login to perform this action.",
   "noFavoritesYet": "No favorites yet.",
   "exploreAndChooseFavorites": "Explore Artworks and Artists. Your favorites will appear here.",
+  "networkError": "Something went wrong. Please reload the page",
   "filters": {
     "clearAll": "Clear all filters"
   },

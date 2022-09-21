@@ -38,3 +38,12 @@ export const downVoteArtwork = (
     (data) => data.data
   );
 };
+
+export const getFavoriteArtworks = (
+  params: Partial<ArtworkVoteType>,
+  config?: RequestConfig
+): Promise<IArtwork[]> => {
+  return ApiClient.post('/artworks/favorite', params, config).then(
+    (data) => data.data
+  );
+};

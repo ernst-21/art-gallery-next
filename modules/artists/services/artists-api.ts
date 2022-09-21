@@ -37,3 +37,10 @@ export const downVoteArtist = (
 ): Promise<IArtist[]> => {
   return ApiClient.post('/artists/downvote', config).then((data) => data.data);
 };
+
+export const getFavoriteArtists = (
+  //params: any,
+  config?: Partial<ArtistVoteType> & RequestConfig
+): Promise<IArtist[]> => {
+  return ApiClient.post('/artists/favorite', config).then((data) => data.data);
+};

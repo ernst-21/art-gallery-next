@@ -1,8 +1,25 @@
 import React, { memo } from 'react';
-import { ArtworkAndArtistFavorites } from '../../../../types/common.types';
+import {
+  ArtworkAndArtistFavorites,
+  LoadingAndIsErrorType,
+} from '../../../../types/common.types';
 import { ArtistsContainer } from '../../../artists/containers/ArtistsContainer';
+import { SpinLoaderContainer } from '../../../../components/ui/SpinLoaderContainer';
+import { ErrorContainer } from '../../../../components/ui/ErrorContainer';
 
-const UserFavoriteArtists = ({ artists }: ArtworkAndArtistFavorites) => {
+const UserFavoriteArtists = ({
+  artists,
+  isLoading,
+  isError,
+}: ArtworkAndArtistFavorites & LoadingAndIsErrorType) => {
+  if (isLoading) {
+    return <SpinLoaderContainer />;
+  }
+
+  if (isError) {
+    return <ErrorContainer />;
+  }
+
   if (!artists || !artists.length) {
     return null;
   }
@@ -10,7 +27,7 @@ const UserFavoriteArtists = ({ artists }: ArtworkAndArtistFavorites) => {
   return (
     <ArtistsContainer
       color={'white'}
-      artists={artists!}
+      artists={artists}
       translation={'favoriteArtists'}
     />
   );

@@ -38,3 +38,8 @@ export type UserProps = {
   // password?: string;
   // passwordRepeat?: string
 };
+
+export type LoadingAndIsErrorType = {
+  isLoading: boolean;
+  isError: boolean;
+};

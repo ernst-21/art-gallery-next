@@ -1,4 +1,5 @@
 import React, { useReducer, ReactNode, useEffect, useState } from 'react';
+import { useUser } from '../../hooks/security/useUser';
 import { IArtwork } from '../../interfaces';
 import { CartContext, cartReducer } from './';
 
@@ -22,6 +23,7 @@ type ProviderProps = {
 
 export const CartProvider = ({ children }: ProviderProps) => {
   const [state, dispatch] = useReducer(cartReducer, CART_INITIAL_STATE);
+  const { isAuthenticated } = useUser();
   const [mounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -66,6 +68,15 @@ export const CartProvider = ({ children }: ProviderProps) => {
       payload: orderSummary,
     });
   }, [state.cart, mounted]);
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      dispatch({
+        type: '[Cart] - LoadCart from cookie | storage',
+        payload: [],
+      });
+    }
+  }, [isAuthenticated]);
 
   const addArtworkToCart = (artwork: IArtwork) => {
     dispatch({

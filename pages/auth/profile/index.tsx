@@ -4,22 +4,16 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import React from 'react';
 import MainLayout from '../../../components/layouts/MainLayout';
 import { FavoriteArtworksProvider } from '../../../context/artworks/FavoriteArtworksContext/FavoriteArtworksContext';
-import { getUserFavoriteArtists } from '../../../database/dbArtists';
-import { getUserFavoriteArtworks } from '../../../database/dbArtworks';
 import { UserProfileContainer } from '../../../modules/user/containers';
 
 const ProfilePage: NextPage = (props) => {
   //@ts-ignore
-  const { user, artworks, artists } = props;
+  const { user } = props;
 
   return (
     <FavoriteArtworksProvider>
       <MainLayout title={`${user?.name} - Profile`}>
-        <UserProfileContainer
-          artworks={artworks}
-          artists={artists}
-          user={user}
-        />
+        <UserProfileContainer user={user} />
       </MainLayout>
     </FavoriteArtworksProvider>
   );
@@ -43,14 +37,9 @@ export const getServerSideProps: GetServerSideProps = async ({
     };
   }
 
-  const artworks = await getUserFavoriteArtworks(user?._id);
-  const artists = await getUserFavoriteArtists(user?._id);
-
   return {
     props: {
       user,
-      artworks,
-      artists,
       //@ts-ignore
       ...(await serverSideTranslations(locale, [
         'common',

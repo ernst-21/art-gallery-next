@@ -111,21 +111,3 @@ export const getArtworkBySlug = async (
 
   return JSON.parse(JSON.stringify(artwork));
 };
-
-export const getUserFavoriteArtworks = async (
-  userId: string
-): Promise<IArtwork[]> => {
-  await db.connect();
-
-  const artworks = await Artwork.find({
-    $and: [{ voters: { $in: userId } }, { featured: { $in: false } }],
-  })
-    .select(
-      '_id name artist artist_Id description category price tags colors gallery featured orientation url size purchased voters slug'
-    )
-    .lean();
-
-  await db.disconnect();
-
-  return JSON.parse(JSON.stringify(artworks));
-};

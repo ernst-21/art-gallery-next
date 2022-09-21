@@ -31,6 +31,7 @@ const ArtworkCardContent = ({
   const { isAuthenticated, user } = useUser();
   const [updatedArtwork, setUpdatedArtwork] = useState(null);
   const { setFavoritesCount } = useFavoriteArtworks();
+
   const { mutate: voteArtworkByClick } = useMutation(
     ['artwork-vote', artwork?._id],
     (body: ArtworkVoteType) => voteArtwork(body),
