@@ -3,32 +3,32 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { useTranslation } from 'next-i18next';
 import Image from 'next/image';
-import Socials from '@/modules/shops/components/Socials/ShopSocials';
-
-type FooterProps = {}
-
-const socialMock = {
-  public_facebook: true,
-  facebook: '/facebook',
-  public_twitter: true,
-  twitter: '/twitter',
-  public_instagram: true,
-  instagram: '/instagram',
-}
+import FooterIcons from '../DefaultFooter/FooterIcons';
+import PhoneNumber from './PhoneNumber';
+import Logo from '../../Navbar/Logo';
 
 const BusinessInfo = () => {
-
   const { t } = useTranslation('common');
   return (
-    <Box>
-      <Image src={'/images/logo-w.png'}
-             width={92.5} height={40} alt={'Plataforma de comercio electrónico'} />
-      <Typography mt={2} mb={4} sx={{maxWidth: 344}}>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua.
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: { xs: 'center', lg: 'start' },
+      }}
+    >
+      <Logo
+        sx={{ color: 'white', mt: -1.5 }}
+        secondSx={{ color: 'white', mt: -1.5 }}
+      />
+      <Typography mt={2} mb={1} sx={{ maxWidth: 344 }}>
+        {t('websiteExplanation')}
       </Typography>
-
-      <Socials {...socialMock} />
+      <Typography mt={1} mb={4} sx={{ maxWidth: 344 }}>
+        {t('footerPlaceholders')}
+      </Typography>
+      <PhoneNumber />
+      <FooterIcons />
     </Box>
   );
 };

@@ -1,26 +1,23 @@
 import { memo } from 'react';
 import Box from '@mui/material/Box';
-import { useTranslation } from 'next-i18next';
 import { DefaultFooterContent } from './DefaultFooter';
-import { lighten, styled } from '@mui/system';
-
+import { styled } from '@mui/system';
+import AccordionMenu from './DefaultFooter/AccordionMenu';
 
 const FooterContentStyled = styled(Box)(({ theme }) => ({
   paddingTop: 40,
   paddingBottom: 30,
   [theme.breakpoints.up('sm')]: {
-    paddingTop: 60
-  }
-  // backgroundColor: '#031A1E')
+    paddingTop: 60,
+  },
 }));
 
 const FooterContent = () => {
-
-  const { t } = useTranslation('common');
   return (
     <FooterContentStyled>
       <Box className={'page-wrapper'}>
         <DefaultFooterContent />
+        <AccordionMenu />
       </Box>
     </FooterContentStyled>
   );

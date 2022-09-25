@@ -35,5 +35,7 @@
     "single": "Se encontró 1 resultado",
     "multi": "Se encontraron {{result}} resultados",
     "none": "No se encontraron resultados"
-  }
+  },
+  "websiteExplanation": "This is a demo website representing a virtual art gallery. Images of artist and artworks belong to Unsplash.com were you can find the real authors of the images in this demo. Images in this demo have a fake price and are not for commercial use. Our only goal is to create a demo with the basic functionalities of an e-commerce website.",
+  "footerPlaceholders": "Content and menu items in this footer are placeholders also for demo purposes."
 }
