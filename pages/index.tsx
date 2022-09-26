@@ -10,6 +10,7 @@ import TestimonialCarouselContainer from '../modules/home/containers/Testimonial
 import { GetServerSidePropsContext } from 'next';
 import { dbArtworks, dbArtists, dbTestimonials } from '../database';
 import { IArtist, IArtwork, ITestimonial } from '../interfaces';
+import { ScrollToTop } from '../components/ui/ScrollToTop';
 
 type HomeProps = {
   featured: IArtwork[];
@@ -30,6 +31,12 @@ const HomePage: NextPage<HomeProps> = ({
         <RecommendedArtistContainer recommended={recommended} />
         <TestimonialCarouselContainer testimonials={testimonials} />
       </Stack>
+      <ScrollToTop
+        showBelow={250}
+        sx={{
+          right: { xs: '5%' },
+        }}
+      />
     </MainLayout>
   );
 };

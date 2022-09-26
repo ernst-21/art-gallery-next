@@ -1,4 +1,10 @@
-import React, { useReducer, ReactNode, useEffect, useState } from 'react';
+import React, {
+  useReducer,
+  ReactNode,
+  useEffect,
+  useState,
+  useContext,
+} from 'react';
 import { useUser } from '../../hooks/security/useUser';
 import { IArtwork } from '../../interfaces';
 import { CartContext, cartReducer } from './';
@@ -21,9 +27,8 @@ type ProviderProps = {
   children: ReactNode;
 };
 
-export const CartProvider = ({ children }: ProviderProps) => {
+const CartProvider = ({ children }: ProviderProps) => {
   const [state, dispatch] = useReducer(cartReducer, CART_INITIAL_STATE);
-  const { isAuthenticated } = useUser();
   const [mounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -69,15 +74,6 @@ export const CartProvider = ({ children }: ProviderProps) => {
     });
   }, [state.cart, mounted]);
 
-  useEffect(() => {
-    if (!isAuthenticated) {
-      dispatch({
-        type: '[Cart] - LoadCart from cookie | storage',
-        payload: [],
-      });
-    }
-  }, [isAuthenticated]);
-
   const addArtworkToCart = (artwork: IArtwork) => {
     dispatch({
       type: '[Cart] - Add artwork to cart',
@@ -101,3 +97,13 @@ export const CartProvider = ({ children }: ProviderProps) => {
     </CartContext.Provider>
   );
 };
+
+const useCart = () => {
+  const context = useContext(CartContext);
+  if (context === undefined) {
+    throw new Error('You must be inside a context provider'); // also, you can throw an error if it is you need the context
+  }
+  return context;
+};
+
+export { CartProvider, useCart };

@@ -2,7 +2,7 @@ import { ApiClient } from '../../../api';
 import { RequestConfig } from '../../../types/axios';
 import { handleResponse } from '../../../utils/response';
 import { IArtwork } from '../../../interfaces';
-import { ArtworkVoteType } from '../../../types/common.types';
+import { ArtworkVoteType, CartArtworks } from '../../../types/common.types';
 
 export const testApi = (config?: RequestConfig) => {
   return handleResponse(ApiClient.get('/hello', config));
@@ -44,6 +44,15 @@ export const getFavoriteArtworks = (
   config?: RequestConfig
 ): Promise<IArtwork[]> => {
   return ApiClient.post('/artworks/favorite', params, config).then(
+    (data) => data.data
+  );
+};
+
+export const getSuggestionsInCart = (
+  params: CartArtworks,
+  config?: RequestConfig
+): Promise<IArtwork[]> => {
+  return ApiClient.post('/artworks/suggestions', params, config).then(
     (data) => data.data
   );
 };

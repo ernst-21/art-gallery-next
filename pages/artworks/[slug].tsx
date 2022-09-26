@@ -2,6 +2,7 @@ import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import React from 'react';
 import MainLayout from '../../components/layouts/MainLayout';
+import { ScrollToTop } from '../../components/ui/ScrollToTop';
 import { dbArtworks } from '../../database';
 import { IArtwork } from '../../interfaces';
 import { ArtworksDetailsContainer } from '../../modules/artworks/containers/ArtworkDetailsContainer';
@@ -14,6 +15,12 @@ const ArtworkDetails: NextPage<Artwork> = ({ artwork }) => {
   return (
     <MainLayout title={artwork.name}>
       <ArtworksDetailsContainer artwork={artwork} />
+      <ScrollToTop
+        showBelow={250}
+        sx={{
+          right: { xs: '5%' },
+        }}
+      />
     </MainLayout>
   );
 };

@@ -14,6 +14,7 @@ import { useUser } from '../../../../hooks/security/useUser';
 import { useMutation } from 'react-query';
 import { voteArtwork, downVoteArtwork } from '../../services/artworks-api';
 import { ArtworkVoteType } from '../../../../types/common.types';
+import { SelectedArtworkTags } from './components/SelectedArtworkTags';
 
 type SelectedProps = {
   artwork: IArtwork;
@@ -103,6 +104,7 @@ const SelectedArtworksInfo = ({ artwork }: SelectedProps) => {
             Voters: {artworkToRender?.voters?.length}
           </Typography>
           <Typography paragraph>{artwork?.description}</Typography>
+          <SelectedArtworkTags artwork={artwork} />
         </Stack>
         <Box sx={{ mt: 2, display: 'flex', alignItems: 'center' }}>
           <UserActionsButtons

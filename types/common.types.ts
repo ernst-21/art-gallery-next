@@ -43,3 +43,7 @@ export type LoadingAndIsErrorType = {
   isLoading: boolean;
   isError: boolean;
 };
+
+export type CartArtworks = {
+  cart: IArtwork[];
+};

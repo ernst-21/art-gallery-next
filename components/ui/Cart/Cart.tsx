@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { memo } from 'react';
 import Badge, { BadgeProps } from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
@@ -6,6 +7,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useUser } from '../../../hooks/security/useUser';
 import { useContext } from 'react';
 import { CartContext } from '../../../context/cart';
+import { NextMuiLink } from '../Link/NextMuiLink';
 
 export const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
   '& .MuiBadge-badge': {
@@ -29,12 +31,14 @@ const Cart = ({ isInDrawer = false }: CartProps) => {
   }
 
   return (
-    <IconButton sx={{ ml: isInDrawer ? 0 : 1 }} aria-label="cart">
-      <StyledBadge badgeContent={numberOfItems} color="secondary">
-        <ShoppingCartIcon />
-      </StyledBadge>
-    </IconButton>
+    <NextMuiLink href={'/cart'}>
+      <IconButton sx={{ ml: isInDrawer ? 0 : 1 }} aria-label="cart">
+        <StyledBadge badgeContent={numberOfItems} color="secondary">
+          <ShoppingCartIcon />
+        </StyledBadge>
+      </IconButton>
+    </NextMuiLink>
   );
 };
 
-export default Cart;
+export default memo(Cart);
