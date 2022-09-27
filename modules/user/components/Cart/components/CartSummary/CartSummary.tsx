@@ -15,6 +15,8 @@ import { format } from '../../../../../../utils';
 const CartSummary = () => {
   const { cart, numberOfItems, total } = useCart();
 
+  if (!cart || !cart.length) return null;
+
   return (
     <Grid sx={{ mt: { xs: 2, md: 0 } }} item xs={12} sm={6} md={3}>
       <Paper sx={{ padding: 2 }} elevation={6}>

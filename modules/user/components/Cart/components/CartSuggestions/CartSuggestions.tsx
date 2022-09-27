@@ -27,7 +27,7 @@ const CartSuggestions = () => {
     return data?.slice(0, 4);
   }, [data]);
 
-  if (isError) {
+  if (isError || !cart || !cart.length) {
     return null;
   }
 

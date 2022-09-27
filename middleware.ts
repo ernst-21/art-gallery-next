@@ -3,8 +3,10 @@ import { NextFetchEvent, NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import { getToken } from 'next-auth/jwt';
 
+const AUTH_URLS = ['/auth/profile', '/cart'];
+
 export async function middleware(req: NextRequest, ev: NextFetchEvent) {
-  if (req.nextUrl.pathname === '/auth/profile') {
+  if (AUTH_URLS.includes(req.nextUrl.pathname)) {
     const session = await getToken({
       req,
       secret: process.env.NEXTAUTH_SECRET,
