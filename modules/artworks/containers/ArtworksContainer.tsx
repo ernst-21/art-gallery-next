@@ -11,12 +11,13 @@ import { useRouter } from 'next/router';
 type ComponentProps = {
   artworks: IArtwork[];
   title: string;
+  isLoading?: boolean;
 };
 
-const ArtworksContainer = ({ artworks, title }: ComponentProps) => {
+const ArtworksContainer = ({ artworks, title, isLoading }: ComponentProps) => {
   const { isFallback } = useRouter();
 
-  if (isFallback) {
+  if (isFallback || isLoading) {
     return (
       <EmptyContainer>
         <SpinLoader />

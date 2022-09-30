@@ -86,13 +86,23 @@ const SelectedArtworksInfo = ({ artwork }: SelectedProps) => {
           <Typography sx={{ mb: 2 }} variant="h1">
             {artwork?.name}
           </Typography>
+          {artwork.featured && (
+            <Typography
+              sx={{ textTransform: 'capitalize', color: 'text.secondary' }}
+              paragraph
+            >
+              Featured
+            </Typography>
+          )}
           <Typography
             sx={{ textTransform: 'capitalize', color: 'text.secondary' }}
             paragraph
           >
             {artwork?.category}
           </Typography>
-          <Typography paragraph>${artwork?.price} USD</Typography>
+          {!artwork.featured && (
+            <Typography paragraph>${artwork?.price} USD</Typography>
+          )}
           <Link href={`/artists/${artistIdentifier}`} passHref>
             <MuiLink sx={{ cursor: 'pointer' }}>
               <Typography paragraph>{artwork?.artist}</Typography>
@@ -107,15 +117,18 @@ const SelectedArtworksInfo = ({ artwork }: SelectedProps) => {
           <SelectedArtworkTags artwork={artwork} />
         </Stack>
         <Box sx={{ mt: 2, display: 'flex', alignItems: 'center' }}>
-          <UserActionsButtons
-            artwork={artworkToRender}
-            isOpen={isOpen}
-            onClose={onClose}
-            onOpen={onOpen}
-            downVoteOrLogin={downVoteOrLogin}
-            voteOrLogin={voteOrLogin}
-            isLoading={false}
-          />
+          {!artwork.featured && (
+            <UserActionsButtons
+              artwork={artworkToRender}
+              isOpen={isOpen}
+              onClose={onClose}
+              onOpen={onOpen}
+              downVoteOrLogin={downVoteOrLogin}
+              voteOrLogin={voteOrLogin}
+              isLoading={false}
+            />
+          )}
+
           {artwork.category !== 'sculpture' && (
             <IconButton onClick={handleOpenModal}>
               <RemoveRedEyeOutlinedIcon />

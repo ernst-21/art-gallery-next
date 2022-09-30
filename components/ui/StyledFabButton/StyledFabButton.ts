@@ -2,7 +2,7 @@ import Fab from '@mui/material/Fab';
 import { styled } from '@mui/material/styles';
 
 export const StyledFab = styled(Fab)(({ theme }) => ({
-  zIndex: 2,
+  zIndex: 20,
   position: 'fixed',
   color: theme.palette.primary.main,
   backgroundColor: '#DCDCDC',

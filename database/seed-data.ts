@@ -77,12 +77,7 @@ export const initialData: SeedData = {
       pic: 'https://images.unsplash.com/photo-1442328166075-47fe7153c128?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
       country: 'England',
       recommended: true,
-      // artworks: [
-      //   '613f8c70d70037b9cb5f417c',
-      //   '613f8c15d70037b9cb5f4178',
-      //   '613f8a2fd70037b9cb5f416b',
-      // ],
-      identifier: 'william-shakespeare-f417c',
+      identifier: 'william-shakespeare-4022a',
     },
     {
       name: 'Walt Whitman',
@@ -93,12 +88,7 @@ export const initialData: SeedData = {
       pic: 'https://images.unsplash.com/photo-1495568995596-9e40959aa178?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=806&q=80',
       country: 'USA',
       recommended: false,
-      // artworks: [
-      //   '613f8b86d70037b9cb5f4174',
-      //   '613f8b4fd70037b9cb5f4173',
-      //   '613f8a3cd70037b9cb5f416c',
-      // ],
-      identifier: 'walt-whitman-f4174',
+      identifier: 'walt-whitman-4022b',
     },
     {
       name: 'John Doe',
@@ -109,12 +99,7 @@ export const initialData: SeedData = {
       pic: 'https://images.unsplash.com/photo-1463453091185-61582044d556?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
       country: 'USA',
       recommended: false,
-      // artworks: [
-      //   '613f8c55d70037b9cb5f417b',
-      //   '613f8b46d70037b9cb5f4172',
-      //   '613f8ab7d70037b9cb5f416f',
-      // ],
-      identifier: 'john-doe-f417b',
+      identifier: 'john-doe-4022c',
     },
     {
       name: 'Alice Walker',
@@ -125,12 +110,7 @@ export const initialData: SeedData = {
       pic: 'https://images.unsplash.com/photo-1512361436605-a484bdb34b5f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
       country: 'USA',
       recommended: true,
-      // artworks: [
-      //   '613f8c29d70037b9cb5f4179',
-      //   '613f8a97d70037b9cb5f416e',
-      //   '613f8a50d70037b9cb5f416d',
-      // ],
-      identifier: 'alice-walker-f4179',
+      identifier: 'alice-walker-4022d',
     },
     {
       name: 'Jane Eyre',
@@ -141,8 +121,7 @@ export const initialData: SeedData = {
       pic: 'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
       country: 'England',
       recommended: true,
-      //artworks: ['613f8bded70037b9cb5f4176', '613f8a10d70037b9cb5f416a'],
-      identifier: 'jane-eyre-f4176',
+      identifier: 'jane-eyre-4022e',
     },
     {
       name: 'Victor Hugo',
@@ -153,12 +132,7 @@ export const initialData: SeedData = {
       pic: 'https://images.unsplash.com/photo-1501797362492-608847952c4d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
       country: 'France',
       recommended: true,
-      // artworks: [
-      //   '613f8c3cd70037b9cb5f417a',
-      //   '613f8bf7d70037b9cb5f4177',
-      //   '613f89e3d70037b9cb5f4169',
-      // ],
-      identifier: 'victor-hugo-f417a',
+      identifier: 'victor-hugo-4022f',
     },
     {
       name: 'Alexandre Dumas',
@@ -169,19 +143,14 @@ export const initialData: SeedData = {
       pic: 'https://images.unsplash.com/photo-1605038593290-475661bfbba3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
       country: 'Germany',
       recommended: false,
-      // artworks: [
-      //   '613f8bc9d70037b9cb5f4175',
-      //   '613f8b0bd70037b9cb5f4171',
-      //   '613f8aded70037b9cb5f4170',
-      // ],
-      identifier: 'alexandre-dumas-f4175',
+      identifier: 'alexandre-dumas-40230',
     },
   ],
   artworks: [
     {
       name: 'The flowers in garden',
       artist: 'Victor Hugo',
-      artist_Id: '613f91dbd70037b9cb5f4180',
+      artist_Id: 'victor-hugo-4022f',
       description:
         'This artwork represent flowers in garden as well as the feelings of the artists.',
       category: 'painting',
@@ -200,7 +169,7 @@ export const initialData: SeedData = {
     {
       name: 'The beach in the morning',
       artist: 'Jane Eyre',
-      artist_Id: '613f8fead70037b9cb5f417f',
+      artist_Id: 'jane-eyre-4022e',
       description: 'The Sea was very important in childhood of the artists.',
       category: 'photography',
       price: 900,
@@ -228,7 +197,7 @@ export const initialData: SeedData = {
     {
       name: 'End of the road',
       artist: 'William Shakespeare',
-      artist_Id: '613f8ca6d70037b9cb5f417d',
+      artist_Id: 'william-shakespeare-4022a',
       description: 'Photo taken in a difficult moment of the artist life.',
       category: 'photography',
       price: 700,
@@ -254,7 +223,7 @@ export const initialData: SeedData = {
     {
       name: 'Springtime',
       artist: 'Walt Whitman',
-      artist_Id: '613f92dad70037b9cb5f4181',
+      artist_Id: 'walt-whitman-4022b',
       description:
         'In 1904 the artist fell that dogs should be present in his artworks so he could remember his own pet.',
       category: 'painting',
@@ -281,7 +250,7 @@ export const initialData: SeedData = {
     {
       name: 'Colors in the wall',
       artist: 'Alice Walker',
-      artist_Id: '613f8e9fd70037b9cb5f417e',
+      artist_Id: 'alice-walker-4022d',
       description:
         'The painting describes all the emotions of the artist in her last days.',
       category: 'painting',
@@ -300,7 +269,7 @@ export const initialData: SeedData = {
     {
       name: 'Women heads',
       artist: 'Alice Walker',
-      artist_Id: '613f8e9fd70037b9cb5f417e',
+      artist_Id: 'alice-walker-4022d',
       description:
         'The painting describes all the emotions of the artist in her last days.',
       category: 'painting',
@@ -319,7 +288,7 @@ export const initialData: SeedData = {
     {
       name: 'Fleeing from heaven',
       artist: 'John Doe',
-      artist_Id: '613f93a7d70037b9cb5f4182',
+      artist_Id: 'john-doe-4022c',
       description: 'Describing human condition in a hurry.',
       category: 'sculpture',
       price: 3000,
@@ -337,7 +306,7 @@ export const initialData: SeedData = {
     {
       name: 'Once upon a time in Asia',
       artist: 'Alexandre Dumas',
-      artist_Id: '613f9491d70037b9cb5f4183',
+      artist_Id: 'alexandre-dumas-40230',
       description:
         'Taken during the adventure of the author in the Asian continent.',
       category: 'photography',
@@ -366,7 +335,7 @@ export const initialData: SeedData = {
     {
       name: 'Preparing the message',
       artist: 'Alexandre Dumas',
-      artist_Id: '613f9491d70037b9cb5f4183',
+      artist_Id: 'alexandre-dumas-40230',
       description: 'Men preparing the message to be sent to the front.',
       category: 'photography',
       price: 400,
@@ -393,7 +362,7 @@ export const initialData: SeedData = {
     {
       name: 'New Venus',
       artist: 'John Doe',
-      artist_Id: '613f93a7d70037b9cb5f4182',
+      artist_Id: 'john-doe-4022c',
       description: 'Representation of female beauty according to the author.',
       category: 'sculpture',
       price: 8000,
@@ -419,7 +388,7 @@ export const initialData: SeedData = {
     {
       name: 'Direct to the river',
       artist: 'Walt Whitman',
-      artist_Id: '613f92dad70037b9cb5f4181',
+      artist_Id: 'walt-whitman-4022b',
       description:
         'Print of the original work that represents all hours the author spent on the river bank.',
       category: 'print',
@@ -438,7 +407,7 @@ export const initialData: SeedData = {
     {
       name: 'Table stuffs',
       artist: 'Walt Whitman',
-      artist_Id: '613f92dad70037b9cb5f4181',
+      artist_Id: 'walt-whitman-4022b',
       description: 'Just stuffs on the table.',
       category: 'print',
       price: 665,
@@ -456,7 +425,7 @@ export const initialData: SeedData = {
     {
       name: 'People on the boat',
       artist: 'Alexandre Dumas',
-      artist_Id: '613f9491d70037b9cb5f4183',
+      artist_Id: 'alexandre-dumas-40230',
       description: 'Photo of the time when the author used to go fishing.',
       category: 'photography',
       price: 600,
@@ -483,7 +452,7 @@ export const initialData: SeedData = {
     {
       name: 'Camera to the horizon',
       artist: 'Jane Eyre',
-      artist_Id: '613f8fead70037b9cb5f417f',
+      artist_Id: 'jane-eyre-4022e',
       description: 'The artist tried to see beyond the horizon.',
       category: 'photography',
       price: 200,
@@ -501,7 +470,7 @@ export const initialData: SeedData = {
     {
       name: 'Carrying the precious liquid',
       artist: 'Victor Hugo',
-      artist_Id: '613f91dbd70037b9cb5f4180',
+      artist_Id: 'victor-hugo-4022f',
       description:
         'Painting showing how careful we must be while carrying water to home.',
       category: 'painting',
@@ -520,7 +489,7 @@ export const initialData: SeedData = {
     {
       name: 'Skating to the sky',
       artist: 'William Shakespeare',
-      artist_Id: '613f8ca6d70037b9cb5f417d',
+      artist_Id: 'william-shakespeare-4022a',
       description:
         'The painting describes all the emotions of the artist in her last days.',
       category: 'photography',
@@ -539,7 +508,7 @@ export const initialData: SeedData = {
     {
       name: 'Near the wall',
       artist: 'Alice Walker',
-      artist_Id: '613f8e9fd70037b9cb5f417e',
+      artist_Id: 'alice-walker-4022d',
       description: 'Instruments used by the artist during her trip to Egypt.',
       category: 'painting',
       price: 150,
@@ -557,7 +526,7 @@ export const initialData: SeedData = {
     {
       name: 'My village',
       artist: 'Victor Hugo',
-      artist_Id: '613f91dbd70037b9cb5f4180',
+      artist_Id: 'victor-hugo-4022f',
       description:
         'Representation of the village of the author after the pandemic.',
       category: 'painting',
@@ -585,7 +554,7 @@ export const initialData: SeedData = {
     {
       name: 'Artemis',
       artist: 'John Doe',
-      artist_Id: '613f93a7d70037b9cb5f4182',
+      artist_Id: 'john-doe-4022c',
       description: 'Photo taken during museum visits.',
       category: 'sculpture',
       price: 6000,
@@ -603,7 +572,7 @@ export const initialData: SeedData = {
     {
       name: 'Just relaxing',
       artist: 'William Shakespeare',
-      artist_Id: '613f8ca6d70037b9cb5f417d',
+      artist_Id: 'william-shakespeare-4022a',
       description:
         'Painting of the daughter of the artist during her visit from France.',
       category: 'photography',
