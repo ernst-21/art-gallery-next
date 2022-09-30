@@ -1,11 +1,20 @@
 import React, { memo, SyntheticEvent } from 'react';
-import { Box, Button, Divider, Grid, Stack, Typography } from '@mui/material';
+import { useRouter } from 'next/router';
+import {
+  Box,
+  Button,
+  Divider,
+  Grid,
+  IconButton,
+  Stack,
+  Typography,
+} from '@mui/material';
 import { ArtworkType } from '../../../../../../types/common.types';
 import Image from 'next/image';
 import { stringWrangler } from '../../../../../../utils';
 import { format } from '../../../../../../utils';
 import { useCart } from '../../../../../../context/cart';
-import { useRouter } from 'next/router';
+import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 
 const CartItem = ({ artwork }: ArtworkType) => {
   const { removeArtworkFromCart } = useCart();
@@ -69,13 +78,9 @@ const CartItem = ({ artwork }: ArtworkType) => {
             <Typography sx={{ fontWeight: 500 }} variant="h2">
               {format(artwork.price)}
             </Typography>
-            <Button
-              sx={{ mt: 2, color: 'orangered' }}
-              onClick={removeItem}
-              variant="text"
-            >
-              Remove
-            </Button>
+            <IconButton sx={{ mt: 2 }} onClick={removeItem}>
+              <DeleteOutlineOutlinedIcon sx={{ color: 'orangered' }} />
+            </IconButton>
           </Stack>
         </Grid>
       </Grid>
