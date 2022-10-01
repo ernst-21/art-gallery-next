@@ -6,7 +6,7 @@ import React, {
   useContext,
 } from 'react';
 import { useUser } from '../../hooks/security/useUser';
-import { IArtwork } from '../../interfaces';
+import { IArtwork, ShippingAddress } from '../../interfaces';
 import { CartContext, cartReducer } from './';
 
 export interface CartState {
@@ -14,6 +14,7 @@ export interface CartState {
   cart: IArtwork[];
   numberOfItems: number;
   total: number;
+  shippingAddress?: ShippingAddress;
 }
 
 const CART_INITIAL_STATE: CartState = {
@@ -30,6 +31,16 @@ type ProviderProps = {
 const CartProvider = ({ children }: ProviderProps) => {
   const [state, dispatch] = useReducer(cartReducer, CART_INITIAL_STATE);
   const [mounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    if (localStorage.getItem('address')) {
+      const shippingAddress = JSON.parse(localStorage.getItem('address')!);
+      dispatch({
+        type: '[Cart] - Update address',
+        payload: shippingAddress,
+      });
+    }
+  }, []);
 
   useEffect(() => {
     try {
@@ -85,12 +96,18 @@ const CartProvider = ({ children }: ProviderProps) => {
     dispatch({ type: '[Cart] - Remove artwork from cart', payload: artwork });
   };
 
+  const updateAddress = (address: ShippingAddress) => {
+    localStorage.setItem('address', JSON.stringify(address));
+    dispatch({ type: '[Cart] - Update address', payload: address });
+  };
+
   return (
     <CartContext.Provider
       value={{
         ...state,
         addArtworkToCart,
         removeArtworkFromCart,
+        updateAddress,
       }}
     >
       {children}

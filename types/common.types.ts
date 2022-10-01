@@ -47,3 +47,7 @@ export type LoadingAndIsErrorType = {
 export type CartArtworks = {
   cart: IArtwork[];
 };
+
+export type ItemCartProps = {
+  isSummary?: boolean;
+};

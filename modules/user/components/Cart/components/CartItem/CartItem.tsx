@@ -1,8 +1,7 @@
-import React, { memo, SyntheticEvent } from 'react';
+import React, { memo, SyntheticEvent, useMemo } from 'react';
 import { useRouter } from 'next/router';
 import {
   Box,
-  Button,
   Divider,
   Grid,
   IconButton,
@@ -18,7 +17,7 @@ import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined
 
 const CartItem = ({ artwork }: ArtworkType) => {
   const { removeArtworkFromCart } = useCart();
-  const { push } = useRouter();
+  const { push, asPath } = useRouter();
 
   const removeItem = (e: SyntheticEvent) => {
     e.stopPropagation();
@@ -28,6 +27,10 @@ const CartItem = ({ artwork }: ArtworkType) => {
   const navigateTo = (url: string) => {
     push(url);
   };
+
+  const isSummary = useMemo(() => {
+    return asPath === '/order/summary';
+  }, [asPath]);
 
   return (
     <>
@@ -78,9 +81,11 @@ const CartItem = ({ artwork }: ArtworkType) => {
             <Typography sx={{ fontWeight: 500 }} variant="h2">
               {format(artwork.price)}
             </Typography>
-            <IconButton sx={{ mt: 2 }} onClick={removeItem}>
-              <DeleteOutlineOutlinedIcon sx={{ color: 'orangered' }} />
-            </IconButton>
+            {!isSummary && (
+              <IconButton sx={{ mt: 2 }} onClick={removeItem}>
+                <DeleteOutlineOutlinedIcon sx={{ color: 'orangered' }} />
+              </IconButton>
+            )}
           </Stack>
         </Grid>
       </Grid>

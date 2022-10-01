@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import {
   Box,
   Button,
@@ -11,9 +11,17 @@ import {
 import { useCart } from '../../../../../../context/cart';
 import CartItemCount from './CartItemCount';
 import { format } from '../../../../../../utils';
+import { NextMuiLink } from '../../../../../../components/ui/Link/NextMuiLink';
+import { useRouter } from 'next/router';
+import { AddressSummary } from '../../../OrderSummary/components/AddressSummary';
 
 const CartSummary = () => {
   const { cart, numberOfItems, total } = useCart();
+  const { asPath } = useRouter();
+
+  const isSummary = useMemo(() => {
+    return asPath === '/order/summary';
+  }, [asPath]);
 
   if (!cart || !cart.length) return null;
 
@@ -32,6 +40,7 @@ const CartSummary = () => {
         </Stack>
         <CartItemCount cart={cart} />
         <Divider sx={{ mt: 1.5 }} />
+        {isSummary && <AddressSummary />}
         <Box mt={1.5} display={'flex'} justifyContent={'space-between'}>
           <Typography variant="h2" sx={{ fontWeight: 700 }}>
             Total:{' '}
@@ -40,9 +49,17 @@ const CartSummary = () => {
             {format(total)}
           </Typography>
         </Box>
-        <Button sx={{ mt: 3, mb: 1.5 }} fullWidth variant="contained">
-          Checkout
-        </Button>
+        {!isSummary ? (
+          <NextMuiLink href="/checkout/address">
+            <Button sx={{ mt: 3, mb: 1.5 }} fullWidth variant="contained">
+              Checkout
+            </Button>
+          </NextMuiLink>
+        ) : (
+          <Button sx={{ mt: 3, mb: 1.5 }} fullWidth variant="contained">
+            Pay
+          </Button>
+        )}
       </Paper>
     </Grid>
   );

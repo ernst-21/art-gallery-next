@@ -20,7 +20,7 @@ const Custom404 = () => {
         >
           404 |
         </Typography>
-        <Typography marginLeft={2}>No hemos encontrado artículos</Typography>
+        <Typography marginLeft={2}>Page not found</Typography>
       </Box>
     </MainLayout>
   );

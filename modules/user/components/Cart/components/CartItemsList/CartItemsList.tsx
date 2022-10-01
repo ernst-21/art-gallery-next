@@ -8,8 +8,6 @@ import { CartListEmpty } from '../CartListEmpty';
 const CartItemsList = () => {
   const { cart } = useCart();
 
-  console.log({ cart });
-
   if (!cart || !cart.length) {
     return <CartListEmpty />;
   }

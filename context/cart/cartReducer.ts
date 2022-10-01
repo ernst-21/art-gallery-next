@@ -1,4 +1,4 @@
-import { IArtwork } from '../../interfaces';
+import { IArtwork, ShippingAddress } from '../../interfaces';
 import { CartState } from './';
 
 type CartActionType =
@@ -8,6 +8,7 @@ type CartActionType =
     }
   | { type: '[Cart] - Add artwork to cart'; payload: IArtwork }
   | { type: '[Cart] - Remove artwork from cart'; payload: IArtwork }
+  | { type: '[Cart] - Update address'; payload: ShippingAddress | undefined }
   | {
       type: '[Cart] - Update order summary';
       payload: {
@@ -43,6 +44,11 @@ export const cartReducer = (
       return {
         ...state,
         ...action.payload,
+      };
+    case '[Cart] - Update address':
+      return {
+        ...state,
+        shippingAddress: action.payload,
       };
     default:
       return state;
