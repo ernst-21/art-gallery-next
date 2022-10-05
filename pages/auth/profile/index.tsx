@@ -3,6 +3,7 @@ import { getSession } from 'next-auth/react';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import React from 'react';
 import MainLayout from '../../../components/layouts/MainLayout';
+import { ScrollToTop } from '../../../components/ui/ScrollToTop';
 import { FavoriteArtworksProvider } from '../../../context/artworks/FavoriteArtworksContext/FavoriteArtworksContext';
 import { UserProfileContainer } from '../../../modules/user/containers';
 
@@ -15,6 +16,12 @@ const ProfilePage: NextPage = (props) => {
       <MainLayout title={`${user?.name} - Profile`}>
         <UserProfileContainer user={user} />
       </MainLayout>
+      <ScrollToTop
+        showBelow={250}
+        sx={{
+          right: { xs: '5%' },
+        }}
+      />
     </FavoriteArtworksProvider>
   );
 };

@@ -8,6 +8,7 @@ const AUTH_URLS = [
   '/cart',
   '/checkout/address',
   '/order/summary',
+  '/order',
 ];
 
 export async function middleware(req: NextRequest, ev: NextFetchEvent) {
@@ -17,7 +18,6 @@ export async function middleware(req: NextRequest, ev: NextFetchEvent) {
       secret: process.env.NEXTAUTH_SECRET,
     });
     const { origin } = req.nextUrl;
-    console.log(origin);
 
     if (!session) {
       return NextResponse.redirect(`${origin}/auth/login`);

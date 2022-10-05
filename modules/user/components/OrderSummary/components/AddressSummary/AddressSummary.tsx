@@ -44,7 +44,7 @@ const AddressSummary = () => {
 
   return (
     <>
-      <Stack sx={{ my: 1.5 }} spacing={1.5}>
+      <Stack sx={{ mb: 1.5 }} spacing={1.5}>
         {Object.keys(shippingAddress).map((key: string) => (
           //@ts-ignore
           <AddressInfo key={key} info={findCountryOrField(key)} label={key} />

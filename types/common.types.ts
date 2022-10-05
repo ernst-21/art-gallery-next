@@ -51,3 +51,7 @@ export type CartArtworks = {
 export type ItemCartProps = {
   isSummary?: boolean;
 };
+
+export type UserId = {
+  userId: string;
+};

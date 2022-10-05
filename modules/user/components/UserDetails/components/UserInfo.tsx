@@ -1,15 +1,26 @@
-import React, { memo } from 'react';
+import React, { memo, useState } from 'react';
 import { Avatar, Button, Stack, Typography } from '@mui/material';
 import { UserProps } from '../../../../../types/common.types';
 import { deepPurple } from '@mui/material/colors';
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import { UserEditProfileModal } from './UserEditProfileModal';
 import useToggle from '../../../../../hooks/utils/useToggle';
+import { AlertMessage } from '../../../../../components/ui/Alert';
 
 const UserInfo = ({ user }: UserProps) => {
   const { isOpen, onOpen, onClose } = useToggle();
+  const [isEditSuccess, setEditSuccess] = useState(false);
+
   return (
     <Stack sx={{ zIndex: 8, mt: { xs: -9, md: -12 }, alignItems: 'center' }}>
+      <AlertMessage
+        condition={isEditSuccess}
+        setCondition={setEditSuccess}
+        text={'Successfully edited!'}
+        verticalPosition={'top'}
+        horizontalPosition={'center'}
+        sx={{ backgroundColor: 'green', color: 'white' }}
+      />
       <Avatar
         sx={{
           bgcolor: deepPurple[500],
@@ -37,7 +48,11 @@ const UserInfo = ({ user }: UserProps) => {
       >
         Edit
       </Button>
-      <UserEditProfileModal open={isOpen} handleClose={onClose} />
+      <UserEditProfileModal
+        open={isOpen}
+        handleClose={onClose}
+        setEditSuccess={setEditSuccess}
+      />
     </Stack>
   );
 };

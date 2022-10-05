@@ -8,6 +8,7 @@ import { AuthContext } from '../../../context';
 import { useUser } from '../../../hooks/security/useUser';
 import { editSchema } from '../schemas/userEditSchema';
 import { useRouter } from 'next/router';
+import toast from 'react-hot-toast';
 
 type FormData = {
   name: string;
@@ -17,7 +18,8 @@ type FormData = {
 
 const useEditProfileForm = (
   setShowError: (arg0: boolean) => void,
-  setErrorMessage: any
+  setErrorMessage: any,
+  handleClose: () => void
 ): FormHookType => {
   const { editUser } = useContext(AuthContext);
   const { user } = useUser();
@@ -44,6 +46,7 @@ const useEditProfileForm = (
       return;
     }
     if (!hasError) {
+      await handleClose();
       await signOut();
     }
   };

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { memo } from 'react';
+import { Dispatch, memo, SetStateAction, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
@@ -10,6 +10,7 @@ import FormPasswordField from '../../../../../../components/ui/FormFields/Text/F
 import { LoadingButton } from '@mui/lab';
 import { useState } from 'react';
 import useEditProfileForm from '../../../../hooks/useEditProfileForm';
+import toast, { Toaster } from 'react-hot-toast';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -26,13 +27,24 @@ const style = {
 type ModalProps = {
   open: boolean;
   handleClose: () => void;
+  setEditSuccess: Dispatch<SetStateAction<boolean>>;
 };
 
-const UserEditProfileModal = ({ open, handleClose }: ModalProps) => {
+const UserEditProfileModal = ({
+  open,
+  handleClose,
+  setEditSuccess,
+}: ModalProps) => {
   const [showError, setShowError] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const { onSubmit, control, isLoading, error, isSuccess, data } =
-    useEditProfileForm(setShowError, setErrorMessage);
+    useEditProfileForm(setShowError, setErrorMessage, handleClose);
+
+  useEffect(() => {
+    if (isSuccess) {
+      setEditSuccess(true);
+    }
+  }, [isSuccess, setEditSuccess]);
 
   return (
     <div>

@@ -21,7 +21,6 @@ const getUserFavoriteArtists = async (
   res: NextApiResponse
 ) => {
   await db.connect();
-  console.log(req.body.userId);
   try {
     const artists = await Artist.find({
       likes: { $in: req.body.userId },

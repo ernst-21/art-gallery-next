@@ -46,6 +46,7 @@ const useShippingAddress = () => {
 
   return {
     control,
+    errors,
     onSubmit: handleSubmit((values) => onShipAddress(values)),
   };
 };
