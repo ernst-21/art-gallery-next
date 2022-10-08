@@ -1,6 +1,7 @@
 import { Box, Divider, Stack, Typography } from '@mui/material';
 import React, { useCallback } from 'react';
 import { useCart } from '../../../../../../context/cart';
+import { ShippingAddress } from '../../../../../../interfaces';
 import { countries, stringWrangler } from '../../../../../../utils';
 
 type AddressInfoProps = {
@@ -21,9 +22,11 @@ export const AddressInfo = ({ info, label }: AddressInfoProps) => {
   );
 };
 
-const AddressSummary = () => {
-  const { shippingAddress } = useCart();
+type AddressSummaryProps = {
+  shippingAddress: ShippingAddress;
+};
 
+const AddressSummary = ({ shippingAddress }: AddressSummaryProps) => {
   const findCountryOrField = useCallback(
     (key: string) => {
       if (key === 'country') {

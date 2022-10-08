@@ -29,7 +29,10 @@ const CartItem = ({ artwork }: ArtworkType) => {
   };
 
   const isSummary = useMemo(() => {
-    return asPath === '/order/summary';
+    return (
+      asPath === '/auth/order/summary' ||
+      asPath.indexOf('/auth/order/payments') !== -1
+    );
   }, [asPath]);
 
   return (
@@ -52,15 +55,24 @@ const CartItem = ({ artwork }: ArtworkType) => {
             alt={artwork.name}
           />
         </Grid>
-        <Grid sx={{ cursor: 'pointer' }} item xs={12} sm={7} md={8.5}>
+        <Grid item xs={12} sm={7} md={8.5}>
           <Stack>
-            <Box onClick={() => navigateTo(`/artworks/${artwork.slug}`)}>
+            <Box
+              sx={{
+                cursor: 'pointer',
+                width: 'fit-content',
+              }}
+              onClick={() => navigateTo(`/artworks/${artwork.slug}`)}
+            >
               <Typography variant="h2">{artwork.name}</Typography>
             </Box>
             <Typography sx={{ mt: 1, color: 'text.secondary' }}>
               {stringWrangler.capitalizeString(artwork.category)}
             </Typography>
-            <Box onClick={() => navigateTo(`/artists/${artwork.artist_Id}`)}>
+            <Box
+              sx={{ width: 'fit-content', cursor: 'pointer' }}
+              onClick={() => navigateTo(`/artists/${artwork.artist_Id}`)}
+            >
               <Typography
                 sx={{
                   color: 'text.secondary',

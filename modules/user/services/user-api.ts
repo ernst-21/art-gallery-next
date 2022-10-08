@@ -1,22 +1,29 @@
 import { ApiClient } from '../../../api';
 import { RequestConfig } from '../../../types/axios';
-import { IOrder } from '../../../interfaces';
+import { IPayment } from '../../../interfaces';
 import { UserId } from '../../../types/common.types';
+import { handleResponse } from '../../../utils/response';
 
-export const createOrderFromSummary = (
-  params: IOrder,
+export const createPaymentFromSummary = (
+  params: any,
   config?: RequestConfig
-): Promise<IOrder> => {
-  return ApiClient.post('/user/orders/create', params, config).then(
+): Promise<IPayment> => {
+  return ApiClient.post('/user/orders/create-payment', params, config).then(
     (data) => data.data
   );
 };
 
-export const searchUserOrders = (
+export const searchUserPayments = (
   params: UserId,
   config?: RequestConfig
-): Promise<IOrder[]> => {
-  return ApiClient.post('/user/orders', params, config).then(
+): Promise<any> => {
+  return ApiClient.post('/user/orders/payments', params, config).then(
     (data) => data.data
   );
+};
+
+export const getUserPayments = (
+  config?: RequestConfig
+): Promise<IPayment[]> => {
+  return handleResponse(ApiClient.get('/user/orders/payments/:_id'));
 };

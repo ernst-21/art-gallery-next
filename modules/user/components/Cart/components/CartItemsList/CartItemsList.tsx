@@ -1,13 +1,11 @@
 import React from 'react';
 import { Grid } from '@mui/material';
-import { useCart } from '../../../../../../context/cart';
 import { IArtwork } from '../../../../../../interfaces';
 import CartItem from '../CartItem/CartItem';
 import { CartListEmpty } from '../CartListEmpty';
+import { CartArtworks } from '../../../../../../types/common.types';
 
-const CartItemsList = () => {
-  const { cart } = useCart();
-
+const CartItemsList = ({ cart }: CartArtworks) => {
   if (!cart || !cart.length) {
     return <CartListEmpty />;
   }

@@ -11,6 +11,7 @@ interface ContextProps {
   addArtworkToCart: (artwork: IArtwork) => void;
   removeArtworkFromCart: (artwork: IArtwork) => void;
   updateAddress: (address: ShippingAddress) => void;
+  clearCart: () => void;
 }
 
 export const CartContext = createContext({} as ContextProps);

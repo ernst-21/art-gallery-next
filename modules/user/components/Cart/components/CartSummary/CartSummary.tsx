@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Box, Divider, Grid, Paper, Stack, Typography } from '@mui/material';
 import { useCart } from '../../../../../../context/cart';
 import CartItemCount from './CartItemCount';
@@ -7,70 +7,18 @@ import { NextMuiLink } from '../../../../../../components/ui/Link/NextMuiLink';
 import { useRouter } from 'next/router';
 import { AddressSummary } from '../../../OrderSummary/components/AddressSummary';
 import CartSummaryFooter from './CartSummaryFooter';
-import { useMutation } from 'react-query';
-import { useUser } from '../../../../../../hooks/security/useUser';
-import { IArtwork, IOrder } from '../../../../../../interfaces';
-import { createOrderFromSummary } from '../../../../services/user-api';
+import { PaymentModal } from '../PaymentModal';
+import useToggle from '../../../../../../hooks/utils/useToggle';
 
 const CartSummary = () => {
-  const { cart, numberOfItems, total, shippingAddress } = useCart();
-  const { user } = useUser();
-  const [isConfirmed, setIsConfirmed] = useState(false);
+  const { cart, numberOfItems, total, shippingAddress, clearCart } = useCart();
+  const { onOpen, isOpen, onClose } = useToggle();
   const [isPaid, setIsPaid] = useState(false);
   const { asPath } = useRouter();
-  const {
-    mutateAsync: createOrderMutation,
-    data,
-    isLoading,
-    isError,
-  } = useMutation(
-    ['payment', user?._id],
-    (order: IOrder) => createOrderFromSummary(order),
-    {
-      onSuccess: () => setIsConfirmed(true),
-    }
-  );
 
-  const orderItems = useMemo(() => {
-    return cart.map((item: IArtwork) => {
-      return {
-        _id: item._id!,
-        name: item.name!,
-        artist: item.artist!,
-        description: item.description!,
-        slug: item.slug!,
-        category: item.category!,
-        image: item.url!,
-        price: item.price!,
-        size: item.size!,
-      };
-    });
-  }, [cart]);
-
-  const isSummary = useMemo(() => {
-    return asPath === '/order/summary';
+  const isSummary: boolean = useMemo(() => {
+    return asPath === '/auth/order/summary';
   }, [asPath]);
-
-  const handleCreateOrder = useCallback(async () => {
-    const order = {
-      numberOfItems,
-      userId: user?._id!,
-      shippingAddress: shippingAddress!,
-      total,
-      orderItems,
-      isPaid: false,
-      paidAt: '',
-    };
-    //@ts-ignore
-    createOrderMutation(order);
-  }, [
-    createOrderMutation,
-    numberOfItems,
-    orderItems,
-    shippingAddress,
-    total,
-    user?._id,
-  ]);
 
   if (!cart || !cart.length) return null;
 
@@ -89,7 +37,7 @@ const CartSummary = () => {
         </Stack>
         <CartItemCount cart={cart} />
         <Divider sx={{ mt: 1.5 }} />
-        {isSummary && !isConfirmed && (
+        {isSummary && (
           <Box
             mt={1.5}
             sx={{ width: '100%', display: 'flex', justifyContent: 'end' }}
@@ -99,7 +47,7 @@ const CartSummary = () => {
             </NextMuiLink>
           </Box>
         )}
-        {isSummary && <AddressSummary />}
+        {isSummary && <AddressSummary shippingAddress={shippingAddress!} />}
         <Box mt={1.5} display={'flex'} justifyContent={'space-between'}>
           <Typography variant="h2" sx={{ fontWeight: 700 }}>
             Total:{' '}
@@ -109,14 +57,22 @@ const CartSummary = () => {
           </Typography>
         </Box>
         <CartSummaryFooter
-          isLoading={isLoading}
           isSummary={isSummary}
-          onClick={handleCreateOrder}
-          onClickPay={() => setIsPaid(true)}
-          isConfirmed={isConfirmed}
+          onClickPay={onOpen}
           isPaid={isPaid}
         />
       </Paper>
+      <PaymentModal
+        setIsPaid={setIsPaid}
+        isOpen={isOpen}
+        onOpen={onOpen}
+        onClose={onClose}
+        cart={cart}
+        total={total}
+        shippingAddress={shippingAddress!}
+        numberOfItems={numberOfItems}
+        clearCart={clearCart}
+      />
     </Grid>
   );
 };

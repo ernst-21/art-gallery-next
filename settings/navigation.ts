@@ -89,8 +89,8 @@ export const sideBarUserMenu = [
   },
   {
     _id: 2,
-    title: 'My Purchased Artworks',
-    link: '/auth/my-purchases',
+    title: 'My Purchases',
+    link: '/auth/order/payments',
     icon: MonetizationOnOutlinedIcon,
   },
 ];

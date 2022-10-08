@@ -1,9 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { db } from '../../../../database';
-import { IOrder } from '../../../../interfaces';
-import { Order } from '../../../../models';
+import { db } from '../../../../../database';
+import { IPayment } from '../../../../../interfaces';
+import { Payment } from '../../../../../models';
 
-type Data = { message: string } | IOrder[];
+type Data = { message: string } | IPayment[];
 
 export default async function handler(
   req: NextApiRequest,
@@ -11,7 +11,7 @@ export default async function handler(
 ) {
   switch (req.method) {
     case 'POST':
-      return getUserOrders(req, res);
+      return getPayments(req, res);
     default:
       return res.status(400).json({
         message: 'Bad request',
@@ -19,17 +19,17 @@ export default async function handler(
   }
 }
 
-export const getUserOrders = async (
+export const getPayments = async (
   req: NextApiRequest,
   res: NextApiResponse
 ) => {
   await db.connect();
   try {
-    const orders = await Order.find({
+    const payments = await Payment.find({
       user: { $in: req.body.userId },
-    }).select('_id numberOfItems total createdAt isPaid');
+    }).select('_id numberOfItems total createdAt');
     await db.disconnect();
-    return res.status(200).json(orders);
+    return res.status(200).json(payments);
   } catch (error) {
     res.status(422).json({ message: error });
   }

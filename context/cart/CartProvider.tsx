@@ -5,7 +5,6 @@ import React, {
   useState,
   useContext,
 } from 'react';
-import { useUser } from '../../hooks/security/useUser';
 import { IArtwork, ShippingAddress } from '../../interfaces';
 import { CartContext, cartReducer } from './';
 
@@ -101,12 +100,17 @@ const CartProvider = ({ children }: ProviderProps) => {
     dispatch({ type: '[Cart] - Update address', payload: address });
   };
 
+  const clearCart = () => {
+    dispatch({ type: '[Cart] - Clear cart', payload: [] });
+  };
+
   return (
     <CartContext.Provider
       value={{
         ...state,
         addArtworkToCart,
         removeArtworkFromCart,
+        clearCart,
         updateAddress,
       }}
     >

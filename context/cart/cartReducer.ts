@@ -9,6 +9,7 @@ type CartActionType =
   | { type: '[Cart] - Add artwork to cart'; payload: IArtwork }
   | { type: '[Cart] - Remove artwork from cart'; payload: IArtwork }
   | { type: '[Cart] - Update address'; payload: ShippingAddress | undefined }
+  | { type: '[Cart] - Clear cart'; payload: IArtwork[] }
   | {
       type: '[Cart] - Update order summary';
       payload: {
@@ -49,6 +50,11 @@ export const cartReducer = (
       return {
         ...state,
         shippingAddress: action.payload,
+      };
+    case '[Cart] - Clear cart':
+      return {
+        ...state,
+        cart: action.payload,
       };
     default:
       return state;

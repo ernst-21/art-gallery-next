@@ -4,11 +4,13 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import MainLayout from '../../components/layouts/MainLayout';
 import { CartContainer } from '../../modules/user/containers/CartContainer';
 import { ScrollToTop } from '../../components/ui/ScrollToTop';
+import { useCart } from '../../context/cart';
 
 const CartPage: NextPage = () => {
+  const { cart } = useCart();
   return (
     <MainLayout title={'Cart'}>
-      <CartContainer />
+      <CartContainer cart={cart} />
       <ScrollToTop
         showBelow={250}
         sx={{

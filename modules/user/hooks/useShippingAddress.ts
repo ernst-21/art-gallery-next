@@ -40,7 +40,7 @@ const useShippingAddress = () => {
   const onShipAddress = (data: FormData) => {
     updateAddress(data);
     if (isEmpty(errors)) {
-      push('/order/summary');
+      push('/auth/order/summary');
     }
   };
 

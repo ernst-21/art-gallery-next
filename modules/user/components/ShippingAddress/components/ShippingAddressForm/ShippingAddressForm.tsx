@@ -7,19 +7,11 @@ import FormTextField from '../../../../../../components/ui/FormFields/Text/FormT
 import SelectForm from '../../../../../../components/ui/FormFields/Text/FormSelect';
 import useShippingAddress from '../../../../hooks/useShippingAddress';
 
-//import { AlertMessage } from '../../../../../../components/ui/Alert';
-
 const ShippingAddressForm = () => {
   const { control, onSubmit } = useShippingAddress();
 
   return (
     <>
-      {/* <AlertMessage
-        text={'Order created'}
-        verticalPosition={'top'}
-        horizontalPosition={'center'}
-        condition={isEmpty(errors)}
-      /> */}
       <Box sx={{ my: 4, minHeight: '700px' }}>
         <form onSubmit={onSubmit}>
           <Typography variant="h1" component="h1">

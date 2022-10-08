@@ -1,37 +1,44 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { db } from '../../../../database';
-import { IOrder, IOrderItem, ShippingAddress } from '../../../../interfaces';
-import Order from '../../../../models/Order';
+import {
+  IArtwork,
+  IPayment,
+  IPaymentItem,
+  ShippingAddress,
+} from '../../../../interfaces';
+import Payment from '../../../../models/Payment';
 import { getToken } from 'next-auth/jwt';
+import { Artwork } from '../../../../models';
 
 type Data =
   | {
       message: string;
     }
   | {
-      order: IOrder;
+      payment: IPayment;
     };
 
-const createOrder = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
+const createPayment = async (
+  req: NextApiRequest,
+  res: NextApiResponse<Data>
+) => {
   const {
-    userId = '',
-    orderItems = [],
+    user = '',
+    paymentItems = [],
     numberOfItems = 0,
     shippingAddress = {},
     total = 0,
-    isPaid = false,
-    paidAt = '',
   } = req.body as {
-    userId: string;
-    orderItems: IOrderItem[];
+    user: string;
+    paymentItems: IPaymentItem[];
     numberOfItems: number;
     total: number;
     shippingAddress: ShippingAddress;
-    isPaid: boolean;
-    paidAt: string;
   };
 
-  if (!userId) {
+  const artworksIdx = paymentItems.map((item) => item._id);
+
+  if (!user) {
     return res.status(400).json({ message: 'Bad Request' });
   }
 
@@ -45,32 +52,39 @@ const createOrder = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
   }
 
   //@ts-ignore
-  if (userId !== token?.user?._id) {
+  if (user !== token?.user?._id) {
     return res.status(400).json({ message: 'Bad Request' });
   }
 
-  const newOrder = new Order({
-    user: userId,
-    orderItems,
+  const newPayment = new Payment({
+    user,
+    paymentItems,
     numberOfItems,
     total,
     shippingAddress,
-    isPaid,
-    paidAt,
   });
 
   db.connect();
 
   try {
-    await newOrder.save({ validateBeforeSave: true });
+    await newPayment.save({ validateBeforeSave: true });
+    await Artwork.updateMany(
+      { _id: { $in: artworksIdx } },
+      {
+        $push: { purchased: user },
+      },
+      { new: true }
+    ).select(
+      'name artist slug category price _id gallery addedToCart tags colors featured orientation url voters size purchased artist_Id'
+    );
+    db.disconnect();
+    return res.status(200).json({
+      payment: newPayment,
+    });
   } catch (error) {
     console.log(error);
     return res.status(500).json({ message: 'Check server logs' });
   }
-  db.disconnect();
-  return res.status(200).json({
-    order: newOrder,
-  });
 };
 
 export default function handler(
@@ -79,7 +93,7 @@ export default function handler(
 ) {
   switch (req.method) {
     case 'POST':
-      return createOrder(req, res);
+      return createPayment(req, res);
     default:
       res.status(400).json({ message: 'Bad Request' });
   }

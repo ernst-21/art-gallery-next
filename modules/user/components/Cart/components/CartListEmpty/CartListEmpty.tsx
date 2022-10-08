@@ -33,11 +33,11 @@ const CartListEmpty = () => {
           </Link>
         </Card>
         <Typography
-          sx={{ lineHeight: 1.5 }}
+          sx={{ lineHeight: 1.5, mt: 2 }}
           color={'text.secondary'}
           variant="h2"
         >
-          ...Oops your cart seems to be empty
+          Your cart seems to be empty
         </Typography>
         <Typography color={'text.secondary'} paragraph>
           Explore artworks and add them to your shopping cart.

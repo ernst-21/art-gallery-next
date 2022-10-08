@@ -29,6 +29,7 @@ export const getUserFavoriteArtworks = async (
       $and: [
         { voters: { $in: req.body.userId } },
         { featured: { $in: false } },
+        { purchased: { $nin: req.body.userId } },
       ],
     })
       .select(

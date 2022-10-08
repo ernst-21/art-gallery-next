@@ -1,11 +1,11 @@
 import mongoose, { Schema, model, Model } from 'mongoose';
-import { IOrder } from '../interfaces';
+import { IPayment } from '../interfaces';
 
-const orderSchema = new Schema(
+const paymentSchema = new Schema(
   {
     user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
 
-    orderItems: [
+    paymentItems: [
       {
         _id: { type: String, required: true },
         name: { type: String, required: true },
@@ -14,7 +14,7 @@ const orderSchema = new Schema(
         size: { type: String, required: true },
         category: { type: String, required: true },
         slug: { type: String, required: true },
-        image: { type: String, required: true },
+        url: { type: String, required: true },
         price: { type: Number, required: true },
       },
     ],
@@ -32,14 +32,11 @@ const orderSchema = new Schema(
 
     numberOfItems: { type: Number, required: true },
     total: { type: Number, required: true },
-
-    isPaid: { type: Boolean, required: true, default: false },
-    paidAt: { type: String },
   },
   { timestamps: true }
 );
 
-const Order: Model<IOrder> =
-  mongoose.models.Order || model('Order', orderSchema);
+const Payment: Model<IPayment> =
+  mongoose.models.Payment || model('Payment', paymentSchema);
 
-export default Order;
+export default Payment;

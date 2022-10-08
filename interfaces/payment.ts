@@ -1,4 +1,3 @@
-import { IArtwork } from '.';
 import { IUser } from './user';
 
 export interface ShippingAddress {
@@ -12,29 +11,26 @@ export interface ShippingAddress {
   phone: string;
 }
 
-export interface IOrder {
+export interface IPayment {
   _id?: string;
   user?: IUser | string;
-  orderItems: IOrderItem[];
+  paymentItems: IPaymentItem[];
   shippingAddress: ShippingAddress;
 
   numberOfItems: number;
   total: number;
-
-  isPaid: boolean;
-  paidAt?: string;
   createdAt?: string;
   updatedAt?: string;
 }
 
-export interface IOrderItem {
+export interface IPaymentItem {
   _id: string;
   name: string;
   artist: string;
   description: number;
   slug: string;
   category: string;
-  image: string;
+  url: string;
   price: number;
   size: 'small' | 'medium' | 'big';
 }

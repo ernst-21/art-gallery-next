@@ -1,62 +1,70 @@
 import React, { useEffect, useMemo } from 'react';
-import { Box, Typography } from '@mui/material';
+import { Box, Stack, Typography } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
 import { useMutation } from 'react-query';
 import { useUser } from '../../../../hooks/security/useUser';
 import { UserId } from '../../../../types/common.types';
-import { searchUserOrders } from '../../services/user-api';
+import { searchUserPayments } from '../../services/user-api';
 
-import { Chip } from '@mui/material';
 import { GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 import { format } from '../../../../utils';
-import { IOrder } from '../../../../interfaces';
+import { IPayment } from '../../../../interfaces';
 import { NextMuiLink } from '../../../../components/ui/Link/NextMuiLink';
+import moment from 'moment';
 
 export const columns: GridColDef[] = [
-  { field: 'id', headerName: 'No.', width: 90 },
-  { field: '_id', headerName: 'Order ID', width: 287 },
+  {
+    field: 'id',
+    headerName: 'No.',
+    width: 90,
+    align: 'center',
+    headerAlign: 'center',
+  },
+  {
+    field: '_id',
+    headerName: 'Order ID',
+    width: 387,
+    align: 'center',
+    headerAlign: 'center',
+  },
   {
     field: 'numberOfItems',
     headerName: 'Number of Items',
     width: 150,
+    align: 'center',
+    headerAlign: 'center',
   },
   {
     field: 'total',
     headerName: 'Total',
     width: 200,
+    align: 'center',
+    headerAlign: 'center',
     valueGetter: (params: GridValueGetterParams) => format(params.row.total),
-  },
-  {
-    field: 'isPaid',
-    headerName: 'Paid',
-    width: 250,
-    renderCell: (params: GridValueGetterParams) => {
-      return params.row.paid ? (
-        <Chip color="success" label="Paid" variant="outlined" />
-      ) : (
-        <Chip color="error" label="Not paid" variant="outlined" />
-      );
-    },
   },
   {
     field: 'createdAt',
     headerName: 'Created',
     type: 'date',
     width: 250,
+    align: 'center',
+    headerAlign: 'center',
     valueGetter: (params: GridValueGetterParams) =>
-      new Date(params.row.createdAt),
+      moment(new Date(params.row.createdAt)).format('MMMM Do YY   (HH:mm:ss)'),
   },
   {
-    field: 'order',
+    field: 'payment',
     headerName: 'Action',
     width: 200,
     sortable: false,
+    align: 'center',
+    headerAlign: 'center',
     renderCell: (params: GridValueGetterParams) => {
       return (
         <NextMuiLink
           underline="always"
           sx={{ color: 'blue' }}
-          href={`/orders/${params.row.orderId}`}
+          href={`/auth/order/payments/${params.row._id}`}
         >
           See order
         </NextMuiLink>
@@ -65,28 +73,38 @@ export const columns: GridColDef[] = [
   },
 ];
 
-const OrdersTable = () => {
+const PaymentsTable = () => {
   const { user } = useUser();
   const {
-    mutate: getOrdersMutation,
+    mutate: getPaymentsMutation,
     data,
     isLoading,
     isError,
-  } = useMutation('userOrders', (id: UserId) => searchUserOrders(id));
+  } = useMutation('userOrders', (id: UserId) => searchUserPayments(id));
 
   const rows = useMemo(() => {
     if (data) {
-      return data.map((item: IOrder, idx: number) => {
+      return data.map((item: IPayment, idx: number) => {
         return { ...item, id: idx + 1 };
       });
     }
   }, [data]);
 
+  const bigTotal = useMemo(() => {
+    let price: number = 0;
+    if (data) {
+      data?.forEach((item: IPayment) => {
+        price += item.total;
+      });
+    }
+    return price;
+  }, [data]);
+
   useEffect(() => {
     if (user) {
-      getOrdersMutation({ userId: user._id });
+      getPaymentsMutation({ userId: user._id });
     }
-  }, [getOrdersMutation, user]);
+  }, [getPaymentsMutation, user]);
 
   // TODO: create skeleton for table
 
@@ -99,7 +117,7 @@ const OrdersTable = () => {
   }
 
   return (
-    <Box sx={{ height: '500px', mt: 2 }}>
+    <Stack sx={{ height: '500px', mt: 2 }}>
       <DataGrid
         rows={rows!}
         columns={columns}
@@ -108,8 +126,18 @@ const OrdersTable = () => {
         rowsPerPageOptions={[5]}
         disableSelectionOnClick
       />
-    </Box>
+      {bigTotal && (
+        <Box display={'flex'} justifyContent={'flex-end'} mt={5}>
+          <Typography sx={{ mr: 2, fontSize: 32 }} variant="h1">
+            Big total:
+          </Typography>
+          <Typography sx={{ mr: 2, fontSize: 32 }} variant="h1">
+            {format(bigTotal)}
+          </Typography>
+        </Box>
+      )}
+    </Stack>
   );
 };
 
-export default OrdersTable;
+export default PaymentsTable;

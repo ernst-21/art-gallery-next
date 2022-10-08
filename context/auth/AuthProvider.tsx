@@ -81,6 +81,7 @@ export const AuthProvider = ({ children }: ProviderProps) => {
   const logout = async () => {
     await signOut();
     await localStorage.setItem('art-cart', JSON.stringify([]));
+    await localStorage.setItem('address', JSON.stringify({}));
   };
 
   const editUser = async (

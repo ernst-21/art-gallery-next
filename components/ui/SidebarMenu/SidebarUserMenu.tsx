@@ -74,7 +74,7 @@ const SidebarUserMenu = ({ onClose }: SidebarUserMenu) => {
           </ListItem>
         );
       })}
-      <ListItem disablePadding>
+      <ListItem onClick={() => handleNavigation('/cart')} disablePadding>
         <ListItemButton>
           <ListItemIcon>
             <Badge badgeContent={numberOfItems} color="secondary">

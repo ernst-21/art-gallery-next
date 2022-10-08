@@ -7,8 +7,8 @@ const AUTH_URLS = [
   '/auth/profile',
   '/cart',
   '/checkout/address',
-  '/order/summary',
-  '/order',
+  '/auth/order/summary',
+  '/auth/order/payments',
 ];
 
 export async function middleware(req: NextRequest, ev: NextFetchEvent) {

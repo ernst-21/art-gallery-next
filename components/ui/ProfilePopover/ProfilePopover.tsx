@@ -51,7 +51,7 @@ const ProfilePopover = ({ open, anchorEl, handleClose }: PopoverProps) => {
         <AccountCircleIcon sx={{ mr: 1, color: 'gray' }} />
         <span>{t('profile')}</span>
       </MenuItem>
-      <MenuItem onClick={() => navigateTo('/auth/my-purchases')}>
+      <MenuItem onClick={() => navigateTo('/auth/order/payments')}>
         <MonetizationOnIcon sx={{ mr: 1, color: 'gray' }} />
         <span>{t('myPurchases')}</span>
       </MenuItem>
