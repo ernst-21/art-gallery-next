@@ -6,6 +6,7 @@ export * as dbArtworks from './dbArtworks';
 export * as dbArtists from './dbArtists';
 export * as dbTestimonials from './dbTestimonials';
 export * as dbPayments from './dbPayments';
+export * as dbNews from './dbNewsArticles';
 
 export * from './constants';
 

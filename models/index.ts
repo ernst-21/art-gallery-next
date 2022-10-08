@@ -3,3 +3,4 @@ export { default as Artwork } from './Artwork';
 export { default as Artist } from './Artist';
 export { default as Testimonial } from './Testimonials';
 export { default as Payment } from './Payment';
+export { default as NewArticle } from './NewArticle';

@@ -48,11 +48,18 @@ interface SeedTestimonial {
   testimonial: string;
 }
 
+interface SeedNew {
+  image: string;
+  title: string;
+  text: string;
+}
+
 interface SeedData {
   users: SeedUser[];
   artists: SeedArtist[];
   artworks: SeedArtwork[];
   testimonials: SeedTestimonial[];
+  news: SeedNew[];
 }
 
 export const initialData: SeedData = {
@@ -646,6 +653,26 @@ export const initialData: SeedData = {
       authPosition: 'Painter',
       testimonial:
         'I remember when I started painting an VRTL helped me by exposing and promoting some of my artworks. I had my first exposition in a famous gallery because of them.',
+    },
+  ],
+  news: [
+    {
+      title: 'AI-made art is on its way',
+      image:
+        'https://images.unsplash.com/photo-1645680827507-9f392edae51c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80',
+      text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo earum cupiditate, provident cum illum fugit labore ex magni a ea corrupti tenetur obcaecati voluptate quae pariatur dicta nam ut assumenda.',
+    },
+    {
+      title: 'More artists willing to participate in street-art event',
+      image:
+        'https://images.unsplash.com/photo-1499781350541-7783f6c6a0c8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=945&q=80',
+      text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo earum cupiditate, provident cum illum fugit labore ex magni a ea corrupti tenetur obcaecati voluptate quae pariatur dicta nam ut assumenda.',
+    },
+    {
+      title: 'Communities are ready for for next street-art event',
+      image:
+        'https://images.unsplash.com/photo-1505760753167-0149337113f5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=869&q=80',
+      text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo earum cupiditate, provident cum illum fugit labore ex magni a ea corrupti tenetur obcaecati voluptate quae pariatur dicta nam ut assumenda.',
     },
   ],
 };
