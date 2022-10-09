@@ -27,7 +27,7 @@ export interface IPaymentItem {
   _id: string;
   name: string;
   artist: string;
-  description: number;
+  description: string;
   slug: string;
   category: string;
   url: string;

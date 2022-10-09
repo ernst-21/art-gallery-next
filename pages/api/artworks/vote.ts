@@ -30,7 +30,7 @@ const voteArtwork = async (req: NextApiRequest, res: NextApiResponse) => {
       },
       { new: true }
     ).select(
-      'name artist slug category price _id gallery addedToCart tags colors featured orientation url voters size purchased artist_Id'
+      'name artist description slug category price _id gallery addedToCart tags colors featured orientation url voters size purchased artist_Id'
     );
     await db.disconnect();
     return res.status(200).json(updatedArtworks);
