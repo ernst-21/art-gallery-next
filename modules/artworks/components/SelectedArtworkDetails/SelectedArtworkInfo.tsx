@@ -11,10 +11,11 @@ import { Link as MuiLink } from '@mui/material';
 import { stringWrangler } from '../../../../utils';
 import useToggle from '../../../../hooks/utils/useToggle';
 import { useUser } from '../../../../hooks/security/useUser';
-import { useMutation } from 'react-query';
+import { useMutation, useQueryClient } from 'react-query';
 import { voteArtwork, downVoteArtwork } from '../../services/artworks-api';
 import { ArtworkVoteType } from '../../../../types/common.types';
 import { SelectedArtworkTags } from './components/SelectedArtworkTags';
+import { useRouter } from 'next/router';
 
 type SelectedProps = {
   artwork: IArtwork;
@@ -22,6 +23,7 @@ type SelectedProps = {
 
 const SelectedArtworksInfo = ({ artwork }: SelectedProps) => {
   const [open, setOpen] = React.useState(false);
+  const { pathname } = useRouter();
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const { isOpen, onClose, onOpen } = useToggle();

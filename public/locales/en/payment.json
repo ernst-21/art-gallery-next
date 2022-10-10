@@ -1,3 +1,3 @@
 {
-    "explainText": "As demo website payments in this app are not real. Try Card Number 4242 4242 4242 4242, any valid date in the future, as well as a CVC code to simulate and create a payment in the database."
+    "explainText": "As a demo website, payments in this app are not real. Try Card Number 4242 4242 4242 4242, any valid date in the future, as well as a CVC code to simulate and create a payment in the database."
 }

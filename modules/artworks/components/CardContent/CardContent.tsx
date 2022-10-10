@@ -8,7 +8,7 @@ import { stringWrangler } from '../../../../utils';
 import { NextMuiLink } from '../../../../components/ui/Link/NextMuiLink';
 import useToggle from '../../../../hooks/utils/useToggle';
 import { useUser } from '../../../../hooks/security/useUser';
-import { useMutation } from 'react-query';
+import { useMutation, useQueryClient } from 'react-query';
 import { ArtworkVoteType } from '../../../../types/common.types';
 import { downVoteArtwork, voteArtwork } from '../../services/artworks-api';
 import { useArtworksFilter } from '../../../../context/artworks/FilterArtworks/FilterArtworkContext';
@@ -32,12 +32,19 @@ const ArtworkCardContent = ({
   const [updatedArtwork, setUpdatedArtwork] = useState(null);
   const { setFavoritesCount } = useFavoriteArtworks();
 
+  const queryClient = useQueryClient();
+
   const { mutate: voteArtworkByClick } = useMutation(
     ['artwork-vote', artwork?._id],
     (body: ArtworkVoteType) => voteArtwork(body),
     {
-      //@ts-ignore
-      onSuccess: (data) => setUpdatedArtwork(data),
+      onSuccess: (data) => {
+        //@ts-ignore
+        setUpdatedArtwork(data);
+        if (pathname === '/auth/profile') {
+          queryClient.invalidateQueries(['favorites', user?._id]);
+        }
+      },
     }
   );
 
@@ -45,8 +52,13 @@ const ArtworkCardContent = ({
     ['artwork-downVote', artwork?._id],
     (body: ArtworkVoteType) => downVoteArtwork(body),
     {
-      //@ts-ignore
-      onSuccess: (data) => setUpdatedArtwork(data),
+      onSuccess: (data) => {
+        //@ts-ignore
+        setUpdatedArtwork(data);
+        if (pathname === '/auth/profile') {
+          queryClient.invalidateQueries(['favorites', user?._id]);
+        }
+      },
     }
   );
 

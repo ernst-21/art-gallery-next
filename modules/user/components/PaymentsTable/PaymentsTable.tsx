@@ -11,6 +11,8 @@ import { format } from '../../../../utils';
 import { IPayment } from '../../../../interfaces';
 import { NextMuiLink } from '../../../../components/ui/Link/NextMuiLink';
 import moment from 'moment';
+import { renderSkeletonTable } from './constants/table';
+import { Reload } from '../../../../components/ui/Reload';
 
 export const columns: GridColDef[] = [
   {
@@ -83,11 +85,9 @@ const PaymentsTable = () => {
   } = useMutation('userOrders', (id: UserId) => searchUserPayments(id));
 
   const rows = useMemo(() => {
-    if (data) {
-      return data.map((item: IPayment, idx: number) => {
-        return { ...item, id: idx + 1 };
-      });
-    }
+    return data?.map((item: IPayment, idx: number) => {
+      return { ...item, id: idx + 1 };
+    });
   }, [data]);
 
   const bigTotal = useMemo(() => {
@@ -100,33 +100,36 @@ const PaymentsTable = () => {
     return price;
   }, [data]);
 
+  console.log({ rows });
+
   useEffect(() => {
     if (user) {
       getPaymentsMutation({ userId: user._id });
     }
   }, [getPaymentsMutation, user]);
 
-  // TODO: create skeleton for table
-
   if (isLoading) {
-    return <Typography>Loading...</Typography>;
+    return renderSkeletonTable();
   }
 
-  if (!data || isError) {
-    return <Typography>No data</Typography>;
+  if (isError) {
+    return <Reload />;
   }
 
   return (
     <Stack sx={{ height: '500px', mt: 2 }}>
-      <DataGrid
-        rows={rows!}
-        columns={columns}
-        pageSize={5}
-        getRowId={(row) => row._id}
-        rowsPerPageOptions={[5]}
-        disableSelectionOnClick
-      />
-      {bigTotal && (
+      {rows && (
+        <DataGrid
+          rows={rows}
+          columns={columns}
+          pageSize={5}
+          getRowId={(row) => row._id}
+          rowsPerPageOptions={[5]}
+          disableSelectionOnClick
+        />
+      )}
+
+      {bigTotal > 0 && (
         <Box display={'flex'} justifyContent={'flex-end'} mt={5}>
           <Typography sx={{ mr: 2, fontSize: 32 }} variant="h1">
             Big total:

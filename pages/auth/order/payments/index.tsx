@@ -1,5 +1,9 @@
 import React from 'react';
-import type { GetServerSidePropsContext, NextPage } from 'next';
+import type {
+  GetServerSidePropsContext,
+  GetStaticPropsContext,
+  NextPage,
+} from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import MainLayout from '../../../../components/layouts/MainLayout';
 import { PaymentsTableContainer } from '../../../../modules/user/containers/PaymentsTableContainer';
@@ -7,7 +11,7 @@ import PageWidthContainer from '../../../../components/layouts/PageWidthContaine
 
 const PaymentsTablePage: NextPage = () => {
   return (
-    <MainLayout title={'Orders'}>
+    <MainLayout title={'Payments'}>
       <PageWidthContainer>
         <PaymentsTableContainer />
       </PageWidthContainer>
@@ -17,9 +21,7 @@ const PaymentsTablePage: NextPage = () => {
 
 export default PaymentsTablePage;
 
-export const getServerSideProps = async ({
-  locale,
-}: GetServerSidePropsContext) => {
+export const getStaticProps = async ({ locale }: GetStaticPropsContext) => {
   return {
     props: {
       //@ts-ignore

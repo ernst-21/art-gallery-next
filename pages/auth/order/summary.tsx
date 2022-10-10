@@ -1,5 +1,9 @@
 import React from 'react';
-import type { GetServerSidePropsContext, NextPage } from 'next';
+import type {
+  GetServerSidePropsContext,
+  GetStaticPropsContext,
+  NextPage,
+} from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import MainLayout from '../../../components/layouts/MainLayout';
 import { ScrollToTop } from '../../../components/ui/ScrollToTop';
@@ -21,7 +25,7 @@ const OrderSummary: NextPage = () => {
 
 export default OrderSummary;
 
-export const getStaticProps = async ({ locale }: GetServerSidePropsContext) => {
+export const getStaticProps = async ({ locale }: GetStaticPropsContext) => {
   return {
     props: {
       //@ts-ignore

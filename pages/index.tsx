@@ -1,6 +1,6 @@
 import React from 'react';
 import { Stack } from '@mui/material';
-import type { NextPage } from 'next';
+import type { GetStaticPropsContext, NextPage } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import MainLayout from '../components/layouts/MainLayout';
 import HomeHeaderContainer from '../modules/home/containers/HomeHeaderContainer';
@@ -43,7 +43,7 @@ const HomePage: NextPage<HomeProps> = ({
 
 export default HomePage;
 
-export const getStaticProps = async ({ locale }: GetServerSidePropsContext) => {
+export const getStaticProps = async ({ locale }: GetStaticPropsContext) => {
   const featured = await dbArtworks.getFeaturedArtworks();
   const recommended = await dbArtists.getRecommendedArtists();
   const testimonials = await dbTestimonials.getTestimonials();
