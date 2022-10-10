@@ -5,7 +5,7 @@ import AddShoppingCartOutlinedIcon from '@mui/icons-material/AddShoppingCartOutl
 import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
 import { IArtwork } from '../../../interfaces';
 import { useUserInfo } from '../../../hooks/artworks/useUserInfo';
-import { Box, IconButton } from '@mui/material';
+import { Box, IconButton, Typography } from '@mui/material';
 import LoginMessageModal from '../LoginMessageModal/LoginMessageModal';
 import { CartContext } from '../../../context/cart';
 import { useUser } from '../../../hooks/security/useUser';
@@ -44,7 +44,8 @@ const UserActionsButtons = ({
     }
   }, [artwork.purchased, user]);
 
-  if (isPurchased) return null;
+  if (isPurchased)
+    return <Typography sx={{ fontStyle: 'italic' }}>Purchased</Typography>;
 
   return (
     <Box sx={{ display: 'flex', alignItems: 'center' }}>
