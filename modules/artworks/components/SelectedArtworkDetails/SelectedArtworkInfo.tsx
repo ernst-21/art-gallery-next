@@ -100,19 +100,23 @@ const SelectedArtworksInfo = ({ artwork }: SelectedProps) => {
           >
             {artwork?.category}
           </Typography>
-          {!artwork.featured && (
-            <Typography paragraph>${artwork?.price} USD</Typography>
-          )}
           <Link href={`/artists/${artistIdentifier}`} passHref>
             <MuiLink sx={{ cursor: 'pointer' }}>
               <Typography paragraph>{artwork?.artist}</Typography>
             </MuiLink>
           </Link>
+          <Box display={'flex'} sx={{ mb: 2 }}>
+            <Typography sx={{ mr: 1 }}>Orientation:</Typography>
+            <Typography>{artwork.orientation}</Typography>
+          </Box>
 
           <Typography paragraph>Size: {artwork?.size}</Typography>
           <Typography sx={{ mb: 4 }} paragraph>
             Voters: {artworkToRender?.voters?.length}
           </Typography>
+          {!artwork.featured && (
+            <Typography paragraph>${artwork?.price} USD</Typography>
+          )}
           <Typography paragraph>{artwork?.description}</Typography>
           <SelectedArtworkTags artwork={artwork} />
         </Stack>
