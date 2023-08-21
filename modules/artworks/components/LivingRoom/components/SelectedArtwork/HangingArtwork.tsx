@@ -53,7 +53,7 @@ const HangingArtwork = ({ artwork }: ArtworkType) => {
             height: '100%',
             backgroundImage: `url(${artwork?.url})`,
             backgroundPosition: 'center',
-            backgroundSize: 'contain',
+            backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
           }}
         />
