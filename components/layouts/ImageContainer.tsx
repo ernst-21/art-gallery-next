@@ -17,6 +17,7 @@ const ImageContainer = () => {
         layout={'fill'}
         style={{ filter: 'brightness(80%)' }}
         src={pencils}
+        alt="logo-image"
         objectFit={'cover'}
       />
     </Box>
